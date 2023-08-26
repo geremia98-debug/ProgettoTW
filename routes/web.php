@@ -33,3 +33,6 @@ Route::get('/registrazione', function() {
 
 //Route::post('/registrazione', 'Auth\RegistrationController@register');
 
+
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
