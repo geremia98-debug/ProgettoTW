@@ -16,7 +16,7 @@
               <a class="nav-link" href="/chi-siamo">chiSiamo</a>
             </li>
           </ul>
-          <a class="btn btn-primary" href="http://127.0.0.1:8000/registrazione" role="button">Link</a>
+          <a class="btn btn-primary" href="http://127.0.0.1:8000/registrazione" role="button">Registrati</a> 
             <button href="http://127.0.0.1:8000/registrazione" id="nav-registrazione" class="btn btn-outline-success" type="submit">Registrati</button>
             <button id="nav-login" class="btn btn-outline-success" type="submit">Login</button>
             <button id="nav-logout" class="btn btn-outline-success" type="submit">Logout</button>   
