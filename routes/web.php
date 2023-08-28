@@ -29,6 +29,13 @@ Route::get('/registrazione', function() {
     return view('registrazione');
 });
 
+Route::get('/area-personale', function() {
+    return view('areaPersonale');
+});
+
+Route::get('/modifica-utente', function() {
+    return view('modificautente');
+});
 //Route::get('/registrazione', 'Auth\RegistrationController@showRegistrationForm')->name('registrazione');
 
 //Route::post('/registrazione', 'Auth\RegistrationController@register');
