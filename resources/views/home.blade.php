@@ -1,4 +1,4 @@
-<body>
+@
     <header>
         @include('partials.navbar')
     </header>
