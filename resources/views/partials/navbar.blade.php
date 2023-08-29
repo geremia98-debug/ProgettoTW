@@ -1,4 +1,5 @@
-
+@extends('layouts.app')
+@section ('navbar')
 <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">NoleggioAuto</a>
@@ -24,3 +25,4 @@
         </div>
       </div>
     </nav>
+@endsection

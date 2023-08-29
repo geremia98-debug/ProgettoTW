@@ -1,4 +1,4 @@
-@
+@extends ('layouts.app')
     <header>
         @include('partials.navbar')
     </header>
