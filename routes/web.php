@@ -40,6 +40,8 @@ Route::get('/modifica-utente', function() {
 Route::get('/app', function() {
     return view('layouts.app');
 });
+
+Route::get('/', 'App\Http\Controllers\HomeController@index');
 //Route::get('/registrazione', 'Auth\RegistrationController@showRegistrationForm')->name('registrazione');
 
 //Route::post('/registrazione', 'Auth\RegistrationController@register');

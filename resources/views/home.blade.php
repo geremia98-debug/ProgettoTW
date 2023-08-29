@@ -1,17 +1,13 @@
 @extends ('layouts.app')
-    <header>
-        @include('partials.navbar')
-    </header>
-
     <!-- inizia la home page dopo la navbar-->
-
+@section('content')
     <div id="home">
         <div class="d-flex justify-content-center mt-4">
           <h1>Vagnoli - Noleggio Auto</h1>  
         </div>
       
-      <div >
-        <img id="banner"  src="resources\images\fano.jpg" alt="Fano, Italy"> 
+      <div class="banner">
+        <img  src="resources\images\fano.png" alt="Fano, Italy"> 
       </div>
     
 
@@ -27,7 +23,7 @@
             <p>Telefono: 123-456-789</p>
             <p>Email: info@vagnoli.com</p>
         </div>
-        <img src="resources/images/maps.jpg" alt="Location on Maps" class="maps-image">
+        <img src="resources/images/geo.png" alt="Location on Maps" class="maps-image">
     </section>
 
     <section id="car-display">
@@ -131,17 +127,6 @@
       </div>
 
     </body>
-
-
-
-
-
-
-
-
-
-    <footer>
-        @include('partials.footer')
-    </footer>
+    @endsection
 
 

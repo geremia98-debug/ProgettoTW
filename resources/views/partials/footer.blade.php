@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section ('footer')
 <footer>
       <div id="footer-div">
         <div class="d-flex justify-content-around mt-4 py-4">
@@ -25,3 +27,4 @@
         </div>
       </div>
     </footer>
+@endsection
