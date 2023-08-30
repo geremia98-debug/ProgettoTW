@@ -14,6 +14,18 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('plate')->unique();
+            $table->string('brand');
+            $table->string('model');
+            $table->unsignedMediumInteger('displacement'); // Cilindrata
+            $table->unsignedMediumInteger('price');
+            $table->unsignedSmallInteger('seats')->default(5);
+            $table->text('description')->nullable();
+
+            // Aggiungere riferimento per la foto
+
+
         });
     }
 

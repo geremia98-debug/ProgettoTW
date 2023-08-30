@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('name_client');
+            $table->string('surname_client');
+            $table->string('plate')->unique();
+            $table->date('start_rent');
+            $table->date('end_rent');
+
         });
     }
 

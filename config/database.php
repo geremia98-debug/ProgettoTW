@@ -45,8 +45,7 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'database' => 'progettotecnologieweb',
-            'url' => 'mysql://root:@localhost:3306/your_database_name',
+            'url' => 'mysql://root:@localhost:3306/progettotecnologieweb',
             'host' => '127.0.0.1',
             'port' => '3306',
             'database' => 'progettotecnologieweb',
