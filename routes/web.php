@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-});
+// Route::get('/home', function () {
+//     return view('home');
+// });
 
 Route::get('/chi-siamo', function () {
     return view('ChiSiamo');
@@ -33,6 +33,10 @@ Route::get('/area-personale', function() {
     return view('areaPersonale');
 });
 
+Route::get('/ciaolollo', function() {
+    return '......';
+});
+
 Route::get('/modifica-utente', function() {
     return view('modificautente');
 });
@@ -41,7 +45,7 @@ Route::get('/app', function() {
     return view('layouts.app');
 });
 
-Route::get('/', 'App\Http\Controllers\HomeController@index');
+Route::get('/', [App\Http\Controllers\HomeController::class,'index']);
 //Route::get('/registrazione', 'Auth\RegistrationController@showRegistrationForm')->name('registrazione');
 
 //Route::post('/registrazione', 'Auth\RegistrationController@register');
