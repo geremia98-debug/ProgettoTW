@@ -1,7 +1,6 @@
+@extends('layouts.app')
+@section('content')
 <body>
-    <header>
-        @include('partials.navbar')
-    </header>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,4 +35,5 @@
         // Puoi utilizzare JavaScript per richiedere dati dal server o da un database reale
     </script>
 </body>
+@endsection
 </html>

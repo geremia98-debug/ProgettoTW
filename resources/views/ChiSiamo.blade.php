@@ -4,9 +4,7 @@
     <!-- <header>
         @include('partials.navbar')
     </header> -->
-
-    <!-- inizia la pagina chi siamo dopo la navbar-->
-
+    @section('content')
     <div id="chiSiamo">
             <h1>Benvenuti al Noleggio Auto Vagnoli</h1>
         
@@ -26,9 +24,6 @@
             <p><strong>Telefono:</strong> +39 123 456 7890</p>
       </div>
 @endsection
-
-
-
 
 <!-- 
     <footer>
