@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <body>
-    <!-- <header>
-        @include('partials.navbar')
-    </header> -->
     @section('content')
     <div id="chiSiamo">
             <h1>Benvenuti al Noleggio Auto Vagnoli</h1>
@@ -25,9 +22,5 @@
       </div>
 @endsection
 
-<!-- 
-    <footer>
-        @include('partials.footer')
-    </footer> -->
 
 
