@@ -1,7 +1,9 @@
+@extends('layouts.app')
+@section('content')
 <body>
-    <header>
+    <!-- <header>
         @include('partials.navbar')
-    </header>
+    </header> -->
 
     <!-- inizia la pagina chi siamo dopo la navbar-->
 
@@ -23,13 +25,14 @@
             <p><strong>Email:</strong> info@noleggiovagnoli.it</p>
             <p><strong>Telefono:</strong> +39 123 456 7890</p>
       </div>
+@endsection
 
 
 
 
-
+<!-- 
     <footer>
         @include('partials.footer')
-    </footer>
+    </footer> -->
 
 
