@@ -1,10 +1,6 @@
+@extends('layouts.app')
+@section('content')
 <body>
-    <header>
-        @include('partials.navbar')
-    </header>
-
-    <!-- inizia la home page dopo la navbar-->
-
     <div id="home">
         <div class="d-flex justify-content-center mt-4">
           <h1>Vagnoli - Noleggio Auto</h1>  
@@ -132,16 +128,6 @@
 
     </body>
 
-
-
-
-
-
-
-
-
-    <footer>
-        @include('partials.footer')
-    </footer>
+@endsection
 
 

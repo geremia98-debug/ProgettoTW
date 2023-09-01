@@ -1,10 +1,5 @@
-<body>
-    <header>
-        @include('partials.navbar')
-    </header>
-
-    <!-- inizia la pagina catalogo auto dopo la navbar-->
-
+@extends('layouts.app')
+@section('content')
     <body>
     <div class="container">
         <h1>Auto Disponibili a Noleggio</h1>
@@ -37,9 +32,4 @@
         </div>
     </div>
 </body>
-
-
-
-    <footer>
-        @include('partials.footer')
-    </footer>
+@endsection

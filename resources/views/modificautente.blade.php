@@ -1,6 +1,5 @@
-<head>
-    <title>Registrazione</title>
-</head>
+@extends('layouts.app')
+@section('content')
 <body>
     <h1>Registrazione</h1>
 
@@ -33,4 +32,5 @@
         <input type="submit" value="Registrati">
     </form>
 </body>
+@endsection
 
