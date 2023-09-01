@@ -48,10 +48,10 @@ Route::get('/area-personale', [AreaPersonaleController::class, 'index']);
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/catalogo', [CatalogoController::class, 'index']);
 
-//Route::get('/registrazione', 'Auth\RegistrationController@showRegistrationForm')->name('registrazione');
+// Route::get('/login', [LoginController::class, 'login']);
+// Route::get('/registrazione', [RegistrazioneController::class, 'registrazione']);
 
-//Route::post('/registrazione', 'Auth\RegistrationController@register');
+Route::post('/salva-dati', 'DatiController@salva')->name('registrazione');
 
 
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

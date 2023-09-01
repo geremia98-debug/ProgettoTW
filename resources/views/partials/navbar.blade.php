@@ -25,4 +25,4 @@
             <button id="nav-logout" class="btn btn-outline-success" type="submit">Logout</button>   
         </div>
       </div>
-    </nav>
+</nav>
