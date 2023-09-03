@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User; // Assicurati di importare il modello User corretto
+use Illuminate\Support\Facades\Hash; // Importa la classe Hash per la gestione delle password
+
 
 class DatiController extends Controller
 {
@@ -15,6 +18,7 @@ class DatiController extends Controller
         'data_nascita' => 'required|date|maggiorenne',
         'username' => 'required|string|max:15',
         'password' => 'required|min:8|confirmed:conferma_password',
+    
 
     ]);
 
