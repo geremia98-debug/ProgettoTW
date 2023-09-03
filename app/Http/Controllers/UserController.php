@@ -34,7 +34,7 @@ class UserController extends Controller
 
     Auth::login($user);
 
-    return redirect('/area-personale')->with('success', 'Nuovo utente registrato con successo');
+    return redirect('/areaPersonale')->with('success', 'Nuovo utente registrato con successo');
 
 }
 
