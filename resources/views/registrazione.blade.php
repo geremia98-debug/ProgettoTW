@@ -31,7 +31,7 @@
     }
     ?>
 
-    <form method="POST" action="">
+    <form method="POST" action="{{ route('users.store') }}">
         <label>Nome:</label>
         <input type="text" name="nome" required><br>
 

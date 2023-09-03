@@ -43,3 +43,5 @@ Route::get('/users/{user}/edit', [app\Http\Controllers\UserController::class, 'e
 Route::put('/users/{user}', [app\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [app\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 
+Route::resource('/users', app\Http\Controllers\UserController::class);
+
