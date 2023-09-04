@@ -1,55 +1,58 @@
 .social > a{
     margin-right:1rem;
     }
-    
+
     #banner{
-        
+
             display: block;
             width: auto;
             height: auto;
             max-width: 100%;
             max-height: 90%;
             margin: 20px auto;
-        
+
     }
-    
+
     .grid{
-    
+
         margin:1rem;
     }
-    
+
     #footer-div{
         background-image: url("../dist/fano.jpg");  /* mettere url corretto */
         background-size: cover;
         background-position: top;
     }
-    
+
     body {
                 font-family: Arial, sans-serif;
                 margin: 0;
                 padding: 0;
                 background-color: #f4f4f4;
             }
-    
+
     .container {
                 max-width: 1200px;
                 margin: 0 auto;
                 padding: 20px;
             }
-    
+
     .car-grid {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
-    
+
     .car {
                 border: 1px solid #ccc;
                 padding: 10px;
                 background-color: #fff;
             }
-    
+
     .car img {
                 max-width: 100%;
                 height: auto;
             }
+    .icone-social {
+        font-size: 5em;
+    }

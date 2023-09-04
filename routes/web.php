@@ -6,18 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChiSiamoController;
 use App\Http\Controllers\HomeController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-
 Route::get('/registrazione', function() {
     return view('registrazione');
 });
@@ -26,8 +14,6 @@ Route::get('/registrazione', function() {
 Route::get('/modifica-utente', function() {
     return view('modificautente');
 });
-
-
 
 Route::get('/chi-siamo', [ChiSiamoController::class, 'index']);
 Route::get('/area-personale', [AreaPersonaleController::class, 'index']);
@@ -43,5 +29,5 @@ Route::get('/users/{user}/edit', [app\Http\Controllers\UserController::class, 'e
 Route::put('/users/{user}', [app\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [app\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 
-Route::resource('/users', app\Http\Controllers\UserController::class);
+//Route::resource('/users', app\Http\Controllers\UserController::class);
 

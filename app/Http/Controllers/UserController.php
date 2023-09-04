@@ -8,15 +8,43 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+
+    //  Gestione del form dopo la sottomissione
+    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //     $nome = $_POST["nome"];
+    //     $cognome = $_POST["cognome"];
+    //     $dataNascita = $_POST["data_nascita"];
+    //     $occupazione = $_POST["occupazione"];
+    //     $email = $_POST["email"];
+    //     $password = $_POST["password"];
+    //     $confermaPassword = $_POST["conferma_password"];
+
+    //     // Verifica se le password corrispondono
+    //     if ($password !== $confermaPassword) {
+    //         echo "Le password non corrispondono. Riprova.";
+    //     } else {
+    //         // Qui dovresti effettuare l'hash della password prima di salvarla nel database
+    //         // Esempio: $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    //         // Ora puoi salvare i dati nel tuo database o fare altre operazioni
+    //         // ...
+
+    //         echo "Registrazione completata con successo!";
+    //     }
+    // }
+
+
     public function store(Request $request)
 {
+    dd('.....');
     $validatedData = $request->validate([
         'nome' => 'required',
         'cognome' => 'required',
         'data_nascita' => 'required',
         'luogo_residenza' => 'required',
         'occupazione' => 'required',
-        'username' => 'required|unique:users', 
+        'username' => 'required|unique:users',
         'password' => 'required|confirmed',
     ]);
 
@@ -30,9 +58,9 @@ class UserController extends Controller
     $user->username = $request->input('username');
     $user->password = $request->input('password');
 
-    $user->save();
+    dd($user);
 
-    Auth::login($user);
+    $user->save();
 
     return redirect('/areaPersonale')->with('success', 'Nuovo utente registrato con successo');
 
@@ -41,8 +69,8 @@ class UserController extends Controller
 public function areaPersonale($username)
 {
     $user = User::where('username', $username)->first();
-    if (!$user) {      
-        return abort(404); 
+    if (!$user) {
+        return abort(404);
     }
 
     return view('areaPersonale', compact('user'));
@@ -50,7 +78,7 @@ public function areaPersonale($username)
 
 // ci servono per la gestione e l'eliminazione degli user
 
-public function show(User $user)  
+public function show(User $user)
 {
     return view('users.show', compact('user'));
 }

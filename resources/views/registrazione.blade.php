@@ -1,37 +1,26 @@
-
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
     <title>Registrazione</title>
 </head>
 <body>
     <h1>Registrazione</h1>
 
-    <?php
-    // Gestione del form dopo la sottomissione
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $nome = $_POST["nome"];
-        $cognome = $_POST["cognome"];
-        $dataNascita = $_POST["data_nascita"];
-        $occupazione = $_POST["occupazione"];
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-        $confermaPassword = $_POST["conferma_password"];
-
-        // Verifica se le password corrispondono
-        if ($password !== $confermaPassword) {
-            echo "Le password non corrispondono. Riprova.";
-        } else {
-            // Qui dovresti effettuare l'hash della password prima di salvarla nel database
-            // Esempio: $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-            // Ora puoi salvare i dati nel tuo database o fare altre operazioni
-            // ...
-
-            echo "Registrazione completata con successo!";
-        }
-    }
-    ?>
-
     <form method="POST" action="{{ route('users.store') }}">
+        @csrf
         <label>Nome:</label>
         <input type="text" name="nome" required><br>
 
@@ -48,17 +37,17 @@
         <select name="occupazione">
             <option value="studente">Studente</option>
             <option value="lavoratore">Lavoratore</option>
-            <option value="altro">Cassiere di supermercato</option>
-            <option value="altro">Infermiere ospedaliero</option>
-            <option value="altro">Muratore edile</option>
-            <option value="altro">Insegnante elementare</option>
-            <option value="altro">Cuoco ristorante</option>
-            <option value="altro">Camionista</option>
-            <option value="altro">Segretario amministrativo</option>
-            <option value="altro">Addetto risorse umane</option>
-            <option value="altro">Elettricista</option>
-            <option value="altro">Commesso di negozio</option>
-            <option value="altro">Disoccupato</option>
+            <option value="Cassiere di supermercato">Cassiere di supermercato</option>
+            <option value="Infermiere ospedaliero">Infermiere ospedaliero</option>
+            <option value="Muratore edile">Muratore edile</option>
+            <option value="Insegnante elementare">Insegnante elementare</option>
+            <option value="Cuoco ristorante">Cuoco ristorante</option>
+            <option value="Camionista">Camionista</option>
+            <option value="Segretario amministrativo">Segretario amministrativo</option>
+            <option value="Addetto risorse umane">Addetto risorse umane</option>
+            <option value="Elettricista">Elettricista</option>
+            <option value="Commesso di negozio">Commesso di negozio</option>
+            <option value="Disoccupato">Disoccupato</option>
             <option value="altro">Altro</option>
 
         </select><br>
@@ -75,4 +64,5 @@
         <input type="submit" value="Registrati">
     </form>
 </body>
+</html>
 
