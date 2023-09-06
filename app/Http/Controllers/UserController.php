@@ -37,7 +37,7 @@ class UserController extends Controller
 
     public function store(Request $request)
 {
-    // dd('.....');
+    // dd($request);
     // $validatedData = $request->validate([
     //     'nome' => 'required',
     //     'cognome' => 'required',
@@ -48,66 +48,32 @@ class UserController extends Controller
     //     'password' => 'required|confirmed',
     // ]);
 
-    // $user = new User();
-
-    // $user->firstname = $request->input('nome');
-    // $user->lastname = $request->input('cognome');
-    // $user->data_nascita = $request->input('data_nascita');
-    // $user->residence = $request->input('luogo_residenza');
-    // $user->job = $request->input('occupazione');
-    // $user->username = $request->input('username');
-    // $user->password = $request->input('password');
-
-    // dd($user);
-
-    // $user->save();
-
-    // return redirect('/areaPersonale')->with('success', 'Nuovo utente registrato con successo');
-
-    dd('.....');
-    $validatedData = $request->validate([
-        'nome' => 'required',
-        'cognome' => 'required',
-        'data_nascita' => 'required',
-        'luogo_residenza' => 'required',
-        'occupazione' => 'required',
-        'username' => 'required|unique:users',
-        'password' => 'required|confirmed',
-    ]);
-
     $user = new User();
 
-    $user->firstname = $validatedData['nome'];
-    $user->lastname = $validatedData['cognome'];
-    $user->birthdate = $validatedData['data_nascita'];
-    $user->residence = $validatedData['luogo_residenza'];
-    $user->job = $validatedData['occupazione'];
-    $user->username = $validatedData['username'];
-    $user->password = $validatedData['password'];
+    $user->firstname = $request->input('nome');
+    $user->lastname = $request->input('cognome');
+    $user->birthdate = $request->input('data_nascita');
+    $user->residence = $request->input('luogo_residenza');
+    $user->job = $request->input('occupazione');
+    $user->username = $request->input('username');
+    $user->password = $request->input('password');
 
-    dd($user);
 
     $user->save();
 
-    return redirect('/areaPersonale')->with('success', 'Nuovo utente registrato con successo');
+    dd($user);
 
-}
+    return redirect()->route('users.show');
 
-public function areaPersonale($username)
-{
-    $user = User::where('username', $username)->first();
-    if (!$user) {
-        return abort(404);
-    }
 
-    return view('areaPersonale', compact('user'));
+
 }
 
 // ci servono per la gestione e l'eliminazione degli user
 
 public function show(User $user)
 {
-    return view('users.show', compact('user'));
+    return view('users.show', compact('user'))->with('success', 'Nuovo utente registrato con successo');
 }
 
 public function edit(User $user)
@@ -138,4 +104,3 @@ public function destroy(User $user)
 }
 
 }
-

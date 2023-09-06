@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
+    private $table='users';
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -56,9 +57,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-    protected $connection = 'progettotecnlogieweb';
-    protected $table = 'users';
 
 
 }
