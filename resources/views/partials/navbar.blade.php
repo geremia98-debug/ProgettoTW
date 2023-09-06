@@ -17,12 +17,14 @@
             </li>
           </ul>
             <!-- <button href="{{url('/registrazione')}}" id="nav-registrazione" class="btn btn-outline-success" type="submit">Registrati</button> -->
-            <button onclick="window.location.href='{{ url('/registrazione') }}'" class="btn btn-primary">Registrati</button>
+            <button  class="btn btn-primary"> <a href={{ route('registrazione') }} > Registrati</a>  <!-- bottone senza javascript -->
+                </button>
+
 
             <!-- <button id="nav-login" class="btn btn-outline-success" type="submit">Login</button> -->
             <button onclick="window.location.href='{{ url('/login') }}'" class="btn btn-primary">Login</button>
 
-            <button id="nav-logout" class="btn btn-outline-success" type="submit">Logout</button>   
+            <button id="nav-logout" class="btn btn-outline-success" type="submit">Logout</button>
         </div>
       </div>
 </nav>
