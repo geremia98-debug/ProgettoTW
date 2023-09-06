@@ -3,13 +3,13 @@
 <body>
     <div id="home">
         <div class="d-flex justify-content-center mt-4">
-          <h1>Vagnoli - Noleggio Auto</h1>  
+          <h1>Vagnoli - Noleggio Auto</h1>
         </div>
-      
+
       <div >
-        <img id="banner"  src="resources\images\fano.jpg" alt="Fano, Italy"> 
+        <img id="banner"  src="{{ asset('build\assets\fano.png') }}" alt="Fano, Italy" class="home-image">
       </div>
-    
+
 
     <section id="vagnoli-info">
         <div class="info-box">
@@ -23,7 +23,7 @@
             <p>Telefono: 123-456-789</p>
             <p>Email: info@vagnoli.com</p>
         </div>
-        <img src="resources/images/maps.jpg" alt="Location on Maps" class="maps-image">
+        <img src="{{ asset('build\assets\geo.png') }}" alt="Location on Maps" class="maps-image">
     </section>
 
     <section id="car-display">
@@ -33,7 +33,7 @@
         <div class="container text-center grid">
           <div class="row">
             <div class="col-sm-6 col-md-3">
-              
+
               <div class="card" style="width: 18rem;">
               <img src="dist/maserati.jpg" class="card-img-top" alt="auto-test">
               <div class="card-body">
@@ -42,7 +42,7 @@
                 <a href="#" class="btn btn-primary">Vedi</a>
               </div>
             </div>
-          
+
           </div>
             <div class="col-sm-6 col-md-3">
               <div class="card" style="width: 18rem;">
@@ -76,7 +76,7 @@
             </div>
           </div>
         </div>
-    
+
 
     </section>
 
@@ -84,7 +84,7 @@
     <div class="d-flex justify-content-center my-4">
       <h2>Domande frequenti</h2>
     </div>
-    
+
 
     <div class="accordion" id="accordionExample">
       <div class="accordion-item">

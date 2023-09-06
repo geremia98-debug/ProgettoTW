@@ -18,7 +18,7 @@ class UserController extends Controller
     //     $occupazione = $_POST["occupazione"];
     //     $email = $_POST["email"];
     //     $password = $_POST["password"];
-    //     $confermaPassword = $_POST["conferma_password"];
+    //     $confermaPassword = $_POST["pasword_confirmation"];
 
     //     // Verifica se le password corrispondono
     //     if ($password !== $confermaPassword) {
@@ -37,6 +37,33 @@ class UserController extends Controller
 
     public function store(Request $request)
 {
+    // dd('.....');
+    // $validatedData = $request->validate([
+    //     'nome' => 'required',
+    //     'cognome' => 'required',
+    //     'data_nascita' => 'required',
+    //     'luogo_residenza' => 'required',
+    //     'occupazione' => 'required',
+    //     'username' => 'required|unique:users',
+    //     'password' => 'required|confirmed',
+    // ]);
+
+    // $user = new User();
+
+    // $user->firstname = $request->input('nome');
+    // $user->lastname = $request->input('cognome');
+    // $user->data_nascita = $request->input('data_nascita');
+    // $user->residence = $request->input('luogo_residenza');
+    // $user->job = $request->input('occupazione');
+    // $user->username = $request->input('username');
+    // $user->password = $request->input('password');
+
+    // dd($user);
+
+    // $user->save();
+
+    // return redirect('/areaPersonale')->with('success', 'Nuovo utente registrato con successo');
+
     dd('.....');
     $validatedData = $request->validate([
         'nome' => 'required',
@@ -50,13 +77,13 @@ class UserController extends Controller
 
     $user = new User();
 
-    $user->firstname = $request->input('nome');
-    $user->lastname = $request->input('cognome');
-    $user->data_nascita = $request->input('data_nascita');
-    $user->residence = $request->input('luogo_residenza');
-    $user->job = $request->input('occupazione');
-    $user->username = $request->input('username');
-    $user->password = $request->input('password');
+    $user->firstname = $validatedData['nome'];
+    $user->lastname = $validatedData['cognome'];
+    $user->birthdate = $validatedData['data_nascita'];
+    $user->residence = $validatedData['luogo_residenza'];
+    $user->job = $validatedData['occupazione'];
+    $user->username = $validatedData['username'];
+    $user->password = $validatedData['password'];
 
     dd($user);
 

@@ -19,7 +19,7 @@
     }
 
     #footer-div{
-        background-image: url("../dist/fano.jpg");  /* mettere url corretto */
+        background-image: url("public\build\assets\fano.png");  /* mettere url corretto */
         background-size: cover;
         background-position: top;
     }
@@ -56,3 +56,8 @@
     .icone-social {
         font-size: 5em;
     }
+
+    // .home-image {
+    //     width: 30px;
+    //     height: 50px;
+    // }

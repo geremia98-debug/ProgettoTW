@@ -5,6 +5,11 @@ use App\Http\Controllers\CatalogoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChiSiamoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DatiController;
+use App\Http\Controllers\RegistrazioneController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+
 
 Route::get('/registrazione', function() {
     return view('registrazione');
@@ -19,7 +24,7 @@ Route::get('/chi-siamo', [ChiSiamoController::class, 'index']);
 Route::get('/area-personale', [AreaPersonaleController::class, 'index']);
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/catalogo', [CatalogoController::class, 'index']);
-Route::post('/salva-dati', 'App\Http\Controllers\DatiController@salva')->name('registrazione');
+//Route::post('/salva-dati', 'App\Http\Controllers\DatiController@salva')->name('registrazione');
 Route::get('/area-personale/{username}', [UserController::class, 'areaPersonale'])->middleware('auth');
 Route::get('/users', [app\Http\Controllers\UserController::class, 'index'])->name('users.index');
 Route::get('/users/create', [app\Http\Controllers\UserController::class, 'create'])->name('users.create');

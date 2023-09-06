@@ -10,7 +10,7 @@
         <label>Inserisci il nuovo cognome:</label>
         <input type="text" name="cognome" required><br>
 
-        <label>Modifica la data di nascita:</label> 
+        <label>Modifica la data di nascita:</label>
         <input type="date" name="data_nascita" required><br>
 
         <label>Scegli la tua nuova occupazione:</label>
@@ -27,7 +27,7 @@
         <input type="password" name="password" required><br>
 
         <label>Conferma la nuova Password:</label>
-        <input type="password" name="conferma_password" required><br>
+        <input type="password" name="password_confirmation" required><br>
 
         <input type="submit" value="Registrati">
     </form>

@@ -59,7 +59,7 @@
         <input type="password" name="password" required><br>
 
         <label>Conferma password:</label>
-        <input type="password" name="conferma_password" required><br>
+        <input type="password" name="password_confirmation" required><br>
 
         <input type="submit" value="Registrati">
     </form>
