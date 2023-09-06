@@ -5,9 +5,9 @@
             <h2>Seguici sui Social</h2>
             <!-- Add social media icons and links here -->
             <div class="d-flex social">
-                <a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a>
-                <a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
-                <a href="https://twitter.com/?lang=it"><i class="bi bi-twitter"></i></a>
+                <a href="https://www.facebook.com/"><i class="bi bi-facebook icone-social"></i></a>
+                <a href="https://www.instagram.com/"><i class="bi bi-instagram icone-social"></i></a>
+                <a href="https://twitter.com/?lang=it"><i class="bi bi-twitter icone-social"></i></a>
             </div>
         </div>
 
@@ -19,7 +19,7 @@
             <p>Indirizzo: Via Autostrada, 123, 61032 Fano PU, Italia</p>
         </div>
         </div>
-        
+
         <div class="d-flex justify-content-center">
           <p>&copy; 2023 Vagnoli - Noleggio Auto</p>
         </div>
