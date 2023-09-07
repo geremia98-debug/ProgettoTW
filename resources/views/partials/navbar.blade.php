@@ -16,9 +16,10 @@
               <a class="nav-link" href="/chi-siamo">chiSiamo</a>
             </li>
           </ul>
-            <!-- <button href="{{url('/registrazione')}}" id="nav-registrazione" class="btn btn-outline-success" type="submit">Registrati</button> -->
-            <button  class="btn btn-primary"> <a href={{ route('registrazione') }} > Registrati</a>  <!-- bottone senza javascript -->
-                </button>
+            {{-- <button  class="btn btn-primary"> <a href={{ route('registrazione') }} > Registrati</a>  <!-- bottone senza javascript -->
+                </button> --}}
+            <button onclick="window.location.href='{{ url('/registrazione') }}'" class="btn btn-primary">Registrati</button>
+
 
 
             <!-- <button id="nav-login" class="btn btn-outline-success" type="submit">Login</button> -->

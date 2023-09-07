@@ -61,9 +61,10 @@ class UserController extends Controller
 
     $user->save();
 
-    dd($user);
+    Auth::login($user);
+    return redirect()->route('areaPersonale');
 
-    return redirect()->route('users.show');
+//    return redirect()->route('users.show');
 
 
 

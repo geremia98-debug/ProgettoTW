@@ -36,7 +36,6 @@
         <label>Occupazione:</label>
         <select name="occupazione">
             <option value="studente">Studente</option>
-            <option value="lavoratore">Lavoratore</option>
             <option value="Cassiere di supermercato">Cassiere di supermercato</option>
             <option value="Infermiere ospedaliero">Infermiere ospedaliero</option>
             <option value="Muratore edile">Muratore edile</option>

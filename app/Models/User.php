@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
-    private $table='users';
+    protected $table='users';
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

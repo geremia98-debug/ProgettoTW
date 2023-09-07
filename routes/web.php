@@ -25,5 +25,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/catalogo', [CatalogoController::class, 'index']);
 Route::get('/area-personale/{username}', [UserController::class, 'areaPersonale'])->middleware('auth');
 Route::resource('/users', UserController::class);
+Route::get('/area-personale', 'AreaPersonaleController@areaPersonale')->name('areaPersonale');
+
 
 
