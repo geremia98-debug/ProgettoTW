@@ -37,16 +37,16 @@ class UserController extends Controller
 
     public function store(Request $request)
 {
-    // dd($request);
-    // $validatedData = $request->validate([
-    //     'nome' => 'required',
-    //     'cognome' => 'required',
-    //     'data_nascita' => 'required',
-    //     'luogo_residenza' => 'required',
-    //     'occupazione' => 'required',
-    //     'username' => 'required|unique:users',
-    //     'password' => 'required|confirmed',
-    // ]);
+    dd($request);
+    $validatedData = $request->validate([
+        'nome' => 'required',
+        'cognome' => 'required',
+        'data_nascita' => 'required',
+        'luogo_residenza' => 'required',
+        'occupazione' => 'required',
+        'username' => 'required|unique:users',
+        'password' => 'required|confirmed',
+    ]);
 
     $user = new User();
 
