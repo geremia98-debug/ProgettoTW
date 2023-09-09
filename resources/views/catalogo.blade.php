@@ -1,6 +1,34 @@
 @extends('layouts.app')
 @section('content')
     <body>
+        <div class="filter-menu">
+            <h3>Filtri</h3>
+            <form id="filter-form">
+                <label for="brand-filter">Marca:</label>
+                <select id="brand-filter" name="brand">
+                    <option value="">Tutte le marche</option>
+                    <option value="toyota">Toyota</option>
+                    <option value="honda">Honda</option>
+                </select>
+
+                <label for="seats-filter">Posti Disponibili:</label>
+                <select id="seats-filter" name="seats">
+                    <option value="">Tutti i posti</option>
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="7">7</option>
+
+                </select>
+
+
+                <label for="price-filter">Prezzo Massimo:</label>
+                <input type="number" id="price-filter" name="price" min="0">
+
+                <button type="submit">Filtra</button>
+            </form>
+        </div>
+
     <div class="container">
         <h1>Auto Disponibili a Noleggio</h1>
         <div class="car-grid">

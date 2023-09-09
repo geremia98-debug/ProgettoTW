@@ -34,7 +34,7 @@ Route::get('/modifica-utente', function() {
 Route::get('/chi-siamo', [ChiSiamoController::class, 'index']);
 //Route::get('/area-personale', [AreaPersonaleController::class, 'index']);
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/catalogo', [CatalogoController::class, 'index'])->middleware('superuser');
+Route::get('/catalogo', [CatalogoController::class, 'index']);
 Route::get('/area-personale/{username}', [UserController::class, 'areaPersonale'])->middleware('auth');
 Route::resource('/users', UserController::class);
 Route::get('/area-personale', 'AreaPersonaleController@areaPersonale')->name('areaPersonale');
@@ -51,3 +51,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/catalog', 'CarController@index')->name('catalog.index');
+
