@@ -25,7 +25,7 @@ class UserFactory extends Factory
             'lastname'=> $this->faker->lastName,
             'residence'=> $this->faker->city,
             'birthdate'=> $this->faker->dateTimeBetween('-70 years','-18 years'),
-            'job'=> $this->faker->randomElement(['Cassiere di supermercato','Infermiere ospedaliero','Muratore edile','Insegnante elementare','Cuoco ristorante','Camionista','Segretario amministrativo','Addetto alle risorse umane','Elettricista','Commesso di negozio','Disoccupato','Altro'])
+            'job'=> $this->faker->randomElement(['Studente','Cassiere di supermercato','Infermiere ospedaliero','Muratore edile','Insegnante elementare','Cuoco ristorante','Camionista','Segretario amministrativo','Addetto alle risorse umane','Elettricista','Commesso di negozio','Disoccupato','Altro'])
 
         ];
     }
