@@ -46,9 +46,9 @@ class CarController extends Controller
             'posti' => 'required|integer',
             'descrizione' => 'required',
         ]);
-    
+
         $car = new Car();
-    
+
         $car->plate = $request->input('targa');
         $car->brand = $request->input('marca');
         $car->model = $request->input('modello');
@@ -56,8 +56,8 @@ class CarController extends Controller
         $car->price = $request->input('prezzo');
         $car->seats = $request->input('posti');
         $car->description = $request->input('descrizione');
-    
-    
+
+
         $car->save();
 
 
@@ -83,7 +83,7 @@ public function update(Request $request, Car $car)
     $car->seats = $request->input('posti');
     $car->description = $request->input('descrizione');
 
-    $user->update();
+    $car->update();
 
 }
 
