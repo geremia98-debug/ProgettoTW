@@ -59,6 +59,11 @@ class User extends Authenticatable
     ];
 
 
+    public function cars() : BelongsToMany
+    {
+            return $this -> BelongsToMany(Car::class);
+    }
+
 }
 
- 
+

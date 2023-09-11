@@ -18,4 +18,9 @@ class Car extends Model
         'finish',
         // Aggiungi altri campi della tua tabella "cars" qui
     ];
+
+    public function users() : BelongsToMany
+    {
+            return $this -> BelongsToMany(User::class);
+    }
 }

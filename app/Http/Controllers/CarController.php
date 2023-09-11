@@ -83,7 +83,7 @@ public function update(Request $request, Car $car)
     $car->seats = $request->input('posti');
     $car->description = $request->input('descrizione');
 
-    $user->update();
+    $car->update();
 
 }
 
