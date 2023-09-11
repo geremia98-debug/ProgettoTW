@@ -57,10 +57,11 @@
         font-size: 5em;
     }
 
-    // .home-image {
-    //     width: 30px;
-    //     height: 50px;
-    // }
+    .home-image {
+        max-width: 50%;
+        height: auto;
+    }
+
 
     .filter-menu {
         background-color: #f8f8f8;
