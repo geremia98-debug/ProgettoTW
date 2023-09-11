@@ -24,12 +24,21 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+
+        //Metto i campi che voglio che siano modificabili prendendoli dalla migration corrispondente
+        'username',
         'password',
+        'role',
+        'firstname',
+        'lastname',
+        'residence',
+        'birthdate',
+        'job'
     ];
 
-    /**
+
+
+   /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
@@ -51,3 +60,5 @@ class User extends Authenticatable
 
 
 }
+
+ 
