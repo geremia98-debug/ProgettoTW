@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->foreignId('user_id')->costrained()->onDelete('cascade');
-            $table->foreignId('car_id')->costrained()->onDelete('cascade');
-            
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('car_id')->constrained()->onDelete('cascade');
+            $table->date('start_rent');
+            $table->date('end_rent');
 
         });
     }
