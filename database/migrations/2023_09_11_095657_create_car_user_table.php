@@ -20,7 +20,6 @@ return new class extends Migration
             $table->date('start_rent');
             $table->date('end_rent');
 
-
         });
     }
 
