@@ -19,11 +19,7 @@ class User extends Authenticatable
     protected $table='users';
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
 
         //Metto i campi che voglio che siano modificabili prendendoli dalla migration corrispondente
@@ -60,7 +56,7 @@ class User extends Authenticatable
     ];
 
 
-    public function cars() 
+    public function cars()
     {
             return $this -> belongsToMany(Car::class);
     }

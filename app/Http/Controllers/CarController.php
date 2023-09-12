@@ -35,6 +35,11 @@ class CarController extends Controller
         return view('catalog.index', compact('cars'));
     }
 
+    public function creaAuto()
+{
+    return view('inserisci_auto');
+}
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -59,6 +64,7 @@ class CarController extends Controller
 
 
         $car->save();
+
 
 
     }

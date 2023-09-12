@@ -63,10 +63,6 @@ class UserController extends Controller
     Auth::login($user);
     return redirect()->route('areaPersonale');
 
-//    return redirect()->route('users.show');
-
-
-
 }
 
 // ci servono per la gestione e l'eliminazione degli user

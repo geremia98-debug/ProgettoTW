@@ -8,16 +8,18 @@ use App\Models\User;
 
 class Car extends Model
 {
+    protected $table='cars';
     use HasFactory;
+
 
     protected $fillable = [
         'brand',
+        'model',
         'seats',
         'price',
-        'year',
-        'start',
-        'finish',
-        // Aggiungi altri campi della tua tabella "cars" qui
+        'displacement',
+        'plate',
+        'description'
     ];
 
     public function users()

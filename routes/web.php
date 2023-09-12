@@ -10,6 +10,7 @@ use App\Http\Controllers\DatiController;
 use App\Http\Controllers\RegistrazioneController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,5 +53,12 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/catalog', 'CarController@index')->name('catalog.index');
+// Route::get('/inserisci_auto', 'CarController@creaAuto');
+Route::get('/inserisci_auto', [CarController::class, 'creaAuto']);
+// Route::post('/salva_auto', 'CarController@store')->name('car.store');
+Route::post('/salva_auto', [CarController::class, 'store'])->name('car.store');
+
+
+
+
 
