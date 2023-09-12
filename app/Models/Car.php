@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Car extends Model
 {
@@ -18,4 +19,9 @@ class Car extends Model
         'finish',
         // Aggiungi altri campi della tua tabella "cars" qui
     ];
+
+    public function users()
+    {
+            return $this -> belongsToMany(User::class);
+    }
 }

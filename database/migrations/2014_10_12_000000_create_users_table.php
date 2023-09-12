@@ -23,8 +23,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('residence');
             $table->date('birthdate');
-            $table->enum('job', ['Studente','Cassiere di supermercato','Infermiere ospedaliero','Muratore edile','Insegnante elementare','Cuoco ristorante','Camionista','Segretario amministrativo','Addetto alle risorse umane','Elettricista','Commesso di negozio','Disoccupato','Altro']);
-
+            $table->enum('job', ['Studente','Cassiere','Infermiere','Muratore','Insegnante','Cuoco','Camionista','Segretario','Addetto HR','Elettricista','Commesso','Disoccupato','Altro']);
 
 
         });
