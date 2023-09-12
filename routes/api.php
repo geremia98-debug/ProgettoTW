@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\CarController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\RentalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
+
+Route::apiResource('cars', CarController::class);
+Route::apiResource('users', UserController::class);
+Route::apiResource('rentals', RentalController::class);
