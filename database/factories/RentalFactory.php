@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Rentals>
  */
-class RentalsFactory extends Factory
+class RentalFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,8 @@ class RentalsFactory extends Factory
     public function definition(): array
     {
         return [
-            'name_client' => $this->faker->firstName,
-            'surname_client' => $this->faker->lastName,
-            'plate' => $this->faker->username,
+            //'user_id' => $this->faker->firstName,
+            //'car_id' => $this->faker->lastName,
             'start_rent' => $this->faker->dateTimeBetween('-1 year','today'),
             'end_rent' => $this->faker->dateTimeBetween('today','+1 year')
         ];

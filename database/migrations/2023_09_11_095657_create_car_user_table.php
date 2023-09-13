@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -17,8 +18,8 @@ return new class extends Migration
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('car_id')->constrained()->onDelete('cascade');
-            $table->date('start_rent');
-            $table->date('end_rent');
+            $table->date('start_rent')->default(DB::raw('CURRENT_DATE'));
+            $table->date('end_rent')->default(now()->addWeek());
 
         });
     }
