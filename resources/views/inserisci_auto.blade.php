@@ -7,26 +7,26 @@
     <h1>Inserisci Dati dell'Auto</h1>
     <form method="POST" action="{{ route('car.store') }}">
         @csrf
-        <label for="brand">Brand:</label>
-        <input type="text" name="marca" required><br><br>
+        <label for="brand">Marca:</label>
+        <input type="text" name="brand" required><br><br>
 
-        <label for="model">Model:</label>
-        <input type="text" name="modello" required><br><br>
+        <label for="model">Modello:</label>
+        <input type="text" name="model" required><br><br>
 
-        <label for="plate">Plate:</label>
-        <input type="text" name="targa" required><br><br>
+        <label for="plate">Targa:</label>
+        <input type="text" name="plate" required><br><br>
 
-        <label for="daily_price">Daily Price:</label>
-        <input type="number" name="prezzo" required><br><br>
+        <label for="daily_price">Prezzo giornaliero:</label>
+        <input type="number" name="daily_price" required><br><br>
 
-        <label for="displacement">Displacement:</label>
-        <input type="number" name="cilindrata" required><br><br>
+        <label for="displacement">Cilindrata:</label>
+        <input type="number" name="displacement" required><br><br>
 
-        <label for="seats">Seats:</label>
-        <input type="number" name="posti" required><br><br>
+        <label for="seats">Posti:</label>
+        <input type="number" name="seats" required><br><br>
 
-        <label for="description">Description:</label>
-        <textarea name="descrizione" rows="4" required></textarea><br><br>
+        <label for="description">Descrizione:</label>
+        <textarea name="description" rows="4" required></textarea><br><br>
 
         <button type="submit">Salva</button>
     </form>

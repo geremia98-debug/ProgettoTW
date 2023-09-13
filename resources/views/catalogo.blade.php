@@ -21,14 +21,25 @@
 
                 </select>
 
-                <label for="price-filter">Seleziona Prezzo Massimo:</label>
-                    <select id="price-filter" name="price">
-                    <option value="0-50">0-50 euro al giorno</option>
-                    <option value="50-100">50-100 euro al giorno</option>
-                    <option value="100-150">100-150 euro al giorno</option>
-                    <option value="150-200">150-200 euro al giorno</option>
-                    <option value="200+">Più di 200 euro al giorno</option>
+
+                <label for="min-price">Prezzo Minimo:</label>
+                <select id="min-price" name="min_price">
+                    <option value="0">0 euro</option>
+                    <option value="50">50 euro</option>
+                    <option value="100">100 euro</option>
+                    <option value="150">150 euro</option>
+                    <option value="200">200 euro</option>
                 </select>
+
+                <label for="max-price">Prezzo Massimo:</label>
+                <select id="max-price" name="max_price">
+                    <option value="50">50 euro</option>
+                    <option value="100">100 euro</option>
+                    <option value="150">150 euro</option>
+                    <option value="200">200 euro</option>
+                    <option value="9999">Più di 200 euro</option>
+                </select>
+
 
                 <button type="submit">Filtra</button>
             </form>

@@ -43,28 +43,29 @@ class CarController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'targa' => 'required|unique:cars',
-            'marca' => 'required',
-            'modello' => 'required',
-            'cilindrata' => 'required|integer',
-            'prezzo' => 'required|integer',
-            'posti' => 'required|integer',
-            'descrizione' => 'required',
+            'plate' => 'required|unique:cars',
+            'brand' => 'required',
+            'model' => 'required',
+            'displacement' => 'required|integer',
+            'daily_price' => 'required|integer',
+            'seats' => 'required|integer',
+            'description' => 'required',
         ]);
 
         $car = new Car();
 
-        $car->plate = $request->input('targa');
-        $car->brand = $request->input('marca');
-        $car->model = $request->input('modello');
-        $car->displacement = $request->input('cilindrata');
-        $car->price = $request->input('prezzo');
-        $car->seats = $request->input('posti');
-        $car->description = $request->input('descrizione');
+        $car->plate = $request->input('plate');
+        $car->brand = $request->input('brand');
+        $car->model = $request->input('model');
+        $car->displacement = $request->input('displacement');
+        $car->price = $request->input('daily_price');
+        $car->seats = $request->input('seats');
+        $car->description = $request->input('description');
 
 
         $car->save();
 
+        return redirect()->route('home');  //non rimanda alla giusta pagina
 
 
     }
@@ -81,7 +82,7 @@ public function edit(Car $car)
 
 public function update(Request $request, Car $car)
 {
-    $car->plate = $request->input('targa');
+    $car->plate = $request->input('plate');
     $car->brand = $request->input('marca');
     $car->model = $request->input('modello');
     $car->displacement = $request->input('cilindrata');
