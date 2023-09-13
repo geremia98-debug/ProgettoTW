@@ -52,3 +52,6 @@ class CarController extends Controller
         return response()->json(null, 204);
     }
 }
+
+// comando per aggiungere auto
+// Invoke-RestMethod -Uri http://localhost:8000/api/cars -Method Post -Headers @{"Content-Type"="application/json"} -Body '{"plate":"AA123BB","brand":"Lexus","model":"Ciccia4","displacement":"1300","price":"230","seats":"4","description":"Auto spectacularissss"}'
