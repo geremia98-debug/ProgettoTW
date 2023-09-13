@@ -35,7 +35,9 @@ Route::get('/modifica-utente', function() {
 Route::get('/chi-siamo', [ChiSiamoController::class, 'index']);
 //Route::get('/area-personale', [AreaPersonaleController::class, 'index']);
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/catalogo', [CatalogoController::class, 'index']);
+Route::get('/catalogo', [CatalogoController::class, 'catalogo'])->name('catalogo');
+Route::post('/auto_selezionate', [CatalogoController::class, 'filtro'])->name('filtro');
+
 Route::get('/area-personale/{username}', [UserController::class, 'areaPersonale'])->middleware('auth');
 Route::resource('/users', UserController::class);
 Route::get('/area-personale', 'AreaPersonaleController@areaPersonale')->name('areaPersonale');
@@ -53,9 +55,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// Route::get('/inserisci_auto', 'CarController@creaAuto');
 Route::get('/inserisci_auto', [CarController::class, 'creaAuto']);
-// Route::post('/salva_auto', 'CarController@store')->name('car.store');
+
 Route::post('/salva_auto', [CarController::class, 'store'])->name('car.store');
 
 

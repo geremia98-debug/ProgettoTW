@@ -3,7 +3,8 @@
     <body>
         <div class="filter-menu">
             <h3>Filtri</h3>
-            <form id="filter-form">
+            <form id="filter-form" method="POST" action="{{ route('filtro') }}">
+                @csrf
                 <label for="brand-filter">Marca:</label>
                 <select id="brand-filter" name="brand">
                     <option value="">Tutte le marche</option>
@@ -48,31 +49,16 @@
     <div class="container">
         <h1>Auto Disponibili a Noleggio</h1>
         <div class="car-grid">
+            @foreach ($cars as $car)
             <div class="car">
-                <img src="dist/maserati.jpg" alt="Auto 1">
-                <h2>maserati</h2>
-                <p>Anno: 2023</p>
-                <p>Prezzo: $150 al giorno</p>
+                <img src="{{ asset('dist/' . $car->immagine) }}" alt="Auto">
+                <h2>{{ $car->brand }}</h2>
+                <p>Modello: {{ $car->model }}</p>
+                <p>Posti: {{ $car->seats }}</p>
+                <p>Cilindrata: {{ $car->displacement }}</p>
+                <p>Prezzo: ${{ $car->price }} al giorno</p>
             </div>
-            <!-- Aggiungi altre auto simili qui -->
-            <div class="car">
-                  <img src="dist/a3.jpg" alt="Auto 1">
-                  <h2>audi a3</h2>
-                  <p>Anno: 2021</p>
-                  <p>Prezzo: $50 al giorno</p>
-            </div>
-            <div class="car">
-                    <img src="dist/ferrari enzo.jpg" alt="Auto 1">
-                    <h2>ferrari enzo</h2>
-                    <p>Anno: 1980</p>
-                    <p>Prezzo: $200 al giorno</p>
-            </div>
-            <div class="car">
-                    <img src="dist/punto.jpg" alt="Auto 1">
-                    <h2>fiat punto</h2>
-                    <p>Anno: 2007</p>
-                    <p>Prezzo: $1,5 al giorno</p>
-            </div>
+            @endforeach
         </div>
     </div>
 </body>
