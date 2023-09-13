@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AreaPersonaleController;
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\ChiSiamoController;
 use App\Http\Controllers\HomeController;
@@ -40,7 +39,6 @@ Route::post('/auto_selezionate', [CatalogoController::class, 'filtro'])->name('f
 
 Route::get('/area-personale/{username}', [UserController::class, 'areaPersonale'])->middleware('auth');
 Route::resource('/users', UserController::class);
-Route::get('/area-personale', 'AreaPersonaleController@areaPersonale')->name('areaPersonale');
 
 
 Route::get('/dashboard', function () {
