@@ -20,7 +20,7 @@ class CatalogoController extends Controller
     return view('catalogo', compact('cars'));
 }
 
-//GESTIRE IL FILTRO SULLE DATE CON UN CONTROLLO SULLA TABELLA car_user PER VEDERE SE CI SONO NOLEGGI ATTIVI SU UNA DATA MACCHINA
+
 public function filtro(Request $request)
 {
     $startRent = $request->input('start_rent');
@@ -32,7 +32,8 @@ public function filtro(Request $request)
     // Costruisci la query Eloquent per le auto
     $Carquery = Car::query();
 
-    // Applica i filtri sulla tabella cars se sono stati forniti
+
+    // Applica i filtri sulla tabella cars agli attributi price e seats se sono stati forniti
 
     $Carquery->when($minPrice, function ($query, $minPrice) {
         return $query->where('price', '>=', $minPrice);
@@ -48,6 +49,33 @@ public function filtro(Request $request)
 
     // Esegui la query e ottieni i risultati
     $cars = $Carquery->get();
+
+
+        $rentedCarIds = Rental::query()
+        ->where(function ($query) use ($startRent, $endRent) {
+            $query->where('start_rent', '<=', $endRent)
+                ->where('end_rent', '>=', $startRent);
+        })
+        ->pluck('car_id');
+
+        // Ottieni tutti i car che non sono nell'array di car_id
+        $cars = Car::query()
+        ->whereNotIn('id', $rentedCarIds)
+        ->get();
+
+        // Passa i risultati alla vista
+        return view('catalogo', compact('cars'));
+    
+
+    // Se non ci sono risultati per le auto, restituisci una vista vuota o un messaggio di nessun risultato
+    return view('home');
+}
+}
+
+
+
+
+
 
     // if ($cars->count() > 0) {
 
@@ -79,8 +107,26 @@ public function filtro(Request $request)
 // }
 
 
-    // Passa i risultati alla vista
-    return view('catalogo', compact('cars'));
-}
-}
 
+
+
+
+
+//OLD
+
+        /*$rentalQuery = Rental::query()
+        ->where(function ($query) use ($startRent, $endRent) {
+            $query->where('start_rent', '<=', $endRent)
+                  ->where('end_rent', '>=', $startRent);
+        })
+        ->get();
+           
+
+        $cars = Car::all();
+
+        // Filtra i noleggi in base ai risultati delle auto
+        $filteredRentals = $rentals->filter(function ($rental) use ($cars) {
+            return $cars->contains('id', $rental->car_id);
+        });
+
+        */
