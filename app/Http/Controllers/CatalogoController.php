@@ -19,30 +19,34 @@ class CatalogoController extends Controller
     return view('catalogo', compact('cars'));
 }
 
-
+//GESTIRE IL FILTRO SULLE DATE CON UN CONTROLLO SULLA TABELLA car_user PER VEDERE SE CI SONO NOLEGGI ATTIVI SU UNA DATA MACCHINA
 public function filtro(Request $request)
 {
     // Recupera i filtri dall'input dell'utente
-    $brand = $request->input('brand');
-    $seats = $request->input('seats');
+    $start_rent = $request->input('start_rent');
+    $end_rent = $request->input('end_rent');
     $minPrice = $request->input('min-price');
     $maxPrice = $request->input('max-price');
+    $seats = $request->input('seats');
 
     // Costruisci la query Eloquent per le auto
     $query = Car::query();
 
     // Applica i filtri se sono stati forniti
-    if ($brand) {
-        $query->where('brand', $brand);
+    if ($start_rent) {
+        $query->where('start_rent', '>=', $start_rent);
+    }
+    if ($end_rent) {
+        $query->where('end_rent', '<=', $end_rent);
+    }
+    if ($minPrice) {
+        $query->where('min-price', '>=', $minPrice);
+    }
+    if ($maxPrice) {
+        $query->where('max-price', '<=', $maxPrice);
     }
     if ($seats) {
         $query->where('seats', $seats);
-    }
-    if ($minPrice) {
-        $query->where('price', '>=', $minPrice);
-    }
-    if ($maxPrice) {
-        $query->where('price', '<=', $maxPrice);
     }
 
     // Esegui la query e ottieni i risultati

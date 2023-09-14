@@ -22,9 +22,9 @@ class CarFactory extends Factory
 
             'brand' => $this->faker->text(20),
             'model' => $this->faker->text(20),
-            'displacement' => $this->faker->numberBetween(5, 80) * 100,
-            'price' => $this->faker->numberBetween(5, 25) * 100,
-            'seats' => $this->faker->randomDigit,
+            'displacement' => $this->faker->numberBetween(5, 50) * 100,
+            'price' => $this->faker->numberBetween(5, 50) * 10,
+            'seats' => $this->faker->randomElement([1,2,4,5,7,9]),
             'description' => $this->faker->paragraph(5)
 
         ];
