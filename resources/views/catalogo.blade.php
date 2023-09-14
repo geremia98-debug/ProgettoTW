@@ -12,10 +12,10 @@
 
                 <label for="end_rent">Fine Noleggio:</label>
                 <input type="date" id="end_rent" name="end_rent">
-              
+
 
                 <label for="min-price">Prezzo Minimo:</label>
-                <select id="min-price" name="min_price">
+                <select id="min-price" name="min-price">
                     <option value="0">0 euro</option>
                     <option value="50">50 euro</option>
                     <option value="100">100 euro</option>
@@ -24,7 +24,7 @@
                 </select>
 
                 <label for="max-price">Prezzo Massimo:</label>
-                <select id="max-price" name="max_price">
+                <select id="max-price" name="max-price">
                     <option value="50">50 euro</option>
                     <option value="100">100 euro</option>
                     <option value="150">150 euro</option>

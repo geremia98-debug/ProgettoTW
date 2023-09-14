@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Rental;
 use Illuminate\Http\Request;
 
 class CatalogoController extends Controller
@@ -22,70 +23,64 @@ class CatalogoController extends Controller
 //GESTIRE IL FILTRO SULLE DATE CON UN CONTROLLO SULLA TABELLA car_user PER VEDERE SE CI SONO NOLEGGI ATTIVI SU UNA DATA MACCHINA
 public function filtro(Request $request)
 {
-    // Recupera i filtri dall'input dell'utente
-    $start_rent = $request->input('start_rent');
-    $end_rent = $request->input('end_rent');
+    $startRent = $request->input('start_rent');
+    $endRent = $request->input('end_rent');
     $minPrice = $request->input('min-price');
     $maxPrice = $request->input('max-price');
     $seats = $request->input('seats');
 
     // Costruisci la query Eloquent per le auto
-    $query = Car::query();
+    $Carquery = Car::query();
 
-    // Applica i filtri se sono stati forniti
-    if ($start_rent) {
-        $query->where('start_rent', '>=', $start_rent);
-    }
-    if ($end_rent) {
-        $query->where('end_rent', '<=', $end_rent);
-    }
-    if ($minPrice) {
-        $query->where('min-price', '>=', $minPrice);
-    }
-    if ($maxPrice) {
-        $query->where('max-price', '<=', $maxPrice);
-    }
-    if ($seats) {
-        $query->where('seats', $seats);
-    }
+    // Applica i filtri sulla tabella cars se sono stati forniti
+
+    $Carquery->when($minPrice, function ($query, $minPrice) {
+        return $query->where('price', '>=', $minPrice);
+    });
+
+    $Carquery->when($maxPrice, function ($query, $maxPrice) {
+        return $query->where('price', '<=', $maxPrice);
+    });
+
+    $Carquery->when($seats, function ($query, $seats) {
+        return $query->where('seats', $seats);
+    });
 
     // Esegui la query e ottieni i risultati
-    $cars = $query->get();
+    $cars = $Carquery->get();
+
+    // if ($cars->count() > 0) {
+
+    //     $rentalQuery = Rental::query();
+
+    //     // Applica i filtri per la tabella car_user
+    //     $rentalQuery->when($startRent, function ($query, $startRent) {
+    //         return $query->where('start_rent', '>=', $startRent);
+    //     });
+
+    //     $rentalQuery->when($endRent, function ($query, $endRent) {
+    //         return $query->where('end_rent', '<=', $endRent);
+    //     });
+
+    //     // Esegui la query per i noleggi
+    //     $rentals = $rentalQuery->get();
+
+    //     // Filtra i noleggi in base ai risultati delle auto
+    //     $filteredRentals = $rentals->filter(function ($rental) use ($cars) {
+    //         return $cars->contains('id', $rental->car_id);
+    //     });
+
+//         // Passa i risultati alla vista
+//         return view('catalogo', compact('filteredRentals'));
+//     }
+
+//     // Se non ci sono risultati per le auto, restituisci una vista vuota o un messaggio di nessun risultato
+//     return view('nessun_risultato');
+// }
+
 
     // Passa i risultati alla vista
     return view('catalogo', compact('cars'));
 }
-
-
-// public function filtro(Request $request)
-//     {
-//         // Recupera i filtri dall'input dell'utente
-//         $brand = $request->input('brand');
-//         $seats = $request->input('seats');
-//         $price = $request->input('price');
-
-//         // Costruisci la query Eloquent per le auto
-//         $query = Car::query();
-
-//         // Applica i filtri se sono stati forniti
-//         if ($brand) {
-//             $query->where('brand', $brand);
-//         }
-//         if ($seats) {
-//             $query->where('seats', $seats);
-//         }
-//         if ($price) {
-//             $query->where('price', '<=', $price);
-//         }
-
-//         // Esegui la query e ottieni i risultati
-//         $cars = $query->get();
-
-//         // Passa i risultati alla vista
-//         return view('catalogo', compact('cars'));
-//     }
-
 }
-
-
 
