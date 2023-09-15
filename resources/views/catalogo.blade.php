@@ -16,6 +16,7 @@
 
                 <label for="min-price">Prezzo Minimo:</label>
                 <select id="min-price" name="min-price">
+                    <option value="0">Nessun filtro</option>
                     <option value="0">0 euro</option>
                     <option value="50">50 euro</option>
                     <option value="100">100 euro</option>
@@ -25,6 +26,7 @@
 
                 <label for="max-price">Prezzo Massimo:</label>
                 <select id="max-price" name="max-price">
+                    <option value="9999">Nessun filtro</option>
                     <option value="50">50 euro</option>
                     <option value="100">100 euro</option>
                     <option value="150">150 euro</option>

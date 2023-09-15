@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\Rental;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class CatalogoController extends Controller
 {
@@ -29,39 +31,44 @@ public function filtro(Request $request)
     $maxPrice = $request->input('max-price');
     $seats = $request->input('seats');
 
-    // Costruisci la query Eloquent per le auto
-    $Carquery = Car::query();
 
-
-    // Applica i filtri sulla tabella cars agli attributi price e seats se sono stati forniti
-
-    $Carquery->when($minPrice, function ($query, $minPrice) {
-        return $query->where('price', '>=', $minPrice);
-    });
-
-    $Carquery->when($maxPrice, function ($query, $maxPrice) {
-        return $query->where('price', '<=', $maxPrice);
-    });
-
-    $Carquery->when($seats, function ($query, $seats) {
-        return $query->where('seats', $seats);
-    });
-
-    // Esegui la query e ottieni i risultati
-    $cars = $Carquery->get();
-
-
+        // FILTRI TABELLA CAR_USER (DATE DISPONIBILI)
         $rentedCarIds = Rental::query()
         ->where(function ($query) use ($startRent, $endRent) {
             $query->where('start_rent', '<=', $endRent)
                 ->where('end_rent', '>=', $startRent);
         })
         ->pluck('car_id');
-
-        // Ottieni tutti i car che non sono nell'array di car_id
+    
+    
+        // Ottieni tutte le car che NON sono nell'array di car_id (quelle NON prenotate)
         $cars = Car::query()
-        ->whereNotIn('id', $rentedCarIds)
-        ->get();
+        ->whereNotIn('id', $rentedCarIds);
+        //->get();
+
+        //dd($cars);
+
+        // Costruisci la query Eloquent per le auto
+        //$Carquery = Car::query();
+
+
+        // FILTRI TABELLA CARS (PREZZO E POSTI)
+
+        $cars->when($minPrice, function ($query, $minPrice) {
+            return $query->where('price', '>=', $minPrice);
+        });
+
+        $cars->when($maxPrice, function ($query, $maxPrice) {
+            return $query->where('price', '<=', $maxPrice);
+        });
+
+        $cars->when($seats, function ($query, $seats) {
+            return $query->where('seats', $seats);
+        });
+
+        $cars = $cars->get();
+
+        //dd($cars);
 
         // Passa i risultati alla vista
         return view('catalogo', compact('cars'));
