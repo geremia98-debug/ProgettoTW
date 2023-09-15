@@ -39,17 +39,13 @@ public function filtro(Request $request)
                 ->where('end_rent', '>=', $startRent);
         })
         ->pluck('car_id');
-    
+        //pluck() serve a estrarre una sola colonna da una tabella 
+        //In questo caso ci servono solo i car_id per poi proseguire coi filtri sulla tabella cars
+
     
         // Ottieni tutte le car che NON sono nell'array di car_id (quelle NON prenotate)
         $cars = Car::query()
         ->whereNotIn('id', $rentedCarIds);
-        //->get();
-
-        //dd($cars);
-
-        // Costruisci la query Eloquent per le auto
-        //$Carquery = Car::query();
 
 
         // FILTRI TABELLA CARS (PREZZO E POSTI)
@@ -68,72 +64,12 @@ public function filtro(Request $request)
 
         $cars = $cars->get();
 
-        //dd($cars);
 
         // Passa i risultati alla vista
         return view('catalogo', compact('cars'));
     
 
-    // Se non ci sono risultati per le auto, restituisci una vista vuota o un messaggio di nessun risultato
+    // Se non ci sono risultati per le auto, restituisci una vista vuota o un messaggio di nessun risultato (cambiare la logica attuale)
     return view('home');
 }
 }
-
-
-
-
-
-
-    // if ($cars->count() > 0) {
-
-    //     $rentalQuery = Rental::query();
-
-    //     // Applica i filtri per la tabella car_user
-    //     $rentalQuery->when($startRent, function ($query, $startRent) {
-    //         return $query->where('start_rent', '>=', $startRent);
-    //     });
-
-    //     $rentalQuery->when($endRent, function ($query, $endRent) {
-    //         return $query->where('end_rent', '<=', $endRent);
-    //     });
-
-    //     // Esegui la query per i noleggi
-    //     $rentals = $rentalQuery->get();
-
-    //     // Filtra i noleggi in base ai risultati delle auto
-    //     $filteredRentals = $rentals->filter(function ($rental) use ($cars) {
-    //         return $cars->contains('id', $rental->car_id);
-    //     });
-
-//         // Passa i risultati alla vista
-//         return view('catalogo', compact('filteredRentals'));
-//     }
-
-//     // Se non ci sono risultati per le auto, restituisci una vista vuota o un messaggio di nessun risultato
-//     return view('nessun_risultato');
-// }
-
-
-
-
-
-
-
-//OLD
-
-        /*$rentalQuery = Rental::query()
-        ->where(function ($query) use ($startRent, $endRent) {
-            $query->where('start_rent', '<=', $endRent)
-                  ->where('end_rent', '>=', $startRent);
-        })
-        ->get();
-           
-
-        $cars = Car::all();
-
-        // Filtra i noleggi in base ai risultati delle auto
-        $filteredRentals = $rentals->filter(function ($rental) use ($cars) {
-            return $cars->contains('id', $rental->car_id);
-        });
-
-        */

@@ -57,7 +57,9 @@ Route::get('/inserisci_auto', [CarController::class, 'creaAuto']);
 
 Route::post('/salva_auto', [CarController::class, 'store'])->name('car.store');
 
-
+Route::get('/prenota-auto', function() {
+    return view('prenotaAuto');
+})->name ('prenotaAuto');
 
 
 
