@@ -17,9 +17,9 @@
     <title>Registrazione</title>
 </head>
 <body>
-    <h1>Registrazione</h1>
+    <h1 class="register-title">Registrazione</h1>
 
-    <form method="POST" action="{{ route('users.store') }}">
+    <form class="register-form" method="POST" action="{{ route('users.store') }}">
         @csrf
         <div>
             <x-input-label for="nome" :value="__('Nome')" />

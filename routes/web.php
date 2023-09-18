@@ -1,16 +1,18 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CatalogoController;
-use App\Http\Controllers\ChiSiamoController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CarController;
+use Illuminate\Http\Request;
 use App\Http\Controllers\DatiController;
-use App\Http\Controllers\RegistrazioneController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\CarController;
-use Illuminate\Auth\Events\Login;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CatalogoController;
+use App\Http\Controllers\ChiSiamoController;
+use App\Http\Controllers\RegistrazioneController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +62,11 @@ Route::post('/salva_auto', [CarController::class, 'store'])->name('car.store');
 Route::get('/prenota-auto', function() {
     return view('prenotaAuto');
 })->name ('prenotaAuto');
+
+// Route::post('/form', function(Request $request){
+//     dd($request);
+// })->name('form');
+
 
 
 

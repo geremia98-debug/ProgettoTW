@@ -1,7 +1,21 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+</head>
+<body>
     <!-- Inserisci il titolo "Noleggio Vagnoli" -->
     <h2 class="text-2xl font-bold text-center mb-4">Noleggio Vagnoli</h2>
 
@@ -9,14 +23,14 @@
         @csrf
 
         <div>
-            <x-input-label for="username" value="Username" />
-            <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" required autofocus autocomplete="username" />
+            <label for="username"> Username </label>
+            <input id="username" class="block mt-1 w-full" type="text" name="username" required autofocus autocomplete="username" />
         </div>
 
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <label for="password" > Password </label>
 
-            <x-text-input id="password" class="block mt-1 w-full"
+            <input id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
                             required autocomplete="current-password" />
@@ -32,9 +46,11 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <x-primary-button class="ml-3">
+            {{-- <x-primary-button class="ml-3">
                 {{ __('Log in') }}
-            </x-primary-button>
+            </x-primary-button> --}}
+            <button type="submit"> Login </button>
         </div>
     </form>
-</x-guest-layout>
+</body>
+</html>
