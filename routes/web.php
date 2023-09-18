@@ -10,6 +10,7 @@ use App\Http\Controllers\RegistrazioneController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CarController;
+use Illuminate\Auth\Events\Login;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ use App\Http\Controllers\CarController;
 */
 
 Route::get('/registrazione', function() {
-    return view('registrazione');
+    return view('auth.register');
 })->name ('registrazione');
 
 
@@ -32,7 +33,6 @@ Route::get('/modifica-utente', function() {
 });
 // ->middleware('superuser')
 Route::get('/chi-siamo', [ChiSiamoController::class, 'index']);
-//Route::get('/area-personale', [AreaPersonaleController::class, 'index']);
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/catalogo', [CatalogoController::class, 'catalogo'])->name('catalogo');
 Route::post('/auto_selezionate', [CatalogoController::class, 'filtro'])->name('filtro');

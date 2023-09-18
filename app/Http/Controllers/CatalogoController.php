@@ -31,6 +31,10 @@ public function filtro(Request $request)
     $maxPrice = $request->input('max-price');
     $seats = $request->input('seats');
 
+    session(['start_rent' => $startRent]);
+    session(['end_rent' => $endRent]);
+
+
 
         // FILTRI TABELLA CAR_USER (DATE DISPONIBILI)
         $rentedCarIds = Rental::query()
@@ -39,10 +43,10 @@ public function filtro(Request $request)
                 ->where('end_rent', '>=', $startRent);
         })
         ->pluck('car_id');
-        //pluck() serve a estrarre una sola colonna da una tabella 
+        //pluck() serve a estrarre una sola colonna da una tabella
         //In questo caso ci servono solo i car_id per poi proseguire coi filtri sulla tabella cars
 
-    
+
         // Ottieni tutte le car che NON sono nell'array di car_id (quelle NON prenotate)
         $cars = Car::query()
         ->whereNotIn('id', $rentedCarIds);
@@ -67,7 +71,7 @@ public function filtro(Request $request)
 
         // Passa i risultati alla vista
         return view('catalogo', compact('cars'));
-    
+
 
     // Se non ci sono risultati per le auto, restituisci una vista vuota o un messaggio di nessun risultato (cambiare la logica attuale)
     return view('home');

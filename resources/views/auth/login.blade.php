@@ -2,12 +2,15 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    <!-- Inserisci il titolo "Noleggio Vagnoli" -->
+    <h2 class="text-2xl font-bold text-center mb-4">Noleggio Vagnoli</h2>
+
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
         <div>
-            <x-input-label for="username" value="username" />
-            <x-text-input id="username" class="block mt-1 w-full" type="text" name="username"  required autofocus autocomplete="username" />
+            <x-input-label for="username" value="Username" />
+            <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" required autofocus autocomplete="username" />
         </div>
 
         <div class="mt-4">
@@ -29,12 +32,6 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
             <x-primary-button class="ml-3">
                 {{ __('Log in') }}
             </x-primary-button>

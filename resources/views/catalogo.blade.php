@@ -13,7 +13,6 @@
                 <label for="end_rent">Fine Noleggio:</label>
                 <input type="date" id="end_rent" name="end_rent">
 
-
                 <label for="min-price">Prezzo Minimo:</label>
                 <select id="min-price" name="min-price">
                     <option value="0">Nessun filtro</option>
