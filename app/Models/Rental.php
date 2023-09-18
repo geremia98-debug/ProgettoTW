@@ -9,4 +9,11 @@ class Rental extends Model
 {
     protected $table='car_user';
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'car_id',
+        'start_rent',
+        'end_rent'
+    ];
 }

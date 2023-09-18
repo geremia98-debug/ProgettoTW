@@ -3,6 +3,7 @@
 
 
 <div style="display: flex;">
+
     <div style="flex: 1;">
         <h2>Dettagli dell'auto</h2>
 
@@ -26,15 +27,19 @@
              $user = auth()->user();
         @endphp
 
-        <p>Nome: {{$user->name}} </p>
-        <p>Cognome: {{$user->surname}} </p>
+        <p>Nome: {{$user->firstname}} </p>
+        <p>Cognome: {{$user->lastname}} </p>
         <p>Data di nascita: {{$user->birthdate}} </p>
         <p>indirizzo di residenza: {{$user->residence}} </p>
     </div>
 </div>
 
 <div class="d-flex justify-content-center">
-    <a href="{}" class="btn btn-primary">Conferma Prenotazione</a>
+    <form action="{{ route('rental.store') }}" method="POST">
+        @csrf
+        <input type="hidden" name="carId" value="{{ $carId }}">
+        <button type="submit" class="btn btn-primary">Conferma Prenotazione</button>
+    </form>
 </div>
 
 

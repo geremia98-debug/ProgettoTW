@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\ChiSiamoController;
 use App\Http\Controllers\RegistrazioneController;
+use App\Http\Controllers\RentalController;
 
 Route::get('/registrazione', function() {
     return view('auth.register');
@@ -49,6 +50,10 @@ Route::post('/salva_auto', [CarController::class, 'store'])->name('car.store');
 Route::get('/prenota-auto', function() {
     return view('prenotaAuto');
 })->name ('prenotaAuto');
+
+Route::post('/salva_noleggio', [RentalController::class, 'store'])->name('rental.store');
+
+
 
 
 
