@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/inserisci_auto', [CarController::class, 'creaAuto']);
+Route::post('/inserisci_auto', [CarController::class, 'getCarRentalsByMonth']);
+
 
 Route::post('/salva_auto', [CarController::class, 'store'])->name('car.store');
 

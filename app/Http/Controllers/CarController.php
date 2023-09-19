@@ -14,7 +14,24 @@ class CarController extends Controller
 
     public function creaAuto()
 {
-    return view('inserisci_auto');
+    return view('inserisci_auto', ['carRentals' => []]);
+
+}
+
+public function getCarRentalsByMonth($month, $year)
+{
+    $month = $request->input('month', date('m')); // Ottieni il mese dal form o usa il mese corrente
+    $year = Date::now()->year; // Ottieni l'anno corrente
+
+    $carRentals = DB::table('cars')
+        ->select('cars.brand', 'cars.model', 'cars.plate', 'user.firstname', 'user.surname')
+        ->join('car_user', 'cars.id', '=', 'car_user.car_id')
+        ->join('user', 'car_user.user_id', '=', 'user.id')
+        ->whereMonth('car_user.data_inizio', '=', $month)
+        ->whereYear('car_user.data_inizio', '=', $year) 
+        ->get();
+        dd($carRentals);
+    return view('inserisci_auto', ['carRentals' => $carRentals]);
 }
 
     public function store(Request $request)
