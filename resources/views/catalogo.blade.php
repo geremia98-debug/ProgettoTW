@@ -43,7 +43,7 @@
                     <option value="9">9</option>
                 </select>
 
-                <button type="submit">Filtra</button>
+                <button type="submit" class="btn btn-primary">Filtra</button>
             </form>
         </div>
 

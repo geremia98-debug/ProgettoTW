@@ -16,16 +16,15 @@
               <a class="nav-link" href="/chi-siamo">chiSiamo</a>
             </li>
           </ul>
-            {{-- <button  class="btn btn-primary"> <a href={{ route('registrazione') }} > Registrati</a>  <!-- bottone senza javascript -->
-                </button> --}}
+
             <button onclick="window.location.href='{{ url('/registrazione') }}'" class="btn btn-primary">Registrati</button>
-
-
-
-            <!-- <button id="nav-login" class="btn btn-outline-success" type="submit">Login</button> -->
             <button onclick="window.location.href='{{ url('/login') }}'" class="btn btn-primary">Login</button>
+            {{-- <button @csrf onclick="window.location.href='{{ url('/logout') }}'" class="btn btn-danger">Logout</button> --}}
+            <form method="POST" action="/logout">
+                @csrf
+                <button type="submit" class="btn btn-logout">Logout</button>
+            </form>
 
-            <button id="nav-logout" class="btn btn-outline-success" type="submit">Logout</button>
         </div>
       </div>
 </nav>

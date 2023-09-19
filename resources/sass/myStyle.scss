@@ -103,6 +103,25 @@
     .filter-menu button:hover {
         background-color: #0056b3;
     }
+.btn-logout {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.btn-logout:hover {
+    background-color: darkred;
+}
 
+.btn-primary {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
 
-
+.btn-primary:hover {
+    background-color: darkblue;
+}
