@@ -41,6 +41,11 @@
 <br>
 <h1>Tabella Macchine</h1>
 
+
+<!-- Form da sistemare, non so come gestire per bene la doppia logica coi due pulsanti
+    Modificare le rotte CRUD usando resource al posto di definirle una per uno e adattare il codice
+<form method="POST" action="azione.php">
+    @csrf
     <table>
         <thead>
             <tr>
@@ -68,15 +73,16 @@
                 <td>{{ $car->description }}</td>
                 <td>{{ $car->price }}</td>
                 <td>
-                    <button>Modifica</button>
-                    <button type="submit"> Cancella</button>
+                    <button type="submit" name="car_button" value="update_car">Modifica</button>
+                    <button type="submit" name="car_button" value="delete_car"> Cancella</button>
                 </td>
             </tr>
             @endforeach
 
         </tbody>
     </table>
-
+</form>
+-->
 
     <h1>Noleggi Auto per il Mese</h1>
 
@@ -134,6 +140,7 @@
 
 <form method="POST" action="{{ route('car.store') }}">
     @csrf
+
 <table>
     <thead>
         <tr>

@@ -23,6 +23,20 @@ class CarController extends Controller
 
 }
 
+public function doubleActionStaffPanel(Request $request)
+{
+    if ($request->input('azione') === 'update_car') {
+        // Esegui l'azione 1
+    } elseif ($request->input('azione') === 'delete_car') {
+        // Esegui l'azione 2
+    } else {
+        // Nessun pulsante corrispondente è stato premuto
+    }
+
+    // Volendo posso reindirizzare l'utente o restituire una vista in base all'azione eseguita.
+}
+
+
 public function getCarRentalsByMonth(Request $request)
 {
     $month = $request->input('month', date('m'));
