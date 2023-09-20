@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Car;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Date;
+// use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\Date;
 
 class CarController extends Controller
 {
@@ -18,19 +23,23 @@ class CarController extends Controller
 
 }
 
-public function getCarRentalsByMonth($month, $year)
+public function getCarRentalsByMonth(Request $request)
 {
-    $month = $request->input('month', date('m')); // Ottieni il mese dal form o usa il mese corrente
-    $year = Date::now()->year; // Ottieni l'anno corrente
+    $month = $request->input('month', date('m'));
+    $year = Date::now()->year;
 
-    $carRentals = DB::table('cars')
-        ->select('cars.brand', 'cars.model', 'cars.plate', 'user.firstname', 'user.surname')
-        ->join('car_user', 'cars.id', '=', 'car_user.car_id')
-        ->join('user', 'car_user.user_id', '=', 'user.id')
-        ->whereMonth('car_user.data_inizio', '=', $month)
-        ->whereYear('car_user.data_inizio', '=', $year) 
-        ->get();
-        dd($carRentals);
+    $carRentals= DB::table('car_user')
+    ->join('cars', 'car_user.car_id', '=', 'cars.id')
+    ->join('users', 'car_user.user_id', '=', 'users.id')
+    ->select('cars.plate', 'cars.brand', 'cars.model', 'users.firstname', 'users.lastname')
+    ->whereYear('car_user.start_rent', $year)
+    ->whereMonth('car_user.start_rent', $month)
+    ->orWhere(function ($query) use ($year, $month) {
+        $query->whereYear('car_user.end_rent', $year)
+              ->whereMonth('car_user.end_rent', $month);
+    })
+    ->get();
+
     return view('inserisci_auto', ['carRentals' => $carRentals]);
 }
 

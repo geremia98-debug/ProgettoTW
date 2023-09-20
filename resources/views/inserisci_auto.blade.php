@@ -35,11 +35,11 @@
     <h1>Noleggi Auto per il Mese</h1>
 
 <!-- Aggiungi un form per selezionare il mese e l'anno desiderati -->
-<form action="/inserisci_auto" method="post">
+<form action="{{ route('staff') }}" method="POST">
+    @csrf
     <label for="month">Mese:</label>
     <select name="month" id="month">
-        <!-- Opzioni per i mesi -->
-        <!-- Ad esempio: -->
+
         <option value="1">Gennaio</option>
         <option value="2">Febbraio</option>
         <option value="3">Marzo</option>
@@ -54,13 +54,12 @@
         <option value="12">Dicembre</option>
     </select>
 
-    <label for="year">Anno:</label>
-    <input type="text" name="year" id="year" value="{{ date('Y') }}" /> <!-- Imposta il valore predefinito all'anno corrente -->
+    <label for="year">Anno {{ now()->year }}</label>
+
 
     <button type="submit">Cerca</button>
 </form>
 
-<!-- Tabella per visualizzare i risultati -->
 <table>
     <thead>
         <tr>
@@ -83,10 +82,6 @@
         @endforeach
     </tbody>
 </table>
-
-
-
-
 </body>
 @endsection
 
