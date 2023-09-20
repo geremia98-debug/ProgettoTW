@@ -1,7 +1,13 @@
 @extends('layouts.app')
 @section('content')
+
+@php
+    $cars = \App\Models\Car::all();
+@endphp
+
+
 <head>
-    <title>Inserisci Auto</title>
+    <title>Inserisci Nuova Auto</title>
 </head>
 <body>
     <h1>Inserisci Dati dell'Auto</h1>
@@ -30,6 +36,48 @@
 
         <button type="submit">Salva</button>
     </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modello</th>
+                <th>Targa</th>
+                <th>Cilindrata</th>
+                <th>Numero Posti</th>
+                <th>Descrizione</th>
+                <th>Prezzo</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @php
+                $cars = DB::table('cars')->get();
+            @endphp
+            @foreach($cars as $car)
+            <tr>
+                <td>{{ $car->brand }}</td>
+                <td>{{ $car->model }}</td>
+                <td>{{ $car->plate }}</td>
+                <td>{{ $car->displacement }}</td>
+                <td>{{ $car->seats }}</td>
+                <td>{{ $car->description }}</td>
+                <td>{{ $car->price }}</td>
+                <td>
+                    <button>Modifica</button>
+                    {{-- <form method="POST" action="{{ route('car.destroy', ['car' => $car->id]) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Cancella</button>
+                    </form> --}}
+
+                    <button action="{{ route('car.destroy') }}"> Cancella  </button>
+                </td>
+            </tr>
+            @endforeach
+
+        </tbody>
+    </table>
 
 
     <h1>Noleggi Auto per il Mese</h1>
@@ -60,7 +108,7 @@
     <button type="submit">Cerca</button>
 </form>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>Marca</th>
@@ -82,6 +130,50 @@
         @endforeach
     </tbody>
 </table>
+<table>
+    <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Modello</th>
+            <th>Targa</th>
+            <th>Cilindrata</th>
+            <th>Numero Posti</th>
+            <th>Descrizione</th>
+            <th>Prezzo</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td>
+            <input type="text" name="brand" required><br><br>
+        </td>
+        <td>
+            <input type="text" name="model" required><br><br>
+        </td>
+        <td>
+            <input type="text" name="plate" required><br><br>
+        </td>
+        <td>
+            <input type="number" name="daily_price" required><br><br>
+        </td>
+        <td>
+            <input type="number" name="displacement" required><br><br>
+        </td>
+        <td>
+            <input type="number" name="seats" required><br><br>
+        </td>
+        <td>
+            <textarea name="description" rows="4" required></textarea><br><br>
+        </td>
+        <td>
+            <button>Salva Nuova Auto</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 @endsection
 

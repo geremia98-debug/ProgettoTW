@@ -125,3 +125,65 @@
 .btn-primary:hover {
     background-color: darkblue;
 }
+
+/* Stili per la tabella */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Stili per l'intestazione della tabella */
+thead {
+    background-color: #f2f2f2;
+}
+
+/* Stili per le righe alternate */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Stili per l'hover */
+tbody tr:hover {
+    background-color: #ddd;
+}
+
+/* Stili per il form */
+form {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    display: inline-block;
+}
+
+/* Stili per le etichette */
+label {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+/* Stili per i select e il button */
+select, button {
+    padding: 8px;
+    margin-bottom: 12px;
+}
+
+/* Stili per il submit button */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

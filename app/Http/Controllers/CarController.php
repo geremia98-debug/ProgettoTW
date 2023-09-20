@@ -28,6 +28,7 @@ public function getCarRentalsByMonth(Request $request)
     $month = $request->input('month', date('m'));
     $year = Date::now()->year;
 
+
     $carRentals= DB::table('car_user')
     ->join('cars', 'car_user.car_id', '=', 'cars.id')
     ->join('users', 'car_user.user_id', '=', 'users.id')
@@ -100,7 +101,7 @@ public function update(Request $request, Car $car)
 public function destroy(Car $car)
 {
     $car->delete();
-    return redirect()->route('cars.index')->with([
+    return redirect()->route('staff')->with([
         'success' => "La vettura {$car->brand} {$car->model} targata {$car->plate} è stata rimossa."
     ]);
 }

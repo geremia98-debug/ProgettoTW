@@ -54,6 +54,10 @@ Route::get('/prenota-auto', function() {
 })->name ('prenotaAuto');
 
 Route::post('/salva_noleggio', [RentalController::class, 'store'])->name('rental.store');
+Route::delete('/inserisci_auto', [CarController::class, 'destroy'])->name('car.destroy');
+
+
+
 
 
 

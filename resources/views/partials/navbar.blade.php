@@ -24,6 +24,8 @@
                 @csrf
                 <button type="submit" class="btn btn-logout">Logout</button>
             </form>
+            {{-- <button href="/logout" class="btn btn-logout">Logout</button> --}}
+
 
         </div>
       </div>
