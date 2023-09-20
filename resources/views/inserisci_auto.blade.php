@@ -5,11 +5,11 @@
     $cars = \App\Models\Car::all();
 @endphp
 
-
-<head>
-    <title>Inserisci Nuova Auto</title>
-</head>
 <body>
+
+    <h1>PANNELLO DI CONTROLLO STAFF</h1>
+
+    <!--
     <h1>Inserisci Dati dell'Auto</h1>
     <form method="POST" action="{{ route('car.store') }}">
         @csrf
@@ -36,6 +36,10 @@
 
         <button type="submit">Salva</button>
     </form>
+
+-->
+<br>
+<h1>Tabella Macchine</h1>
 
     <table>
         <thead>
@@ -65,13 +69,7 @@
                 <td>{{ $car->price }}</td>
                 <td>
                     <button>Modifica</button>
-                    {{-- <form method="POST" action="{{ route('car.destroy', ['car' => $car->id]) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Cancella</button>
-                    </form> --}}
-
-                    <button action="{{ route('car.destroy') }}"> Cancella  </button>
+                    <button type="submit"> Cancella</button>
                 </td>
             </tr>
             @endforeach
@@ -130,6 +128,12 @@
         @endforeach
     </tbody>
 </table>
+
+
+<h1>Inserimento Nuova Auto</h1>
+
+<form method="POST" action="{{ route('car.store') }}">
+    @csrf
 <table>
     <thead>
         <tr>
@@ -138,12 +142,15 @@
             <th>Targa</th>
             <th>Cilindrata</th>
             <th>Numero Posti</th>
-            <th>Descrizione</th>
             <th>Prezzo</th>
+            <th>Descrizione</th>
             <th>Azioni</th>
         </tr>
     </thead>
     <tbody>
+
+        <br>
+        <br>
 
     <tr>
         <td>
@@ -168,11 +175,12 @@
             <textarea name="description" rows="4" required></textarea><br><br>
         </td>
         <td>
-            <button>Salva Nuova Auto</button>
+            <button type="submit">Salva Nuova Auto</button>
         </td>
     </tr>
     </tbody>
 </table>
+</form>
 
 </body>
 @endsection
