@@ -27,7 +27,7 @@ public function doubleActionStaffPanel(Request $request)
 {
     if ($request->input('azione') === 'update_car') {
         // Esegui l'azione 1
-    } elseif ($request->input('azione') === 'delete_car') {
+    } elseif ($request->input('azione') === 'delete_car ') {
         // Esegui l'azione 2
     } else {
         // Nessun pulsante corrispondente è stato premuto
@@ -100,22 +100,25 @@ public function edit(Car $car)
 
 public function update(Request $request, Car $car)
 {
+    $car->brand = $request->input('brand');
+    $car->model = $request->input('model');
     $car->plate = $request->input('plate');
-    $car->brand = $request->input('marca');
-    $car->model = $request->input('modello');
-    $car->displacement = $request->input('cilindrata');
-    $car->price = $request->input('prezzo');
-    $car->seats = $request->input('posti');
-    $car->description = $request->input('descrizione');
+    $car->displacement = $request->input('displacement');
+    $car->seats = $request->input('seats');
+    $car->description = $request->input('description');
+    $car->price = $request->input('price');
 
     $car->update();
+    return view('home')->with([
+        'success' => "La vettura {$car->brand} {$car->model} targata {$car->plate} è stata aggiornata."
+    ]);
 
 }
 
 public function destroy(Car $car)
 {
     $car->delete();
-    return redirect()->route('staff')->with([
+    return view('home')->with([
         'success' => "La vettura {$car->brand} {$car->model} targata {$car->plate} è stata rimossa."
     ]);
 }
