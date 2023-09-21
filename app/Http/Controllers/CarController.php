@@ -19,7 +19,7 @@ class CarController extends Controller
 
     public function creaAuto()
 {
-    return view('inserisci_auto', ['carRentals' => []]);
+    return view('staff', ['carRentals' => []]);
 
 }
 
@@ -55,7 +55,7 @@ public function getCarRentalsByMonth(Request $request)
     })
     ->get();
 
-    return view('inserisci_auto', ['carRentals' => $carRentals]);
+    return view('staff', ['carRentals' => $carRentals]);
 }
 
     public function store(Request $request)

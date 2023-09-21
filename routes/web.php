@@ -43,8 +43,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/inserisci_auto', [CarController::class, 'creaAuto']);
-Route::post('/inserisci_auto', [CarController::class, 'getCarRentalsByMonth'])->name('staff');
+Route::get('/staff', [CarController::class, 'creaAuto']);
+Route::post('/staff', [CarController::class, 'getCarRentalsByMonth'])->name('staff');
 
 
 Route::post('/salva_auto', [CarController::class, 'store'])->name('car.store');
@@ -55,8 +55,8 @@ Route::get('/prenota-auto', function() {
 
 Route::post('/salva_noleggio', [RentalController::class, 'store'])->name('rental.store');
 
-Route::put('/inserisci_auto/{car}', [CarController::class, 'update'])->name('car.update');
-Route::delete('/inserisci_auto/{car}', [CarController::class, 'destroy'])->name('car.destroy');
+Route::put('/staff/{car}', [CarController::class, 'update'])->name('car.update');
+Route::delete('/staff/{car}', [CarController::class, 'destroy'])->name('car.destroy');
 
 Route::post('/modifica', [CarController::class, 'doubleActionStaffPanel']);
 Route::post('/azione', [App\Http\Controllers\CarController::class, 'updateOrDelete'])->name('update_or_delete');
