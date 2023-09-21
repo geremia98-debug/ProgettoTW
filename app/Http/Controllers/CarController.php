@@ -108,7 +108,6 @@ public function update(Request $request, Car $car)
     $car->seats = $request->input('seats');
     $car->description = $request->input('description');
     $car->price = $request->input('price');
-    dd($car);
 
     $car->update();
     return view('home')->with([
@@ -125,8 +124,10 @@ public function destroy(Car $car)
     ]);
 }
 
-public function updateOrDelete(Request $request, Car $car)
+public function updateOrDelete(Request $request)
 {
+    $carId = $request->input('car_id');
+    $car = Car::find($carId);
     if ($request->has('car_button')) {
         $action = $request->input('car_button');
 
@@ -140,6 +141,9 @@ public function updateOrDelete(Request $request, Car $car)
             $car->seats = $request->input('seats');
             $car->description = $request->input('description');
             $car->update();
+            return redirect()->route('staff')->with([
+                'success' => "La vettura è stata aggiornata."
+            ]);
         } elseif ($action === 'delete_car') {
             // Esegui l'eliminazione dell'auto qui
             $car->delete();

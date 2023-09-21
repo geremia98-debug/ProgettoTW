@@ -59,8 +59,9 @@ Route::put('/inserisci_auto/{car}', [CarController::class, 'update'])->name('car
 Route::delete('/inserisci_auto/{car}', [CarController::class, 'destroy'])->name('car.destroy');
 
 Route::post('/modifica', [CarController::class, 'doubleActionStaffPanel']);
+Route::post('/azione', [App\Http\Controllers\CarController::class, 'updateOrDelete'])->name('update_or_delete');
 
-Route::post('/azione', 'CarController@updateOrDelete')->name('update_or_delete');
+
 
 
 
