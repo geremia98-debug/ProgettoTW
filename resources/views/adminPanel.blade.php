@@ -3,6 +3,7 @@
 
 
 @php
+    $users = \App\Models\User::all();
     $cars = \App\Models\Car::all();
 @endphp
 
@@ -165,8 +166,82 @@
 @endsection
 
 
+<!-- ADMIN CODE -->
 
+<h1>Inserimento Nuovo Membro Staff</h1>
 
+<form method="POST" action="{{ route('user.store') }}">
+    @csrf
 
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Username</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <br>
+        <br>
+
+    <tr>
+        <td>
+            <input type="text" name="firstname" required><br><br>
+        </td>
+        <td>
+            <input type="text" name="lastname" required><br><br>
+        </td>
+        <td>
+            <input type="text" name="username" required><br><br>
+        </td>
+        <td>
+            <input type="text" name="password" required><br><br>
+        </td>
+        <td>
+            <button type="submit">Salva Nuovo Staffer</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</form>
+
+<h1>Tabella Staffer</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            @php
+                $users = DB::table('users')
+                ->where('role', 'staff')
+                ->get();
+            @endphp
+            @foreach($users as $user)
+            <tr>
+                <form method="POST" action="{{ route('update_or_delete_staffer') }}">
+                    @csrf
+                    <td><input type="text" name="firstname" value="{{ $user->firstname }}"></td>
+                    <td><input type="text" name="lastname" value="{{ $user->firstname }}"></td>
+                    <td><input type="text" name="username" value="{{ $user->firstname }}"></td>
+                    <td><input type="text" name="password" value="{{ $user->firstname }}"></td>
+                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                    <td>
+                        <button type="submit" name="user_button" value="update_staff">Modifica</button>
+                        <button type="submit" name="user_button" value="delete_staff">Cancella</button>
+                    </td>
+                </form>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 
 

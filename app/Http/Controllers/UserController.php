@@ -10,33 +10,8 @@ class UserController extends Controller
 {
 
 
-    //  Gestione del form dopo la sottomissione
-    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //     $nome = $_POST["nome"];
-    //     $cognome = $_POST["cognome"];
-    //     $dataNascita = $_POST["data_nascita"];
-    //     $occupazione = $_POST["occupazione"];
-    //     $email = $_POST["email"];
-    //     $password = $_POST["password"];
-    //     $confermaPassword = $_POST["pasword_confirmation"];
-
-    //     // Verifica se le password corrispondono
-    //     if ($password !== $confermaPassword) {
-    //         echo "Le password non corrispondono. Riprova.";
-    //     } else {
-    //         // Qui dovresti effettuare l'hash della password prima di salvarla nel database
-    //         // Esempio: $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    //         // Ora puoi salvare i dati nel tuo database o fare altre operazioni
-    //         // ...
-
-    //         echo "Registrazione completata con successo!";
-    //     }
-    // }
-
-
     public function store(Request $request)
-{
+    {
     $validatedData = $request->validate([
         'nome' => 'required',
         'cognome' => 'required',
@@ -45,58 +20,89 @@ class UserController extends Controller
         'occupazione' => 'required',
         'username' => 'required|unique:users',
         'password' => 'required|confirmed',
-    ]);
+        ]);
 
-    $user = new User();
+        $user = new User();
 
-    $user->firstname = $request->input('nome');
-    $user->lastname = $request->input('cognome');
-    $user->birthdate = $request->input('data_nascita');
-    $user->residence = $request->input('luogo_residenza');
-    $user->job = $request->input('occupazione');
-    $user->username = $request->input('username');
-    $user->password = $request->input('password');
+        $user->firstname = $request->input('nome');
+        $user->lastname = $request->input('cognome');
+        $user->birthdate = $request->input('data_nascita');
+        $user->residence = $request->input('luogo_residenza');
+        $user->job = $request->input('occupazione');
+        $user->username = $request->input('username');
+        $user->password = $request->input('password');
 
 
-    $user->save();
+        $user->save();
 
-    Auth::login($user);
-    return redirect()->route('areaPersonale');
+        Auth::login($user);
+        return redirect()->route('areaPersonale');
+
+    }
+
+
+
+    public function show(User $user)
+    {
+        return view('users.show', compact('user'))->with('success', 'Nuovo utente registrato con successo');
+    }
+
+    public function edit(User $user)
+    {
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $user->firstname = $request->input('nome');
+        $user->lastname = $request->input('cognome');
+        $user->data_nascita = $request->input('data_nascita');
+        $user->residence = $request->input('luogo_residenza');
+        $user->job = $request->input('occupazione');
+        $user->username = $request->input('username');
+        $user->password = $request->input('password');
+
+        $user->update();
+
+    }
+
+    public function updateOrDeleteStaffer(Request $request)
+    {
+        $userId = $request->input('user_id');
+        $user = User::find($userId);
+        if ($request->has('user_button')) {
+            $action = $request->input('user_button');
+
+            if ($action === 'update_staffer') {
+                // Esegui l'aggiornamento dell'auto qui
+                $user->firtname = $request->input('firstname');
+                $user->lastname = $request->input('lastname');
+                $user->username = $request->input('username');
+                $user->password = $request->input('password');
+                $user->update();
+                return redirect()->route('admin-panel')->with([
+                    'success' => "Membro staff aggiornato con successo."
+                ]);
+            } elseif ($action === 'delete_staffer') {
+                // Esegui l'eliminazione dell'auto qui
+                $user->delete();
+                return redirect()->route('admin-panel')->with([
+                    'success' => "Lo staffer {$user->firtname} {$user->lastname} è stato rimosso."
+                ]);
+            }
+        }
+
+    }
+
+
+       public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect()->route('users.index')->with([
+            'success' => "L'utente {$user->firstname} {$user->lastname}è stato cancellato."
+        ]);
+    }
+
 
 }
 
-// ci servono per la gestione e l'eliminazione degli user
-
-public function show(User $user)
-{
-    return view('users.show', compact('user'))->with('success', 'Nuovo utente registrato con successo');
-}
-
-public function edit(User $user)
-{
-    return view('users.edit', compact('user'));
-}
-
-public function update(Request $request, User $user)
-{
-    $user->firstname = $request->input('nome');
-    $user->lastname = $request->input('cognome');
-    $user->data_nascita = $request->input('data_nascita');
-    $user->residence = $request->input('luogo_residenza');
-    $user->job = $request->input('occupazione');
-    $user->username = $request->input('username');
-    $user->password = $request->input('password');
-
-    $user->update();
-
-}
-
-public function destroy(User $user)
-{
-    $user->delete();
-    return redirect()->route('users.index')->with([
-        'success' => "L'utente {$user->firstname} {$user->lastname}è stato cancellato."
-    ]);
-}
-
-}
