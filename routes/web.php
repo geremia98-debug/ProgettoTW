@@ -61,6 +61,11 @@ Route::delete('/staff/{car}', [CarController::class, 'destroy'])->name('car.dest
 Route::post('/modifica', [CarController::class, 'doubleActionStaffPanel']);
 Route::post('/azione', [App\Http\Controllers\CarController::class, 'updateOrDelete'])->name('update_or_delete');
 
+Route::get('/admin-panel', function () {
+    return view('adminPanel'); // Assicurati che il nome della vista corrisponda al tuo file .blade.php
+});
+
+
 
 
 
