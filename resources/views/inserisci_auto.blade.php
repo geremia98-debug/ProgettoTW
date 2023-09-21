@@ -68,7 +68,7 @@
 
 <!-- Form da sistemare, non so come gestire per bene la doppia logica coi due pulsanti
     Modificare le rotte CRUD usando resource al posto di definirle una per uno e adattare il codice -->
-    <table>
+    {{-- <table>
         <thead>
             <tr>
                 <th>Marca</th>
@@ -97,13 +97,13 @@
                 <td>
                     <form method="POST" action="{{ route('car.update', ['car' => $car->id]) }}">
                         @csrf
-                        @method('PUT') <!-- Utilizziamo il metodo PUT per l'aggiornamento -->
+                        @method('PUT')
                         <button type="submit">Aggiorna</button>
                     </form>
 
                     <form method="POST" action="{{ route('car.destroy', ['car' => $car->id]) }}">
                         @csrf
-                        @method('DELETE') <!-- Utilizziamo il metodo DELETE per l'eliminazione -->
+                        @method('DELETE')
                         <button type="submit">Cancella</button>
                     </form>
 
@@ -112,29 +112,47 @@
             @endforeach
 
         </tbody>
+    </table> --}}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modello</th>
+                <th>Targa</th>
+                <th>Cilindrata</th>
+                <th>Numero Posti</th>
+                <th>Descrizione</th>
+                <th>Prezzo</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @php
+                $cars = DB::table('cars')->get();
+            @endphp
+            @foreach($cars as $car)
+            <tr>
+                <form method="POST" action="{{ route('update_or_delete') }}">
+                    @csrf
+                    <td><input type="text" name="brand" value="{{ $car->brand }}"></td>
+                    <td><input type="text" name="model" value="{{ $car->model }}"></td>
+                    <td><input type="text" name="plate" value="{{ $car->plate }}"></td>
+                    <td><input type="text" name="displacement" value="{{ $car->displacement }}"></td>
+                    <td><input type="text" name="seats" value="{{ $car->seats }}"></td>
+                    <td><input type="text" name="description" value="{{ $car->description }}"></td>
+                    <td><input type="text" name="price" placeholder="{{ $car->price }}" value="{{ $car->price }}"></td>
+                    <input type="hidden" name="car_id" value="{{ $car->id }}">
+                    <td>
+                        <button type="submit" name="car_button" value="update_car">Modifica</button>
+                        <button type="submit" name="car_button" value="delete_car">Cancella</button>
+                    </td>
+                </form>
+            </tr>
+            @endforeach
+        </tbody>
     </table>
 
-
-    {{-- <table>
-        <!-- ... Altre righe della tabella ... -->
-
-        <!-- Aggiungi una riga vuota per l'inserimento dei dati -->
-        <tr>
-            <td>
-                <form method="POST" action="{{ route('car.store') }}">
-                    @csrf
-                    <input type="text" name="brand" placeholder="Marca" required>
-                    <input type="text" name="model" placeholder="Modello" required>
-                    <input type="text" name="plate" placeholder="Targa" required>
-                    <input type="number" name="daily_price" placeholder="Prezzo giornaliero" required>
-                    <input type="number" name="displacement" placeholder="Cilindrata" required>
-                    <input type="number" name="seats" placeholder="Posti" required>
-                    <textarea name="description" rows="4" placeholder="Descrizione" required></textarea>
-                    <button type="submit">Salva</button>
-                </form>
-            </td>
-        </tr>
-    </table> --}}
 
 
 

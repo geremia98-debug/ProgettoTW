@@ -100,6 +100,7 @@ public function edit(Car $car)
 
 public function update(Request $request, Car $car)
 {
+
     $car->brand = $request->input('brand');
     $car->model = $request->input('model');
     $car->plate = $request->input('plate');
@@ -107,6 +108,7 @@ public function update(Request $request, Car $car)
     $car->seats = $request->input('seats');
     $car->description = $request->input('description');
     $car->price = $request->input('price');
+    dd($car);
 
     $car->update();
     return view('home')->with([
@@ -120,6 +122,36 @@ public function destroy(Car $car)
     $car->delete();
     return view('home')->with([
         'success' => "La vettura {$car->brand} {$car->model} targata {$car->plate} è stata rimossa."
+    ]);
+}
+
+public function updateOrDelete(Request $request, Car $car)
+{
+    if ($request->has('car_button')) {
+        $action = $request->input('car_button');
+
+        if ($action === 'update_car') {
+            // Esegui l'aggiornamento dell'auto qui
+            $car->plate = $request->input('plate');
+            $car->brand = $request->input('brand');
+            $car->model = $request->input('model');
+            $car->displacement = $request->input('displacement');
+            $car->price = $request->input('price');
+            $car->seats = $request->input('seats');
+            $car->description = $request->input('description');
+            $car->update();
+        } elseif ($action === 'delete_car') {
+            // Esegui l'eliminazione dell'auto qui
+            $car->delete();
+            return redirect()->route('staff')->with([
+                'success' => "La vettura {$car->brand} {$car->model} targata {$car->plate} è stata rimossa."
+            ]);
+        }
+    }
+
+    // Redirect a una pagina appropriata dopo l'azione
+    return redirect()->route('staff')->with([
+        'success' => 'Azioni completate con successo.'
     ]);
 }
 
