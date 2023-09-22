@@ -29,7 +29,7 @@ Route::post('/auto_selezionate', [CatalogoController::class, 'filtro'])->name('f
 
 Route::get('/area-personale/{username}', [UserController::class, 'areaPersonale'])->middleware('auth');
 Route::resource('/users', UserController::class);
-Route::post('/users', [UserController::class, 'staffStore'])->name('staff.store');
+Route::post('/creastaff', [UserController::class, 'staffStore'])->name('staff.store');
 
 
 Route::get('/dashboard', function () {
@@ -65,7 +65,7 @@ Route::post('/azione2', [App\Http\Controllers\UserController::class, 'updateOrDe
 
 Route::get('/admin-panel', function () {
     return view('adminPanel'); // Assicurati che il nome della vista corrisponda al tuo file .blade.php
-});
+})->name('adminPanel');
 
 
 

@@ -21,8 +21,6 @@ class User extends Authenticatable
 
 
     protected $fillable = [
-
-        //Metto i campi che voglio che siano modificabili prendendoli dalla migration corrispondente
         'username',
         'password',
         'role',

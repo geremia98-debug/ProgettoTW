@@ -46,15 +46,22 @@ class UserController extends Controller
         'firstname' => 'required',
         'lastname' => 'required',
         'username' => 'required|unique:users',
-        'password' => 'required|confirmed',
+        'password' => 'required',
         ]);
 
         $user = new User();
+        $user->role = 'staff';
 
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->username = $request->input('username');
         $user->password = $request->input('password');
+        $user->birthdate = null;
+        $user->residence = null;
+        $user->job = null;
+
+        //dd($user);
+
 
         $user->save();
 
@@ -94,20 +101,20 @@ class UserController extends Controller
         if ($request->has('user_button')) {
             $action = $request->input('user_button');
 
-            if ($action === 'update_staffer') {
+            if ($action === 'update_staff') {
                 // Esegui l'aggiornamento dell'auto qui
-                $user->firtname = $request->input('firstname');
+                $user->firstname = $request->input('firstname');
                 $user->lastname = $request->input('lastname');
                 $user->username = $request->input('username');
                 $user->password = $request->input('password');
                 $user->update();
-                return redirect()->route('admin-panel')->with([
+                return redirect()->route('adminPanel')->with([
                     'success' => "Membro staff aggiornato con successo."
                 ]);
-            } elseif ($action === 'delete_staffer') {
+            } elseif ($action === 'delete_staff') {
                 // Esegui l'eliminazione dell'auto qui
                 $user->delete();
-                return redirect()->route('admin-panel')->with([
+                return redirect()->route('adminPanel')->with([
                     'success' => "Lo staffer {$user->firtname} {$user->lastname} è stato rimosso."
                 ]);
             }
