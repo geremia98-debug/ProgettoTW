@@ -231,8 +231,8 @@
                 <form method="POST" action="{{ route('update_or_delete_staffer') }}">
                     @csrf
                     <td><input type="text" name="firstname" value="{{ $user->firstname }}"></td>
-                    <td><input type="text" name="lastname" value="{{ $user->firstname }}"></td>
-                    <td><input type="text" name="username" value="{{ $user->firstname }}"></td>
+                    <td><input type="text" name="lastname" value="{{ $user->lastname }}"></td>
+                    <td><input type="text" name="username" value="{{ $user->username }}"></td>
                     <td><input type="password" name="password" value="{{ $user->firstname }}"></td>
                     <input type="hidden" name="user_id" value="{{ $user->id }}">
                     <td>
