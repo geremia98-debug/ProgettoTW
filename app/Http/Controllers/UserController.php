@@ -32,7 +32,6 @@ class UserController extends Controller
         $user->username = $request->input('username');
         $user->password = $request->input('password');
 
-
         $user->save();
 
         Auth::login($user);
@@ -40,6 +39,28 @@ class UserController extends Controller
 
     }
 
+
+    public function staffStore(Request $request)
+    {
+    $validatedData = $request->validate([
+        'firstname' => 'required',
+        'lastname' => 'required',
+        'username' => 'required|unique:users',
+        'password' => 'required|confirmed',
+        ]);
+
+        $user = new User();
+
+        $user->firstname = $request->input('firstname');
+        $user->lastname = $request->input('lastname');
+        $user->username = $request->input('username');
+        $user->password = $request->input('password');
+
+        $user->save();
+
+        return redirect()->route('adminPanel');
+
+    }
 
 
     public function show(User $user)

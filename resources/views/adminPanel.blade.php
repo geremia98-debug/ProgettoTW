@@ -5,6 +5,7 @@
 @php
     $users = \App\Models\User::all();
     $cars = \App\Models\Car::all();
+    $carRentals = \App\Models\Rental::all();
 @endphp
 
 <body>
@@ -170,7 +171,7 @@
 
 <h1>Inserimento Nuovo Membro Staff</h1>
 
-<form method="POST" action="{{ route('user.store') }}">
+<form method="POST" action="{{ route('staff.store') }}">
     @csrf
 
 <table>
@@ -198,7 +199,7 @@
             <input type="text" name="username" required><br><br>
         </td>
         <td>
-            <input type="text" name="password" required><br><br>
+            <input type="password" name="password" required><br><br>
         </td>
         <td>
             <button type="submit">Salva Nuovo Staffer</button>
@@ -232,7 +233,7 @@
                     <td><input type="text" name="firstname" value="{{ $user->firstname }}"></td>
                     <td><input type="text" name="lastname" value="{{ $user->firstname }}"></td>
                     <td><input type="text" name="username" value="{{ $user->firstname }}"></td>
-                    <td><input type="text" name="password" value="{{ $user->firstname }}"></td>
+                    <td><input type="password" name="password" value="{{ $user->firstname }}"></td>
                     <input type="hidden" name="user_id" value="{{ $user->id }}">
                     <td>
                         <button type="submit" name="user_button" value="update_staff">Modifica</button>
