@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rental;
 use Illuminate\Http\Request;
-use App\Models\Car;
-use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class RentalController extends Controller
 {
@@ -28,6 +27,20 @@ class RentalController extends Controller
 
 
     }
+
+    public function showRentalCounts()
+    {
+        // $currentYear = Date::now()->year;
+
+        // $result = DB::table('car_user')
+        //     ->select(DB::raw('MONTH(start_rent) as mese'), DB::raw('COUNT(*) as numero_auto_noleggiate'))
+        //     ->whereYear('start_rent', '=', $currentYear)
+        //     ->groupBy(DB::raw('MONTH(start_rent)'))
+        //     ->orderBy(DB::raw('MONTH(start_rent)'))
+        //     ->get();
+        }
+
+
 
 //     public function show(Car $car)
 // {

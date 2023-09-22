@@ -63,9 +63,18 @@ Route::post('/modifica', [CarController::class, 'doubleActionStaffPanel']);
 Route::post('/azione', [App\Http\Controllers\CarController::class, 'updateOrDelete'])->name('update_or_delete');
 Route::post('/azione2', [App\Http\Controllers\UserController::class, 'updateOrDeleteStaffer'])->name('update_or_delete_staffer');
 
+// Route::get('/admin-panel', function () {
+//     return view('adminPanel'); // Assicurati che il nome della vista corrisponda al tuo file .blade.php
+// })->name('adminPanel');
+
 Route::get('/admin-panel', function () {
-    return view('adminPanel'); // Assicurati che il nome della vista corrisponda al tuo file .blade.php
+    // Richiama il metodo showRentalCounts
+    // (new \App\Http\Controllers\RentalController())->showRentalCounts();  CI SERVE PER ATTIVARE IL METODO OGNI VOLTA CHE APRO LA PAGE?
+
+    // Restituisce la vista 'adminPanel'
+    return view('adminPanel');
 })->name('adminPanel');
+
 
 
 

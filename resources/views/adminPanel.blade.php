@@ -6,6 +6,7 @@
     $users = \App\Models\User::all();
     $cars = \App\Models\Car::all();
     $carRentals = \App\Models\Rental::all();
+    $rentalCounts = \App\Models\Rental::all();
 @endphp
 
 <body>
@@ -244,5 +245,36 @@
             @endforeach
         </tbody>
     </table>
+
+    <h1>Prospetto Noleggi Mensili</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Mese</th>
+                <th>Numero di Noleggi Mensili</th>
+            </tr>
+        </thead>
+        <tbody>
+            @php
+                $currentYear = Date::now()->year;
+                $result = DB::table('car_user')
+                    ->select(DB::raw('MONTH(start_rent) as mese'), DB::raw('COUNT(*) as numero_auto_noleggiate'))
+                    ->whereYear('start_rent', '=', $currentYear)
+                    ->groupBy(DB::raw('MONTH(start_rent)'))
+                    ->orderBy(DB::raw('MONTH(start_rent)'))
+                    ->get();
+            @endphp
+
+            @foreach ($result as $row)
+            <tr>
+                <td>{{ date('F', mktime(0, 0, 0, $row->mese, 1)) }}</td> <!-- Converte il numero del mese in nome del mese -->
+                <td>{{ $row->numero_auto_noleggiate }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\User;
+use App\Models\Rental;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Date;
@@ -158,6 +159,9 @@ public function updateOrDelete(Request $request)
         'success' => 'Azioni completate con successo.'
     ]);
 }
+
+
+
 
 
 }
