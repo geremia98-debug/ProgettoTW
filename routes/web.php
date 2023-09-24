@@ -12,6 +12,7 @@ use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\ChiSiamoController;
 use App\Http\Controllers\RegistrazioneController;
 use App\Http\Controllers\RentalController;
+use App\Http\Controllers\FaqController;
 
 Route::get('/registrazione', function() {
     return view('auth.register');
@@ -62,6 +63,7 @@ Route::delete('/staff/{car}', [CarController::class, 'destroy'])->name('car.dest
 Route::post('/modifica', [CarController::class, 'doubleActionStaffPanel']);
 Route::post('/azione', [App\Http\Controllers\CarController::class, 'updateOrDelete'])->name('update_or_delete');
 Route::post('/azione2', [App\Http\Controllers\UserController::class, 'updateOrDeleteStaffer'])->name('update_or_delete_staffer');
+Route::post('/azione3', [App\Http\Controllers\FaqController::class, 'updateOrDeleteFaq'])->name('update_or_delete_faq');
 
 // Route::get('/admin-panel', function () {
 //     return view('adminPanel'); // Assicurati che il nome della vista corrisponda al tuo file .blade.php
@@ -75,6 +77,8 @@ Route::get('/admin-panel', function () {
     return view('adminPanel');
 })->name('adminPanel');
 
+
+Route::post('/salva_faq', [FaqController::class, 'store'])->name('faq.store');
 
 
 

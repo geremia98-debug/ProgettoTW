@@ -7,6 +7,7 @@
     $cars = \App\Models\Car::all();
     $carRentals = \App\Models\Rental::all();
     $rentalCounts = \App\Models\Rental::all();
+    $faqs = \App\Models\Faq::all();
 @endphp
 
 <body>
@@ -274,6 +275,53 @@
             @endforeach
         </tbody>
     </table>
+
+
+    <h1>Inserimento Nuova FAQ</h1>
+
+    <form method="post" action="{{ route('faq.store') }}">
+        @csrf
+
+        <label>Domanda:</label>
+        <input type="text" name="question" required>
+        <br>
+        <label>Risposta:</label>
+        <textarea name="answer" required></textarea>
+        <br>
+        <input type="submit" value="Aggiungi FAQ">
+    </form>
+
+
+    <h1>Tabella FAQ</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Domanda</th>
+                <th>Risposta</th>
+            </tr>
+        </thead>
+        <tbody>
+            @php
+                $faqs = DB::table('faq')->get();
+            @endphp
+            @foreach($faqs as $faq)
+            <tr>
+                <form method="POST" action="{{ route('update_or_delete_faq') }}">
+                    @csrf
+                    <td><input type="text" name="question" value="{{ $faq->question }}"></td>
+                    <td><input type="text" name="answer" value="{{ $faq->answer }}"></td>
+                    <input type="hidden" name="faq_id" value="{{ $faq->id }}">
+                    <td>
+                        <button type="submit" name="faq_button" value="update_faq">Modifica</button>
+                        <button type="submit" name="faq_button" value="delete_faq">Cancella</button>
+                    </td>
+                </form>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
 
 
 
