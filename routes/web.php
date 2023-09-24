@@ -79,7 +79,7 @@ Route::get('/admin-panel', function () {
 
 
 Route::post('/salva_faq', [FaqController::class, 'store'])->name('faq.store');
-
+Route::get('/', [FaqController::class, 'index'])->name('faq.index');
 
 
 

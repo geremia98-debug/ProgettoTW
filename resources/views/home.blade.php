@@ -81,6 +81,41 @@
     </section>
 
 
+
+
+
+    <div class="d-flex justify-content-center my-4">
+        <h2>Domande frequenti</h2>
+    </div>
+
+    <div class="accordion" id="accordionExample">
+        @foreach ($faqs as $faq)
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{ $faq->id }}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $faq->id }}" aria-expanded="false" aria-controls="collapse{{ $faq->id }}">
+                    <strong>{{ $faq->question }}</strong>
+                </button>
+            </h2>
+            <div id="collapse{{ $faq->id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $faq->id }}" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    {{ $faq->answer }}
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+<!--
     <div class="d-flex justify-content-center my-4">
       <h2>Domande frequenti</h2>
     </div>
@@ -125,6 +160,8 @@
       </div>
     </div>
       </div>
+
+    -->
 
     </body>
 
