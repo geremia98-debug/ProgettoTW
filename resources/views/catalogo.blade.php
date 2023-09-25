@@ -54,7 +54,6 @@
             <div class="car">
                 <img src="{{ asset('dist/' . $car->immagine) }}" alt="Auto">
                 <h2>{{ $car->brand }}</h2>
-                <p>ID: {{ $car->id }}</p> <!--Togliere questo campo una volta terminata la logica -->
                 <p>Modello: {{ $car->model }}</p>
                 <p>Posti: {{ $car->seats }}</p>
                 <p>Cilindrata: {{ $car->displacement }}</p>
