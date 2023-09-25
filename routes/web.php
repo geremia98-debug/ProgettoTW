@@ -30,6 +30,7 @@ Route::post('/auto_selezionate', [CatalogoController::class, 'filtro'])->name('f
 
 //Route::get('/area-personale/{username}', [UserController::class, 'areaPersonale'])->middleware('auth');
 Route::resource('/users', UserController::class);
+Route::delete('/eliminazione-cliente/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 Route::post('/creastaff', [UserController::class, 'staffStore'])->name('staff.store');
 
 
@@ -65,9 +66,9 @@ Route::put('/staff/{car}', [CarController::class, 'update'])->name('car.update')
 Route::delete('/staff/{car}', [CarController::class, 'destroy'])->name('car.destroy');
 
 Route::post('/modifica', [CarController::class, 'doubleActionStaffPanel']);
-Route::post('/azione', [App\Http\Controllers\CarController::class, 'updateOrDelete'])->name('update_or_delete');
-Route::post('/azione2', [App\Http\Controllers\UserController::class, 'updateOrDeleteStaffer'])->name('update_or_delete_staffer');
-Route::post('/azione3', [App\Http\Controllers\FaqController::class, 'updateOrDeleteFaq'])->name('update_or_delete_faq');
+Route::post('/azione', [CarController::class, 'updateOrDelete'])->name('update_or_delete');
+Route::post('/azione2', [UserController::class, 'updateOrDeleteStaffer'])->name('update_or_delete_staffer');
+Route::post('/azione3', [FaqController::class, 'updateOrDeleteFaq'])->name('update_or_delete_faq');
 
 // Route::get('/admin-panel', function () {
 //     return view('adminPanel'); // Assicurati che il nome della vista corrisponda al tuo file .blade.php

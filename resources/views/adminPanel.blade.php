@@ -247,6 +247,39 @@
         </tbody>
     </table>
 
+    <h1>Tabella Cancellazione Clienti</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+            </tr>
+        </thead>
+        <tbody>
+            @php
+                $users = DB::table('users')
+                ->where('role', 'client')
+                ->get();
+            @endphp
+            @foreach($users as $user)
+            <tr>
+                {{-- <form method="POST" action="{{ route('user.destroy') }}"> --}}
+                    @csrf
+                    <td><input type="text" name="username" value="{{ $user->username }}"></td>
+                    <td><input type="text" name="firstname" value="{{ $user->firstname }}"></td>
+                    <td><input type="text" name="lastname" value="{{ $user->lastname }}"></td>
+                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                    <td>
+                        <button type="submit">Elimina</button>
+                    </td>
+                {{-- </form> --}}
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
     <h1>Prospetto Noleggi Mensili</h1>
 
     <table>
