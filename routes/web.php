@@ -14,7 +14,7 @@ use App\Http\Controllers\RegistrazioneController;
 use App\Http\Controllers\RentalController;
 use App\Http\Controllers\FaqController;
 
-Route::get('/registrazione', function() {
+Route::get('/register', function() {
     return view('auth.register');
 })->name ('registrazione');
 
@@ -28,14 +28,14 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/catalogo', [CatalogoController::class, 'catalogo'])->name('catalogo');
 Route::post('/auto_selezionate', [CatalogoController::class, 'filtro'])->name('filtro');
 
-Route::get('/area-personale/{username}', [UserController::class, 'areaPersonale'])->middleware('auth');
+//Route::get('/area-personale/{username}', [UserController::class, 'areaPersonale'])->middleware('auth');
 Route::resource('/users', UserController::class);
 Route::post('/creastaff', [UserController::class, 'staffStore'])->name('staff.store');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,6 +44,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/area-personale', function() {
+    return view('profile.edit');
+})->name ('area-personale');
 
 Route::get('/staff', [CarController::class, 'creaAuto']);
 Route::post('/staff', [CarController::class, 'getCarRentalsByMonth'])->name('staff');

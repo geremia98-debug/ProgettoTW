@@ -17,7 +17,7 @@
             </li>
           </ul>
 
-            <button onclick="window.location.href='{{ url('/registrazione') }}'" class="btn btn-primary">Registrati</button>
+            <button onclick="window.location.href='{{ url('/register') }}'" class="btn btn-primary">Registrati</button>
             <button onclick="window.location.href='{{ url('/login') }}'" class="btn btn-primary">Login</button>
             {{-- <button @csrf onclick="window.location.href='{{ url('/logout') }}'" class="btn btn-danger">Logout</button> --}}
             <form method="POST" action="/logout">
