@@ -123,10 +123,12 @@ class UserController extends Controller
     }
 
 
-       public function destroy(User $user)
+       public function destroy(Request $request)
     {
+        $userId = $request->input('user_id');
+        $user = User::find($userId);
         $user->delete();
-        return redirect()->route('users.index')->with([
+        return redirect()->route('adminPanel')->with([
             'success' => "L'utente {$user->firstname} {$user->lastname}è stato cancellato."
         ]);
     }

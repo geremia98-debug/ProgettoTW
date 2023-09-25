@@ -265,8 +265,9 @@
             @endphp
             @foreach($users as $user)
             <tr>
-                {{-- <form method="POST" action="{{ route('user.destroy') }}"> --}}
+                <form method="POST" action="{{ route('user.destroy') }}">
                     @csrf
+                    @method('delete')
                     <td><input type="text" name="username" value="{{ $user->username }}"></td>
                     <td><input type="text" name="firstname" value="{{ $user->firstname }}"></td>
                     <td><input type="text" name="lastname" value="{{ $user->lastname }}"></td>
@@ -274,7 +275,7 @@
                     <td>
                         <button type="submit">Elimina</button>
                     </td>
-                {{-- </form> --}}
+                </form>
             </tr>
             @endforeach
         </tbody>

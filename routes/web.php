@@ -30,7 +30,9 @@ Route::post('/auto_selezionate', [CatalogoController::class, 'filtro'])->name('f
 
 //Route::get('/area-personale/{username}', [UserController::class, 'areaPersonale'])->middleware('auth');
 Route::resource('/users', UserController::class);
-Route::delete('/eliminazione-cliente/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+
+Route::delete('/eliminazione-cliente', [UserController::class, 'destroy'])->name('user.destroy');
+
 Route::post('/creastaff', [UserController::class, 'staffStore'])->name('staff.store');
 
 
@@ -70,15 +72,7 @@ Route::post('/azione', [CarController::class, 'updateOrDelete'])->name('update_o
 Route::post('/azione2', [UserController::class, 'updateOrDeleteStaffer'])->name('update_or_delete_staffer');
 Route::post('/azione3', [FaqController::class, 'updateOrDeleteFaq'])->name('update_or_delete_faq');
 
-// Route::get('/admin-panel', function () {
-//     return view('adminPanel'); // Assicurati che il nome della vista corrisponda al tuo file .blade.php
-// })->name('adminPanel');
-
 Route::get('/admin-panel', function () {
-    // Richiama il metodo showRentalCounts
-    // (new \App\Http\Controllers\RentalController())->showRentalCounts();  CI SERVE PER ATTIVARE IL METODO OGNI VOLTA CHE APRO LA PAGE?
-
-    // Restituisce la vista 'adminPanel'
     return view('adminPanel');
 })->name('adminPanel');
 
