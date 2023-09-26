@@ -17,15 +17,21 @@
             </li>
           </ul>
 
-            <button onclick="window.location.href='{{ url('/register') }}'" class="btn btn-primary">Registrati</button>
-            <button onclick="window.location.href='{{ url('/login') }}'" class="btn btn-primary">Login</button>
-            {{-- <button @csrf onclick="window.location.href='{{ url('/logout') }}'" class="btn btn-danger">Logout</button> --}}
+            @if (auth()->check())
+                <!-- Non mostro i pulsanti Registrati e Login -->
+                @else
+
+                <button onclick="window.location.href='{{ url('/register') }}'" class="btn btn-primary">Registrati</button>
+                <button onclick="window.location.href='{{ url('/login') }}'" class="btn btn-primary">Login</button>
+                {{-- <button @csrf onclick="window.location.href='{{ url('/logout') }}'" class="btn btn-danger">Logout</button> --}}
+
+            @endif
+
             <form method="POST" action="/logout">
                 @csrf
                 <button type="submit" class="btn btn-logout">Logout</button>
             </form>
             {{-- <button href="/logout" class="btn btn-logout">Logout</button> --}}
-
 
         </div>
       </div>
