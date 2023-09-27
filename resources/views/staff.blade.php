@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+@can('staff')
 
 @php
     $cars = \App\Models\Car::all();
@@ -164,5 +165,8 @@
 </table>
 
 </body>
+
+@endcan
+
 @endsection
 

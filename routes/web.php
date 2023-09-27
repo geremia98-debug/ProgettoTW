@@ -24,6 +24,7 @@ Route::get('/catalogo', [CatalogoController::class, 'catalogo'])->name('catalogo
 Route::post('/auto_selezionate', [CatalogoController::class, 'filtro'])->name('filtro');
 
 
+
 // route dell'utente loggato
 Route::resource('/users', UserController::class);
 Route::middleware('auth')->group(function () {

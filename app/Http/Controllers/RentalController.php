@@ -11,19 +11,16 @@ class RentalController extends Controller
 
     public function store(Request $request)
     {
-
         $rental = new Rental();
         $user = auth()->user();
         $carId = $request->input('carId');
-
         $rental->user_id = $user->id;
         $rental->car_id = $carId;
         $rental->start_rent = session('start_rent');
         $rental->end_rent = session('end_rent');
-
         $rental->save();
-
         return view('home');
+
     }
 
     public function showRentalCounts()

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
+@can('admin')
+
+
 
 @php
     $users = \App\Models\User::all();
@@ -356,6 +359,9 @@
             @endforeach
         </tbody>
     </table>
+
+    @endcan
+
     @endsection
 
 
