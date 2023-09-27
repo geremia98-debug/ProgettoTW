@@ -1,3 +1,7 @@
+@php
+    use Illuminate\Contracts\Auth\Guard;
+@endphp
+
 <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">NoleggioAuto</a>
@@ -17,7 +21,17 @@
             </li>
           </ul>
 
+
+
+
             @if (auth()->check())
+            @if (Auth::user()->role === 'client')
+            <a href="{{ route('area-personale') }}" class="btn btn-primary">Area Personale</a>
+        @elseif (Auth::user()->role === 'staff')
+            <a href="{{ route('staffPanel') }}" class="btn btn-primary">Pannello Staff</a>
+        @elseif (Auth::user()->role === 'admin')
+            <a href="{{ route('adminPanel') }}" class="btn btn-primary">Pannello Admin</a>
+        @endif
                 <!-- Non mostro i pulsanti Registrati e Login -->
                 @else
 

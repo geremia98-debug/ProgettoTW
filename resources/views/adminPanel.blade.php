@@ -12,12 +12,12 @@
 
 <body>
 
-    <h1>PANNELLO DI CONTROLLO STAFF</h1>
+    <h1>PANNELLO DI CONTROLLO ADMIN</h1>
 <br>
 
 <h1>Inserimento Nuova Auto</h1>
 
-<form method="POST" action="{{ route('car.store') }}">
+<form method="POST" action="{{ route('car.store.admin') }}">
     @csrf
 
 <table>
@@ -28,8 +28,8 @@
             <th>Targa</th>
             <th>Cilindrata</th>
             <th>Numero Posti</th>
-            <th>Prezzo</th>
             <th>Descrizione</th>
+            <th>Prezzo</th>
             <th>Azioni</th>
         </tr>
     </thead>
@@ -49,16 +49,17 @@
             <input type="text" name="plate" required><br><br>
         </td>
         <td>
-            <input type="number" name="daily_price" required><br><br>
-        </td>
-        <td>
             <input type="number" name="displacement" required><br><br>
         </td>
         <td>
+
             <input type="number" name="seats" required><br><br>
         </td>
         <td>
             <textarea name="description" rows="4" required></textarea><br><br>
+        </td>
+        <td>
+            <input type="number" name="daily_price" required><br><br>
         </td>
         <td>
             <button type="submit">Salva Nuova Auto</button>
@@ -89,7 +90,7 @@
             @endphp
             @foreach($cars as $car)
             <tr>
-                <form method="POST" action="{{ route('update_or_delete') }}">
+                <form method="POST" action="{{ route('update_or_delete_admin') }}">
                     @csrf
                     <td><input type="text" name="brand" value="{{ $car->brand }}"></td>
                     <td><input type="text" name="model" value="{{ $car->model }}"></td>
@@ -116,8 +117,8 @@
 
     <h1>Noleggi Auto per il Mese</h1>
 
-<!-- Aggiungi un form per selezionare il mese e l'anno desiderati -->
-<form action="{{ route('staff') }}" method="POST">
+
+<form action="{{ route('rental_admin') }}" method="POST">
     @csrf
     <label for="month">Mese:</label>
     <select name="month" id="month">
@@ -166,7 +167,7 @@
 </table>
 
 </body>
-@endsection
+
 
 
 <!-- ADMIN CODE -->
@@ -355,6 +356,7 @@
             @endforeach
         </tbody>
     </table>
+    @endsection
 
 
 

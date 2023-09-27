@@ -4,6 +4,7 @@
 
 @php
     $cars = \App\Models\Car::all();
+    $carRentals = \App\Models\Rental ::all();
 @endphp
 
 <body>
@@ -24,8 +25,8 @@
             <th>Targa</th>
             <th>Cilindrata</th>
             <th>Numero Posti</th>
-            <th>Prezzo</th>
             <th>Descrizione</th>
+            <th>Prezzo</th>
             <th>Azioni</th>
         </tr>
     </thead>
@@ -45,16 +46,17 @@
             <input type="text" name="plate" required><br><br>
         </td>
         <td>
-            <input type="number" name="daily_price" required><br><br>
-        </td>
-        <td>
             <input type="number" name="displacement" required><br><br>
         </td>
         <td>
+
             <input type="number" name="seats" required><br><br>
         </td>
         <td>
             <textarea name="description" rows="4" required></textarea><br><br>
+        </td>
+        <td>
+            <input type="number" name="daily_price" required><br><br>
         </td>
         <td>
             <button type="submit">Salva Nuova Auto</button>
