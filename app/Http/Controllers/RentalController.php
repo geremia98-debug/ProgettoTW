@@ -23,9 +23,7 @@ class RentalController extends Controller
 
         $rental->save();
 
-        return redirect()->route('home');
-
-
+        return view('home');
     }
 
     public function showRentalCounts()

@@ -88,6 +88,11 @@
         <h2>Domande frequenti</h2>
     </div>
 
+    @php
+        use App\Models\Faq;
+        $faqs = Faq::all();
+    @endphp
+
     <div class="accordion" id="accordionExample">
         @foreach ($faqs as $faq)
         <div class="accordion-item">
