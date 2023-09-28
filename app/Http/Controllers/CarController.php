@@ -100,7 +100,15 @@ class CarController extends Controller
         })
         ->get();
 
-        return view('staff', ['carRentals' => $carRentals]);
+        if (count($carRentals) === 0) {
+            $errorMessage = 'Non ci sono noleggi durante questo mese';
+            return view('staff', compact('errorMessage'));
+        }
+        else
+        {
+            return view('staff', ['carRentals' => $carRentals]);
+        }
+
     }
 
     public function updateOrDelete(Request $request)

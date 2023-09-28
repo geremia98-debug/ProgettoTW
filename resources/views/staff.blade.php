@@ -5,7 +5,7 @@
 
 @php
     $cars = \App\Models\Car::all();
-    $carRentals = \App\Models\Rental ::all();
+    $carRentals = \App\Models\Rental::all();
 @endphp
 
 <body>
@@ -141,6 +141,11 @@
     <button type="submit">Cerca</button>
 </form>
 
+@if(isset($errorMessage))
+<div class="alert alert-danger">
+    {{ $errorMessage }}
+</div>
+@else
 <table class="table">
     <thead>
         <tr>
@@ -163,6 +168,7 @@
         @endforeach
     </tbody>
 </table>
+@endif
 
 </body>
 

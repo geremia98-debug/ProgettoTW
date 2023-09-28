@@ -34,6 +34,16 @@ public function filtro(Request $request)
     session(['start_rent' => $startRent]);
     session(['end_rent' => $endRent]);
 
+    // Validazione delle date
+    $currentDate = now(); // Data odierna
+    $startRentDate = \Carbon\Carbon::createFromFormat('Y-m-d', $startRent);
+    $endRentDate = \Carbon\Carbon::createFromFormat('Y-m-d', $endRent);
+
+    if ($startRentDate->lessThanOrEqualTo($currentDate) || $endRentDate->lessThanOrEqualTo($currentDate)) {
+        $errorMessage = 'Le date di noleggio devono essere successive a quella odierna.';
+        return view('catalogo', compact('errorMessage'));
+    }
+
 
 
         // FILTRI TABELLA CAR_USER (DATE DISPONIBILI)
