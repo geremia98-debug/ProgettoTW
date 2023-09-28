@@ -1,10 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-@can('admin')
-
-
-
 @php
     $users = \App\Models\User::all();
     $cars = \App\Models\Car::all();
@@ -13,9 +9,15 @@
     $faqs = \App\Models\Faq::all();
 @endphp
 
+@cannot('client')
+
+
+@can('staff_admin')
+
 <body>
 
-    <h1>PANNELLO DI CONTROLLO ADMIN</h1>
+<h1>PANNELLO DI CONTROLLO</h1>
+
 <br>
 
 <h1>Inserimento Nuova Auto</h1>
@@ -171,9 +173,12 @@
 
 </body>
 
-
+@endcan
 
 <!-- ADMIN CODE -->
+@can('admin')
+
+
 
 <h1>Inserimento Nuovo Membro Staff</h1>
 
@@ -361,6 +366,7 @@
     </table>
 
     @endcan
+    @endcannot
 
     @endsection
 
