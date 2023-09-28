@@ -25,13 +25,12 @@
 
 
             @if (auth()->check())
+            <label>{{ Auth::user()->username }}</label>
             @if (Auth::user()->role === 'client')
-            <a href="{{ route('area-personale') }}" class="btn btn-primary">Area Personale</a>
-        @elseif (Auth::user()->role === 'staff')
-            <a href="{{ route('staffPanel') }}" class="btn btn-primary">Pannello Staff</a>
-        @elseif (Auth::user()->role === 'admin')
-            <a href="{{ route('adminPanel') }}" class="btn btn-primary">Pannello Admin</a>
-        @endif
+                <a href="{{ route('area-personale') }}" class="btn btn-primary">Area Personale</a>
+            @elseif (Auth::user()->role === 'staff' || Auth::user()->role === 'admin')
+                <a href="{{ route('adminPanel') }}" class="btn btn-primary">Pannello di Controllo</a>
+            @endif
                 <!-- Non mostro i pulsanti Registrati e Login -->
                 @else
 

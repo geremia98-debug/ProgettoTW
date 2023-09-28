@@ -22,7 +22,7 @@
 
 <h1>Inserimento Nuova Auto</h1>
 
-<form method="POST" action="{{ route('car.store.admin') }}">
+<form method="POST" action="{{ route('car.store') }}">
     @csrf
 
 <table>
@@ -95,7 +95,7 @@
             @endphp
             @foreach($cars as $car)
             <tr>
-                <form method="POST" action="{{ route('update_or_delete_admin') }}">
+                <form method="POST" action="{{ route('update_or_delete') }}">
                     @csrf
                     <td><input type="text" name="brand" value="{{ $car->brand }}"></td>
                     <td><input type="text" name="model" value="{{ $car->model }}"></td>
@@ -123,7 +123,7 @@
     <h1>Noleggi Auto per il Mese</h1>
 
 
-<form action="{{ route('rental_admin') }}" method="POST">
+<form action="{{ route('rental_month') }}" method="POST">
     @csrf
     <label for="month">Mese:</label>
     <select name="month" id="month">
