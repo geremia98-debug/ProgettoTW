@@ -7,7 +7,7 @@
         </div>
 
       <div >
-        <img id="banner"  src="{{ asset('build\assets\fano.png') }}" alt="Fano, Italy" class="home-image">
+        <img id="banner"  src="{{ asset('build\assets\fano.jpg') }}" alt="Fano, Italy" class="home-image">
       </div>
 
 
@@ -23,7 +23,7 @@
             <p>Telefono: 123-456-789</p>
             <p>Email: info@vagnoli.com</p>
         </div>
-        <img src="{{ asset('build\assets\geo.png') }}" alt="Location on Maps" class="maps-image">
+        <img src="{{ asset('build\assets\geo.jpg') }}" alt="Location on Maps" class="maps-image">
     </section>
 
     <section id="car-display">
