@@ -15,7 +15,6 @@ use App\Http\Controllers\RentalController;
 use App\Http\Controllers\FaqController;
 
 //route che del guest
-
 Route::get('/register', function() {
     return view('auth.register');
 })->name ('registrazione');
@@ -27,7 +26,6 @@ Route::post('/auto_selezionate', [CatalogoController::class, 'filtro'])->name('f
 
 
 // route dell'utente loggato
-
 Route::resource('/users', UserController::class);
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -51,7 +49,7 @@ Route::get('/admin-panel', function () {
 })->name('adminPanel');
 Route::post('/salva_auto', [CarController::class, 'store'])->name('car.store');
 Route::post('/update_delete', [CarController::class, 'updateOrDelete'])->name('update_or_delete');
-Route::post('/admin-panel', [CarController::class, 'getCarRentalsByMonth'])->name('rental_month');
+Route::post('/admin-panel', [RentalController::class, 'getCarRentalsByMonth'])->name('rental_month');
 Route::post('/salva_faq', [FaqController::class, 'store'])->name('faq.store');
 Route::get('/', [FaqController::class, 'index'])->name('faq.index');
 Route::post('/azione3', [FaqController::class, 'updateOrDeleteFaq'])->name('update_or_delete_faq');

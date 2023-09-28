@@ -63,12 +63,14 @@
                 <p>Posti: {{ $car->seats }}</p>
                 <p>Cilindrata: {{ $car->displacement }}</p>
                 <p>Prezzo: ${{ $car->price }} al giorno</p>
+                @cannot('staff_admin')
                 <!-- Mostra pulsante Prenota solo se l'utente è loggato, altrimenti mostra un messaggio. -->
                 @if (auth()->check())
                 <a href="{{ route('prenotaAuto', ['car_id' => $car->id]) }}" class="btn btn-primary">Prenota</a>
                 @else
                 <a class="btn btn-primary">Accedi per prenotare</a>
                 @endif
+                @endcannot
 
             </div>
             @endforeach
