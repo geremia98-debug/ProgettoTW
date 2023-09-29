@@ -34,14 +34,20 @@ public function filtro(Request $request)
         session(['start_rent' => $startRent]);
         session(['end_rent' => $endRent]);
 
+        if(session(['start_rent' => $startRent]) == null || session(['end_rent' => $endRent]) == null){
+            $errorMessage = 'Inserire le date di noleggio.';
+            return view('catalogo', compact('errorMessage'));
+        }
+
         // Validazione delle date
         $currentDate = now(); // Data odierna
         $startRentDate = \Carbon\Carbon::createFromFormat('Y-m-d', $startRent);
         $endRentDate = \Carbon\Carbon::createFromFormat('Y-m-d', $endRent);
 
+
         if ($startRentDate->lessThanOrEqualTo($currentDate) || $endRentDate->lessThanOrEqualTo($currentDate)) {
-        $errorMessage = 'Le date di noleggio devono essere successive a quella odierna.';
-        return view('catalogo', compact('errorMessage'));
+            $errorMessage = 'Le date di noleggio devono essere successive a quella odierna.';
+            return view('catalogo', compact('errorMessage'));
         }
 
 
