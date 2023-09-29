@@ -21,7 +21,7 @@ Route::get('/register', function() {
 Route::get('/chi-siamo', [ChiSiamoController::class, 'index']);
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/catalogo', [CatalogoController::class, 'catalogo'])->name('catalogo');
-Route::post('/auto-selezionate', [CatalogoController::class, 'filtro'])->name('filtro');
+Route::post('/catalogo', [CatalogoController::class, 'filtro'])->name('filtro');
 
 
 

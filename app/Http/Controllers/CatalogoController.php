@@ -34,7 +34,7 @@ public function filtro(Request $request)
         session(['start_rent' => $startRent]);
         session(['end_rent' => $endRent]);
 
-        if(session(['start_rent' => $startRent]) == null || session(['end_rent' => $endRent]) == null){
+        if(empty($startRent) || empty($endRent)){
             $errorMessage = 'Inserire le date di noleggio.';
             return view('catalogo', compact('errorMessage'));
         }
