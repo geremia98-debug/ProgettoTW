@@ -44,14 +44,16 @@ class RentalController extends Controller
                       ->whereMonth('car_user.end_rent', $month);
             })
             ->get();
-            //dd($carRentals);
+
             if (count($carRentals) === 0) {
                 $errorMessage = 'Non ci sono noleggi durante questo mese';
                 return view('adminPanel', compact('errorMessage'));
             }
             else
             {
-                return view('adminPanel', ['carRentals' => $carRentals]);
+                //dd($carRentals);
+                return view('adminPanel')->with('carRentals', $carRentals);
+
             }
 
         }
