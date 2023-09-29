@@ -11,6 +11,7 @@ class RentalController extends Controller
 
     public function store(Request $request)
     {
+
         $rental = new Rental();
         $user = auth()->user();
         $carId = $request->input('carId');
@@ -18,6 +19,7 @@ class RentalController extends Controller
         $rental->car_id = $carId;
         $rental->start_rent = session('start_rent');
         $rental->end_rent = session('end_rent');
+        dd($rental);
         $rental->save();
         return view('home');
 
