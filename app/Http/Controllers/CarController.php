@@ -43,7 +43,13 @@ class CarController extends Controller
             $car->description = $request->input('description');
             $car->price = $request->input('daily_price');
             $car->image = $imageName;
+
             $car->save();
+
+            if (!is_null($imageName)) {
+                $destinationPath = public_path() . '/images/cars';
+                $image->move($destinationPath, $imageName);
+            };
 
             return view('adminPanel');
         }

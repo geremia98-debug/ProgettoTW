@@ -57,7 +57,7 @@
         <div class="car-grid">
             @foreach ($cars as $car)
             <div class="car">
-                <img src="{{ asset('dist/' . $car->immagine) }}" alt="Auto">
+                <img class="car img" src="{{ asset('images/cars/' . $car->image) }}" alt="Auto">
                 <h2>{{ $car->brand }}</h2>
                 <p>Modello: {{ $car->model }}</p>
                 <p>Posti: {{ $car->seats }}</p>
