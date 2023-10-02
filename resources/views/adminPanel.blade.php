@@ -4,7 +4,7 @@
 @php
     $users = \App\Models\User::all();
     $cars = \App\Models\Car::all();
-    //$carRentals = \App\Models\Rental::all();
+    $carRentals = \App\Models\Rental::all();
     $rentalCounts = \App\Models\Rental::all();
     $faqs = \App\Models\Faq::all();
 @endphp
@@ -125,6 +125,7 @@
 
         <label for="month">Mese:</label>
         <select name="month" id="month">
+            <option value="">Inserire Mese</option>
             <option value="1">Gennaio</option>
             <option value="2">Febbraio</option>
             <option value="3">Marzo</option>
