@@ -24,25 +24,31 @@ class CatalogoController extends Controller
 
 
 public function filtro(Request $request)
-{
-    $startRent = $request->input('start_rent');
-    $endRent = $request->input('end_rent');
-    $minPrice = $request->input('min-price');
-    $maxPrice = $request->input('max-price');
-    $seats = $request->input('seats');
+    {
+        $startRent = $request->input('start_rent');
+        $endRent = $request->input('end_rent');
+        $minPrice = $request->input('min-price');
+        $maxPrice = $request->input('max-price');
+        $seats = $request->input('seats');
 
-    session(['start_rent' => $startRent]);
-    session(['end_rent' => $endRent]);
+        session(['start_rent' => $startRent]);
+        session(['end_rent' => $endRent]);
 
-    // Validazione delle date
-    $currentDate = now(); // Data odierna
-    $startRentDate = \Carbon\Carbon::createFromFormat('Y-m-d', $startRent);
-    $endRentDate = \Carbon\Carbon::createFromFormat('Y-m-d', $endRent);
+        if(empty($startRent) || empty($endRent)){
+            $errorMessage = 'Inserire le date di noleggio.';
+            return view('catalogo', compact('errorMessage'));
+        }
 
-    if ($startRentDate->lessThanOrEqualTo($currentDate) || $endRentDate->lessThanOrEqualTo($currentDate)) {
-        $errorMessage = 'Le date di noleggio devono essere successive a quella odierna.';
-        return view('catalogo', compact('errorMessage'));
-    }
+        // Validazione delle date
+        $currentDate = now(); // Data odierna
+        $startRentDate = \Carbon\Carbon::createFromFormat('Y-m-d', $startRent);
+        $endRentDate = \Carbon\Carbon::createFromFormat('Y-m-d', $endRent);
+
+
+        if ($startRentDate->lessThanOrEqualTo($currentDate) || $endRentDate->lessThanOrEqualTo($currentDate)) {
+            $errorMessage = 'Le date di noleggio devono essere successive a quella odierna.';
+            return view('catalogo', compact('errorMessage'));
+        }
 
 
 
@@ -79,11 +85,14 @@ public function filtro(Request $request)
         $cars = $cars->get();
 
 
-        // Passa i risultati alla vista
-        return view('catalogo', compact('cars'));
-
-
-    // Se non ci sono risultati per le auto, restituisci una vista vuota o un messaggio di nessun risultato (cambiare la logica attuale)
-    return view('home');
-}
+        if (count($cars) === 0) {
+            $errorMessage = 'Non ci sono vetture che soddisfano i requisiti.';
+            return view('catalogo', compact('errorMessage'));
+        }
+        else
+        {
+            // Passa i risultati alla vista
+            return view('catalogo', compact('cars'));
+        }
+    }
 }

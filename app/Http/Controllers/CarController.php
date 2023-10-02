@@ -12,39 +12,6 @@ use Illuminate\Support\Facades\Date;
 
 class CarController extends Controller
 {
-
-    // Dati Noleggi per Mese
-
-    public function getCarRentalsByMonth(Request $request)
-    {
-        $month = $request->input('month', date('m'));
-        $year = Date::now()->year;
-
-
-        $carRentals= DB::table('car_user')
-        ->join('cars', 'car_user.car_id', '=', 'cars.id')
-        ->join('users', 'car_user.user_id', '=', 'users.id')
-        ->select('cars.plate', 'cars.brand', 'cars.model', 'users.firstname', 'users.lastname')
-        ->whereYear('car_user.start_rent', $year)
-        ->whereMonth('car_user.start_rent', $month)
-        ->orWhere(function ($query) use ($year, $month) {
-            $query->whereYear('car_user.end_rent', $year)
-                  ->whereMonth('car_user.end_rent', $month);
-        })
-        ->get();
-
-        if (count($carRentals) === 0) {
-            $errorMessage = 'Non ci sono noleggi durante questo mese';
-            return view('adminPanel', compact('errorMessage'));
-        }
-        else
-        {
-            return view('adminPanel', ['carRentals' => $carRentals]);
-        }
-
-    }
-
-
     // Crea Auto
 
     public function store(Request $request)

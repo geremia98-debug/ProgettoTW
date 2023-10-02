@@ -11,6 +11,7 @@ class RentalController extends Controller
 
     public function store(Request $request)
     {
+
         $rental = new Rental();
         $user = auth()->user();
         $carId = $request->input('carId');
@@ -18,56 +19,56 @@ class RentalController extends Controller
         $rental->car_id = $carId;
         $rental->start_rent = session('start_rent');
         $rental->end_rent = session('end_rent');
+        dd($rental);
         $rental->save();
         return view('home');
 
     }
 
-    public function showRentalCounts()
-    {
-        // $currentYear = Date::now()->year;
+        // Dati Noleggi per Mese
 
-        // $result = DB::table('car_user')
-        //     ->select(DB::raw('MONTH(start_rent) as mese'), DB::raw('COUNT(*) as numero_auto_noleggiate'))
-        //     ->whereYear('start_rent', '=', $currentYear)
-        //     ->groupBy(DB::raw('MONTH(start_rent)'))
-        //     ->orderBy(DB::raw('MONTH(start_rent)'))
-        //     ->get();
+        public function getCarRentalsByMonth(Request $request)
+        {
+            $month = $request->input('month', date('m'));
+            $year = now()->year;
+
+
+            $carRentals= DB::table('car_user')
+            ->join('cars', 'car_user.car_id', '=', 'cars.id')
+            ->join('users', 'car_user.user_id', '=', 'users.id')
+            ->select('cars.plate', 'cars.brand', 'cars.model', 'users.firstname', 'users.lastname')
+            ->whereYear('car_user.start_rent', $year)
+            ->whereMonth('car_user.start_rent', $month)
+            ->orWhere(function ($query) use ($year, $month) {
+                $query->whereYear('car_user.end_rent', $year)
+                      ->whereMonth('car_user.end_rent', $month);
+            })
+            ->get();
+
+            if (count($carRentals) === 0) {
+                $errorMessage = 'Non ci sono noleggi durante questo mese';
+                return view('adminPanel', compact('errorMessage'));
+            }
+            else
+            {
+                //dd($carRentals);
+                return view('adminPanel')->with('carRentals', $carRentals);
+
+            }
+
         }
 
-
-
-//     public function show(Car $car)
-// {
-//     return view('cars.show', compact('car'))->with('success', 'Nuova vettura registrata con successo');
-// }
-
-// public function edit(Car $car)
-// {
-//     return view('cars.edit', compact('user'));
-// }
-
-// public function update(Request $request, Car $car)
-// {
-//     $car->plate = $request->input('plate');
-//     $car->brand = $request->input('marca');
-//     $car->model = $request->input('modello');
-//     $car->displacement = $request->input('cilindrata');
-//     $car->price = $request->input('prezzo');
-//     $car->seats = $request->input('posti');
-//     $car->description = $request->input('descrizione');
-
-//     $car->update();
-
-// }
-
-// public function destroy(Car $car)
-// {
-//     $car->delete();
-//     return redirect()->route('cars.index')->with([
-//         'success' => "La vettura {$car->brand} {$car->model} targata {$car->plate} è stata rimossa."
-//     ]);
-// }
-
+    public function showRentalCounts()
+    {
+        //$currentYear = Date::now()->year;
+        //      $result = DB::table('car_user')
+        //          ->select(DB::raw('MONTH(start_rent) as mese'), DB::raw('COUNT(*) as numero_auto_noleggiate'))
+        //          ->whereYear('start_rent', '=', $currentYear)
+        //          ->groupBy(DB::raw('MONTH(start_rent)'))
+        //          ->orderBy(DB::raw('MONTH(start_rent)'))
+        //        ->get();
+        //
+        //    return view('adminPanel', ['result' => $result]);
+    }//
 
 }

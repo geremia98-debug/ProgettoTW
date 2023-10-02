@@ -4,14 +4,12 @@
 @php
     $users = \App\Models\User::all();
     $cars = \App\Models\Car::all();
-    $carRentals = \App\Models\Rental::all();
+    //$carRentals = \App\Models\Rental::all();
     $rentalCounts = \App\Models\Rental::all();
     $faqs = \App\Models\Faq::all();
 @endphp
 
 @cannot('client')
-
-
 @can('staff_admin')
 
 <body>
@@ -122,60 +120,58 @@
 
     <h1>Noleggi Auto per il Mese</h1>
 
+    <form action="{{ route('rental_month')}}" method="POST">
+        @csrf
 
-<form action="{{ route('rental_month') }}" method="POST">
-    @csrf
-    <label for="month">Mese:</label>
-    <select name="month" id="month">
+        <label for="month">Mese:</label>
+        <select name="month" id="month">
+            <option value="1">Gennaio</option>
+            <option value="2">Febbraio</option>
+            <option value="3">Marzo</option>
+            <option value="4">Aprile</option>
+            <option value="5">Maggio</option>
+            <option value="6">Giugno</option>
+            <option value="7">Luglio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Settembre</option>
+            <option value="10">Ottobre</option>
+            <option value="11">Novembre</option>
+            <option value="12">Dicembre</option>
+        </select>
 
-        <option value="1">Gennaio</option>
-        <option value="2">Febbraio</option>
-        <option value="3">Marzo</option>
-        <option value="4">Aprile</option>
-        <option value="5">Maggio</option>
-        <option value="6">Giugno</option>
-        <option value="7">Luglio</option>
-        <option value="8">Agosto</option>
-        <option value="9">Settembre</option>
-        <option value="10">Ottobre</option>
-        <option value="11">Novembre</option>
-        <option value="12">Dicembre</option>
-    </select>
+        <button type="submit">Cerca</button>
+    </form>
 
-    <label for="year">Anno {{ now()->year }}</label>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Targa</th>
+                    <th>Marca</th>
+                    <th>Modello</th>
+                    <th>Nome Utente</th>
+                    <th>Cognome Utente</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($carRentals as $carRental)
 
+                <tr>
+                    <td>{{ $carRental->plate }}</td>
+                    <td>{{ $carRental->brand }}</td>
+                    <td>{{ $carRental->model }}</td>
+                    <td>{{ $carRental->firstname }}</td>
+                    <td>{{ $carRental->lastname }}</td>
+                </tr>
 
-    <button type="submit">Cerca</button>
-</form>
+                @endforeach
+            </tbody>
+        </table>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Marca</th>
-            <th>Modello</th>
-            <th>Targa</th>
-            <th>Nome Utente</th>
-            <th>Cognome Utente</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($carRentals as $carRental)
-        <tr>
-            <td>{{ $carRental->brand }}</td>
-            <td>{{ $carRental->model }}</td>
-            <td>{{ $carRental->plate }}</td>
-            <td>{{ $carRental->firstname }}</td>
-            <td>{{ $carRental->lastname }}</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-
-</body>
 
 @endcan
 
 <!-- ADMIN CODE -->
+
 @can('admin')
 
 
@@ -300,14 +296,15 @@
             </tr>
         </thead>
         <tbody>
+
             @php
-                $currentYear = Date::now()->year;
-                $result = DB::table('car_user')
-                    ->select(DB::raw('MONTH(start_rent) as mese'), DB::raw('COUNT(*) as numero_auto_noleggiate'))
-                    ->whereYear('start_rent', '=', $currentYear)
-                    ->groupBy(DB::raw('MONTH(start_rent)'))
-                    ->orderBy(DB::raw('MONTH(start_rent)'))
-                    ->get();
+            $currentYear = Date::now()->year;
+              $result = DB::table('car_user')
+                  ->select(DB::raw('MONTH(start_rent) as mese'), DB::raw('COUNT(*) as numero_auto_noleggiate'))
+                  ->whereYear('start_rent', '=', $currentYear)
+                  ->groupBy(DB::raw('MONTH(start_rent)'))
+                  ->orderBy(DB::raw('MONTH(start_rent)'))
+                ->get();
             @endphp
 
             @foreach ($result as $row)
@@ -367,6 +364,8 @@
 
     @endcan
     @endcannot
+
+</body>
 
     @endsection
 
