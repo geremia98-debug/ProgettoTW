@@ -19,7 +19,6 @@ class RentalController extends Controller
         $rental->car_id = $carId;
         $rental->start_rent = session('start_rent');
         $rental->end_rent = session('end_rent');
-        dd($rental);
         $rental->save();
         return view('home');
 
@@ -46,13 +45,12 @@ class RentalController extends Controller
             ->get();
 
             if (count($carRentals) === 0) {
-                $errorMessage = 'Non ci sono noleggi durante questo mese';
-                return view('adminPanel', compact('errorMessage'));
+                return view('adminPanel');
             }
             else
             {
                 //dd($carRentals);
-                return view('adminPanel')->with('carRentals', $carRentals);
+                return view('adminPanel')->with('carRentals', $carRentals = []);
 
             }
 
