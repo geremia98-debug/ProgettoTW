@@ -4,7 +4,7 @@
 @php
     $users = \App\Models\User::all();
     $cars = \App\Models\Car::all();
-    $carRentals = \App\Models\Rental::all();
+    // $carRentals = \App\Models\Rental::all();
     $rentalCounts = \App\Models\Rental::all();
     $faqs = \App\Models\Faq::all();
 @endphp
