@@ -23,8 +23,16 @@ class CarController extends Controller
                 'displacement' => 'required|integer',
                 'seats' => 'required|integer',
                 'description' => 'required',
-                'daily_price' => 'required|integer',
+                'daily_price' => 'required|integer'
+
             ]);
+
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = $image->getClientOriginalName();
+            } else {
+                $imageName = NULL;
+            }
 
             $car = new Car();
             $car->brand = $request->input('brand');
@@ -34,7 +42,7 @@ class CarController extends Controller
             $car->seats = $request->input('seats');
             $car->description = $request->input('description');
             $car->price = $request->input('daily_price');
-
+            $car->image = $imageName;
             $car->save();
 
             return view('adminPanel');

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedMediumInteger('price');
             $table->unsignedSmallInteger('seats')->default(5);
             $table->text('description')->nullable();
-
+            $table->text('image')->nullable();
             // Aggiungere riferimento per la foto
 
 

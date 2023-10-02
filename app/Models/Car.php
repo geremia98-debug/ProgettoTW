@@ -19,7 +19,8 @@ class Car extends Model
         'price',
         'displacement',
         'plate',
-        'description'
+        'description',
+        'image'
     ];
 
     public function users()

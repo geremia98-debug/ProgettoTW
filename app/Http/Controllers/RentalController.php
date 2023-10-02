@@ -45,7 +45,7 @@ class RentalController extends Controller
             ->get();
 
             if (count($carRentals) === 0) {
-                return view('adminPanel')->with('carRentals', $carRentals = []);
+                return view('adminPanel')->with('carRentals', $carRentals);
             }
             else
             {

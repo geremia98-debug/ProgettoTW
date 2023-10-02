@@ -4,7 +4,7 @@
 @php
     $users = \App\Models\User::all();
     $cars = \App\Models\Car::all();
-    // $carRentals = \App\Models\Rental::all();
+    $carRentals = \App\Models\Rental::all();
     $rentalCounts = \App\Models\Rental::all();
     $faqs = \App\Models\Faq::all();
 @endphp
@@ -20,7 +20,7 @@
 
 <h1>Inserimento Nuova Auto</h1>
 
-<form method="POST" action="{{ route('car.store') }}">
+<form method="POST" action="{{ route('car.store') }}" enctype="multipart/form-data">
     @csrf
 
 <table>
@@ -33,7 +33,8 @@
             <th>Numero Posti</th>
             <th>Descrizione</th>
             <th>Prezzo</th>
-            <th>Azioni</th>
+            <th>File Immagine</th>
+            <th>Azione</th>
         </tr>
     </thead>
     <tbody>
@@ -63,6 +64,10 @@
         </td>
         <td>
             <input type="number" name="daily_price" required><br><br>
+        </td>
+        <td>
+            <!-- Campo di input per l'immagine -->
+            <input type="file" name="image" accept=".jpg, .jpeg, .png, .gif" required><br><br>
         </td>
         <td>
             <button type="submit">Salva Nuova Auto</button>
