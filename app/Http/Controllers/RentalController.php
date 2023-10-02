@@ -49,8 +49,11 @@ class RentalController extends Controller
             }
             else
             {
+
                 // dd($carRentals);
+
                 return view('adminPanel')->with('carRentals', $carRentals);
+
 
             }
 
