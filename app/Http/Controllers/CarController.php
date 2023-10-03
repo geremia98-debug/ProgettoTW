@@ -65,6 +65,15 @@ class CarController extends Controller
             $action = $request->input('car_button');
 
             if ($action === 'update_car') {
+
+                if ($request->hasFile('new_image')) {
+                    $image = $request->file('new_image');
+                    $imageName = $image->getClientOriginalName();
+                    $destinationPath = public_path() . '/images/cars';
+                    $image->move($destinationPath, $imageName);
+                    $car->image = $imageName; // Aggiorna il campo image nel database solo se è stato caricato un nuovo file
+                }
+
                 $car->plate = $request->input('plate');
                 $car->brand = $request->input('brand');
                 $car->model = $request->input('model');
@@ -72,7 +81,9 @@ class CarController extends Controller
                 $car->price = $request->input('price');
                 $car->seats = $request->input('seats');
                 $car->description = $request->input('description');
-                $car->update();
+
+                $car->save();
+
                 return redirect()->route('adminPanel')->with([
                     'success' => "La vettura è stata aggiornata."
                 ]);

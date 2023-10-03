@@ -89,6 +89,7 @@
                 <th>Numero Posti</th>
                 <th>Descrizione</th>
                 <th>Prezzo</th>
+                <th>File Immagine</th>
                 <th>Azioni</th>
             </tr>
         </thead>
@@ -98,7 +99,7 @@
             @endphp
             @foreach($cars as $car)
             <tr>
-                <form method="POST" action="{{ route('update_or_delete') }}">
+                <form method="POST" action="{{ route('update_or_delete') }}" enctype="multipart/form-data">
                     @csrf
                     <td><input type="text" name="brand" value="{{ $car->brand }}"></td>
                     <td><input type="text" name="model" value="{{ $car->model }}"></td>
@@ -107,6 +108,14 @@
                     <td><input type="text" name="seats" value="{{ $car->seats }}"></td>
                     <td><input type="text" name="description" value="{{ $car->description }}"></td>
                     <td><input type="text" name="price" placeholder="{{ $car->price }}" value="{{ $car->price }}"></td>
+                    <td>
+                        @if ($car->image)
+                            <input type="text" name="image" value="{{ $car->image }}" placeholder="Nome del file" readonly>
+                            <input type="file" name="new_image" accept=".jpg, .jpeg, .png, .gif">
+                        @else
+                            <input type="file" name="image" accept=".jpg, .jpeg, .png, .gif" required>
+                        @endif
+                    </td>
                     <input type="hidden" name="car_id" value="{{ $car->id }}">
                     <td>
                         <button type="submit" name="car_button" value="update_car">Modifica</button>
