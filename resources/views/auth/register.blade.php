@@ -46,18 +46,18 @@
             <x-input-label for="occupazione" :value="__('Occupazione')" />
             <select id="occupazione" name="occupazione">
                 <option value="Studente">Studente</option>
-                <option value="Cassiere di supermercato">Cassiere di supermercato</option>
-                <option value="Infermiere ospedaliero">Infermiere ospedaliero</option>
-                <option value="Muratore edile">Muratore edile</option>
-                <option value="Insegnante elementare">Insegnante elementare</option>
-                <option value="Cuoco ristorante">Cuoco ristorante</option>
+                <option value="Cassiere">Cassiere</option>
+                <option value="Infermiere">Infermiere</option>
+                <option value="Muratore">Muratore</option>
+                <option value="Insegnante">Insegnante</option>
+                <option value="Cuoco">Cuoco</option>
                 <option value="Camionista">Camionista</option>
-                <option value="Segretario amministrativo">Segretario amministrativo</option>
-                <option value="Addetto risorse umane">Addetto risorse umane</option>
+                <option value="Segretario">Segretario</option>
+                <option value="Addetto HR">Addetto HR</option>
                 <option value="Elettricista">Elettricista</option>
-                <option value="Commesso di negozio">Commesso di negozio</option>
+                <option value="Commesso">Commesso</option>
                 <option value="Disoccupato">Disoccupato</option>
-                <option value="altro">Altro</option>
+                <option value="Altro">Altro</option>
             </select>
         </div>
         </select><br>

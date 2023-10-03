@@ -53,16 +53,16 @@
             @php
                 $jobOptions = [
                 "Studente",
-                "Cassiere di supermercato",
-                "Infermiere ospedaliero",
-                "Muratore edile",
-                "Insegnante elementare",
-                "Cuoco ristorante",
+                "Cassiere",
+                "Infermiere",
+                "Muratore",
+                "Insegnante",
+                "Cuoco",
                 "Camionista",
-                "Segretario amministrativo",
-                "Addetto risorse umane",
+                "Segretario",
+                "Addetto HR",
                 "Elettricista",
-                "Commesso di negozio",
+                "Commesso",
                 "Disoccupato",
                 "Altro",
             ];
@@ -70,19 +70,6 @@
 
             <x-input-label for="job" :value="__('Lavoro')" />
             <select id="job" name="job" class="mt-1 block w-full" required autofocus>
-                <option value="Studente">Studente</option>
-                <option value="Cassiere di supermercato">Cassiere di supermercato</option>
-                <option value="Infermiere ospedaliero">Infermiere ospedaliero</option>
-                <option value="Muratore edile">Muratore edile</option>
-                <option value="Insegnante elementare">Insegnante elementare</option>
-                <option value="Cuoco ristorante">Cuoco ristorante</option>
-                <option value="Camionista">Camionista</option>
-                <option value="Segretario amministrativo">Segretario amministrativo</option>
-                <option value="Addetto risorse umane">Addetto risorse umane</option>
-                <option value="Elettricista">Elettricista</option>
-                <option value="Commesso di negozio">Commesso di negozio</option>
-                <option value="Disoccupato">Disoccupato</option>
-                <option value="altro">Altro</option>
                 @foreach($jobOptions as $option)
                     <option value="{{ $option }}" @if(old('job', $user->job) === $option) selected @endif>{{ $option }}</option>
                 @endforeach
