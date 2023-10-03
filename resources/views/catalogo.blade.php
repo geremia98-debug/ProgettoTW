@@ -7,11 +7,10 @@
                 @csrf
 
                 <label for="start_rent">Inizio Noleggio:</label>
-                <input type="date" id="start_rent" name="start_rent">
-
+                <input type="date" id="start_rent" name="start_rent" onkeydown="return false" onpaste="return false">
 
                 <label for="end_rent">Fine Noleggio:</label>
-                <input type="date" id="end_rent" name="end_rent">
+                <input type="date" id="end_rent" name="end_rent" onkeydown="return false" onpaste="return false" >
 
                 <label for="min-price">Prezzo Minimo:</label>
                 <select id="min-price" name="min-price">

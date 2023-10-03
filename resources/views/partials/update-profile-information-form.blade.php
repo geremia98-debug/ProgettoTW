@@ -44,7 +44,7 @@
 
         <div>
             <x-input-label for="birthdate" :value="__('Data di Nascita')" />
-            <x-text-input id="birthdate" name="birthdate" type="date" class="mt-1 block w-full" :value="old('birthdate', $user->birthdate)" required autofocus autocomplete="birthdate" />
+            <x-text-input id="birthdate" name="birthdate" type="date" class="mt-1 block w-full" :value="old('birthdate', $user->birthdate)" required autofocus autocomplete="birthdate" onkeydown="return false" onpaste="return false"/>
             <x-input-error class="mt-2" :messages="$errors->get('birthdate')" />
         </div>
 

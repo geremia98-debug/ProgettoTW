@@ -34,7 +34,7 @@
 
         <div class="mt-4">
             <x-input-label for="data_nascita" :value="__('Data di nascita')" />
-            <x-text-input id="data_nascita" class="block mt-1 w-full" type="date" name="data_nascita" required />
+            <x-text-input id="data_nascita" class="block mt-1 w-full" type="date" name="data_nascita" required onkeydown="return false" onpaste="return false"/>
         </div>
 
         <div class="mt-4">
