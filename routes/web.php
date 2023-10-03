@@ -49,7 +49,7 @@ Route::get('/admin-panel', function () {
 })->name('adminPanel');
 Route::post('/salva_auto', [CarController::class, 'store'])->name('car.store');
 Route::post('/update_delete', [CarController::class, 'updateOrDelete'])->name('update_or_delete');
-Route::post('/admin-panel', [RentalController::class, 'getCarRentalsByMonth'])->name('rental_month');
+Route::post('/noleggi-mese', [RentalController::class, 'getCarRentalsByMonth'])->name('rental_month');
 //Route::post('/noleggi-mese', [RentalController::class, 'getCarRentalsByMonth'])->name('rental_month_query');
 Route::post('/salva_faq', [FaqController::class, 'store'])->name('faq.store');
 Route::get('/', [FaqController::class, 'index'])->name('faq.index');

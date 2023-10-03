@@ -4,7 +4,7 @@
 @php
     $users = \App\Models\User::all();
     $cars = \App\Models\Car::all();
-    $carRentals = \App\Models\Rental::all();
+    //$carRentals = \App\Models\Rental::all();
     $rentalCounts = \App\Models\Rental::all();
     $faqs = \App\Models\Faq::all();
 @endphp
@@ -168,6 +168,7 @@
                 </tr>
             </thead>
             <tbody>
+                @if(isset($carRentals) && count($carRentals) > 0)
                 @foreach ($carRentals as $carRental)
 
                 <tr>
@@ -179,6 +180,11 @@
                 </tr>
 
                 @endforeach
+                @else
+                <tr>
+                    <td colspan="5">Nessun noleggio disponibile per il mese selezionato.</td>
+                </tr>
+            @endif
             </tbody>
         </table>
 
