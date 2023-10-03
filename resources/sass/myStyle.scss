@@ -203,3 +203,38 @@ button:hover {
     display: block; /* Imposta il bottone come blocco per centrarlo */
     margin: 0 auto; /* Centra il bottone orizzontalmente */
 }
+
+
+// CSS VAGNO BRUTTO
+
+// 3 elementi navbar home/catalogo/chisiamo
+.nav-link {
+    display: inline-block;
+    margin-right: 10px; /* Aggiungi margine a destra tra gli elementi */
+    padding: 10px 20px; /* Imposta il padding come preferisci */
+    border-radius: 20px; /* Bordo smussato */
+    background-color: #007bff; /* Colore di sfondo blu */
+    color: #fff; /* Colore del testo bianco */
+    text-decoration: none; /* Rimuove la sottolineatura dei link */
+    transition: background-color 0.2s ease; /* Transizione di colore al passaggio del mouse */
+}
+
+.nav-link:hover {
+    background-color: darkblue; /* Cambia il colore al passaggio del mouse */
+}
+
+//Titolo su navbar
+.navbar-brand{
+    font-size: 24px; /* Imposta la dimensione del carattere */
+    font-weight: bold; /* Imposta lo spessore del carattere a grassetto */
+}
+
+
+// Nome utente loggato navbar
+.logged-user-label{
+    padding-right: 10px; /* Distanziamento a destra */
+    font-size: 16px; /* Dimensione del carattere */
+    color: #333; /* Colore del testo */
+}
+
+
