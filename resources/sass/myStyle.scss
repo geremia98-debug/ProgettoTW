@@ -39,7 +39,7 @@
 
     .car-grid {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(4, 1fr);
                 gap: 20px;
             }
 
@@ -49,10 +49,16 @@
                 background-color: #fff;
             }
 
-    .car img {
-                max-width: 100%;
-                height: auto;
+    // .car img {
+    //             max-width: 100%;
+    //             height: auto;
+    //         }
+
+            .car img {
+                width: 300px; /* Larghezza desiderata */
+                height: 200px; /* Altezza desiderata */
             }
+
     .icone-social {
         font-size: 5em;
     }
@@ -186,4 +192,15 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+.btn_rental{
+    background-color: green; /* Colore di sfondo verde */
+    color: white; /* Testo bianco */
+    padding: 10px 20px; /* Spaziatura interna */
+    border: none; /* Nessun bordo */
+    border-radius: 5px; /* Bordi arrotondati */
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+    display: block; /* Imposta il bottone come blocco per centrarlo */
+    margin: 0 auto; /* Centra il bottone orizzontalmente */
 }

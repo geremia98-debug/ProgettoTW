@@ -67,7 +67,7 @@
                     @cannot('staff_admin')
                     <!-- Mostra pulsante Prenota solo se l'utente è loggato, altrimenti mostra un messaggio. -->
                     @if (auth()->check())
-                    <a href="{{ route('prenotaAuto', ['car_id' => $car->id]) }}" class="btn btn-primary">Prenota</a>
+                    <a href="{{ route('prenotaAuto', ['car_id' => $car->id]) }}" class="btn btn_rental">Prenota</a>
                     @else
                     <a class="btn btn-primary">Accedi per prenotare</a>
                     @endif
