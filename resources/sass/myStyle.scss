@@ -37,26 +37,25 @@
                 padding: 20px;
             }
 
+            // css per la griglia delle auto nel catalogo
+
     .car-grid {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 gap: 20px;
             }
 
+            // css per la casella singola di un'auto nel catalogo
     .car {
-                border: 1px solid #ccc;
-                padding: 10px;
-                background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
             }
+            // css per l'immagine dell'auto nel catalogo
 
-    // .car img {
-    //             max-width: 100%;
-    //             height: auto;
-    //         }
-
-            .car img {
-                width: 300px; /* Larghezza desiderata */
-                height: 200px; /* Altezza desiderata */
+    .car img {
+            width: 300px; /* Larghezza desiderata */
+            height: 200px; /* Altezza desiderata */
             }
 
     .icone-social {
