@@ -63,8 +63,10 @@
     }
 
     .home-image {
-        max-width: 50%;
-        height: auto;
+        display: block;
+        margin: 0 auto; /* Centro l'immagine orizzontalmente */
+        max-width: 50%;  /* Larghezza massima del 50% della pagina */
+        height: auto;    /* L'altezza si adatta proporzionalmente alla larghezza */
     }
 
 
@@ -237,4 +239,38 @@ button:hover {
     color: #333; /* Colore del testo */
 }
 
+//Pagina login
 
+form.login-form {
+    max-width: 400px; /* Larghezza massima del form */
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #000;
+  }
+
+  /* Altri stili specifici, se necessario */
+  form.login-form input[type="text"],
+  form.login-form input[type="password"] {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+  }
+
+  form.login-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  form.login-form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+
+.home-title {
+    font-size: 24px; /* Imposta la dimensione del carattere */
+    font-weight: bold; /* Imposta lo spessore del carattere a grassetto */
+}

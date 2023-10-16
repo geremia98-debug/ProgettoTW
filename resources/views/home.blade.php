@@ -2,8 +2,8 @@
 @section('content')
 <body>
     <div id="home">
-        <div class="d-flex justify-content-center mt-4">
-          <h1>Vagnoli - Noleggio Auto</h1>
+        <div class="home-title d-flex justify-content-center mt-6 font-bold">
+          <h1>Noleggio Auto Vagnoli</h1>
         </div>
 
       <div >
@@ -25,63 +25,6 @@
         </div>
         <img src="{{ asset('build\assets\geo.jpg') }}" alt="Location on Maps" class="maps-image">
     </section>
-
-    <section id="car-display">
-
-
-
-        <div class="container text-center grid">
-          <div class="row">
-            <div class="col-sm-6 col-md-3">
-
-              <div class="card" style="width: 18rem;">
-              <img src="dist/maserati.jpg" class="card-img-top" alt="auto-test">
-              <div class="card-body">
-                <h5 class="card-title">Un'auto</h5>
-                <p class="card-text">Auto incredibile prezzo.</p>
-                <a href="#" class="btn btn-primary">Vedi</a>
-              </div>
-            </div>
-
-          </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="dist/ferrari enzo.jpg" class="card-img-top" alt="auto-test">
-                <div class="card-body">
-                  <h5 class="card-title">Un'auto</h5>
-                  <p class="card-text">Auto incredibile prezzo.</p>
-                  <a href="#" class="btn btn-primary">Vedi</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="dist/a3.jpg" class="card-img-top" alt="auto-test">
-                <div class="card-body">
-                  <h5 class="card-title">Un'auto</h5>
-                  <p class="card-text">Auto incredibile prezzo.</p>
-                  <a href="#" class="btn btn-primary">Vedi</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src="assets/40d66013-021d-408a-9c71-a20ebf3583c1_fiat-panda-750-iscritta-asi-1986.jpg" class="card-img-top" alt="auto-test">
-                <div class="card-body">
-                  <h5 class="card-title">Un'auto</h5>
-                  <p class="card-text">Auto incredibile prezzo.</p>
-                  <a href="#" class="btn btn-primary">Vedi</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-    </section>
-
-
-
 
 
     <div class="d-flex justify-content-center my-4">

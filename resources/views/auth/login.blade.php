@@ -19,7 +19,7 @@
     <!-- Inserisci il titolo "Noleggio Vagnoli" -->
     <h2 class="text-2xl font-bold text-center mb-4">Noleggio Vagnoli</h2>
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" class="login-form">
         @csrf
 
         <div>

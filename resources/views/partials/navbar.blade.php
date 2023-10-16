@@ -17,7 +17,7 @@
               <a class="nav-link" href="/catalogo">Catalogo Auto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/chi-siamo">chiSiamo</a>
+              <a class="nav-link" href="/chi-siamo">Chi Siamo</a>
             </li>
           </ul>
 
@@ -25,13 +25,16 @@
 
 
             @if (auth()->check())
-            <label class="logged-user-label">{{ Auth::user()->username }}</label>
-            @if (Auth::user()->role === 'client')
-                <a href="{{ route('area-personale') }}" class="btn btn-primary">Area Personale</a>
-            @elseif (Auth::user()->role === 'staff' || Auth::user()->role === 'admin')
-                <a href="{{ route('adminPanel') }}" class="btn btn-primary">Pannello di Controllo</a>
-            @endif
-                <!-- Non mostro i pulsanti Registrati e Login -->
+                <label class="logged-user-label">{{ Auth::user()->username }}</label>
+                @if (Auth::user()->role === 'client')
+                    <a href="{{ route('area-personale') }}" class="btn btn-primary">Area Personale</a>
+                @elseif (Auth::user()->role === 'staff' || Auth::user()->role === 'admin')
+                    <a href="{{ route('adminPanel') }}" class="btn btn-primary">Pannello di Controllo</a>
+                @endif
+                    <form method="POST" action="/logout">
+                        @csrf
+                        <button type="submit" class="btn btn-logout">Logout</button>
+                    </form>
                 @else
 
                 <button onclick="window.location.href='{{ url('/register') }}'" class="btn btn-primary">Registrati</button>
@@ -40,10 +43,7 @@
 
             @endif
 
-            <form method="POST" action="/logout">
-                @csrf
-                <button type="submit" class="btn btn-logout">Logout</button>
-            </form>
+
             {{-- <button href="/logout" class="btn btn-logout">Logout</button> --}}
 
         </div>
