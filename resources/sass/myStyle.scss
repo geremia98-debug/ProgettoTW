@@ -27,7 +27,7 @@
 body {
         font-family: Arial, sans-serif;
         margin: 0;
-        padding: 0;
+        padding-inline: 80px;
         background-color: #f4f4f4;
 }
 
@@ -66,7 +66,15 @@ body {
         display: block;
         margin: 0 auto; /* Centro l'immagine orizzontalmente */
         max-width: 50%;  /* Larghezza massima del 50% della pagina */
-        height: auto;    /* L'altezza si adatta proporzionalmente alla larghezza */
+        height: 500px;
+        animation: 6s infinite photochange;
+
+    }
+
+    @keyframes photochange {
+        0%{opacity: 1;}
+        50%{opacity: 0;}
+        100%{opacity: 1;}
     }
 
 
