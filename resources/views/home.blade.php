@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" type="text/css" href="public/css/myStyle.css">
 <body>
     <div id="home">
         <div class="d-flex justify-content-center mt-4">
-          <h1>Vagnoli - Noleggio Auto</h1>
+          <h1><b>Vagnoli - Noleggio Auto</b></h1>
         </div>
 
       <div >
@@ -109,65 +110,6 @@
         </div>
         @endforeach
     </div>
-
-
-
-
-
-
-
-
-
-
-
-<!--
-    <div class="d-flex justify-content-center my-4">
-      <h2>Domande frequenti</h2>
-    </div>
-
-
-    <div class="accordion" id="accordionExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <strong> Come posso prenotare un'auto?</strong>
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            Prenotare un'auto con Vagnoli è semplice. Puoi farlo online tramite il nostro sito web o chiamando il nostro servizio clienti al numero fornito su questa pagina.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            <strong>Quali documenti devo presentare al momento del ritiro dell'auto?</strong>
-          </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            Al momento del ritiro dell'auto, dovrai presentare una carta di credito valida, la tua patente di guida e un documento d'identità.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            <strong>Posso prenotare un veicolo se ho meno di 25 anni?</strong>
-          </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            Certo, sopra i 14 anni puoi prenotare qualsiasi veicolo tu voglia.
-          </div>
-        </div>
-      </div>
-    </div>
-      </div>
-
-    -->
-
     </body>
 
 @endsection
