@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" type="text/css" href="public/css/myStyle.css">
     <body>
         <div class="filter-menu">
             <h3>Filtri</h3>
@@ -23,7 +24,7 @@
                 </select>
 
                 <label for="max-price">Prezzo Massimo:</label>
-                <select id="max-price" name="max-price">
+                <select id="max-price" name="max-price" class="custom-select">
                     <option value="9999">Nessun filtro</option>
                     <option value="50">50 euro</option>
                     <option value="100">100 euro</option>
