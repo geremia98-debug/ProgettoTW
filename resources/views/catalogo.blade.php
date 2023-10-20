@@ -3,18 +3,22 @@
 <link rel="stylesheet" type="text/css" href="public/css/myStyle.css">
     <body>
         <div class="filter-menu">
-            <h3>Filtri</h3>
+            <label class="filter-title">Filtri</label>
             <form id="filter-form" method="POST" action="{{ route('filtro') }}">
                 @csrf
 
-                <label for="start_rent">Inizio Noleggio:</label>
-                <input type="date" id="start_rent" name="start_rent" onkeydown="return false" onpaste="return false">
+                <label for="start_rent" class="filter-label">Inizio Noleggio:</label>
+                <div class="input-container">
+                    <input type="date" id="start_rent" name="start_rent" onkeydown="return false" onpaste="return false">
+                </div>
 
-                <label for="end_rent">Fine Noleggio:</label>
-                <input type="date" id="end_rent" name="end_rent" onkeydown="return false" onpaste="return false" >
+                <label for="end_rent" class="filter-label">Fine Noleggio:</label>
+                <div class="input-container">
+                <input type="date" id="end_rent" name="end_rent"  onkeydown="return false" onpaste="return false" >
+                </div>
 
-                <label for="min-price">Prezzo Minimo:</label>
-                <select id="min-price" name="min-price">
+                <label for="min-price" class="filter-label">Prezzo Minimo:</label>
+                <select id="min-price" name="min-price" class="fixed-width-select">
                     <option value="0">Nessun filtro</option>
                     <option value="0">0 euro</option>
                     <option value="50">50 euro</option>
@@ -23,8 +27,8 @@
                     <option value="200">200 euro</option>
                 </select>
 
-                <label for="max-price">Prezzo Massimo:</label>
-                <select id="max-price" name="max-price" class="custom-select">
+                <label for="max-price" class="filter-label">Prezzo Massimo:</label>
+                <select id="max-price" name="max-price" class="fixed-width-select">
                     <option value="9999">Nessun filtro</option>
                     <option value="50">50 euro</option>
                     <option value="100">100 euro</option>
@@ -33,8 +37,8 @@
                     <option value="9999">Più di 200 euro</option>
                 </select>
 
-                <label for="seats-filter">Posti Disponibili:</label>
-                <select id="seats-filter" name="seats">
+                <label for="seats-filter" class="filter-label">Posti Disponibili:</label>
+                <select id="seats-filter" name="seats" class="fixed-width-select">
                     <option value="">Tutti i posti</option>
                     <option value="2">2</option>
                     <option value="4">4</option>
@@ -43,7 +47,7 @@
                     <option value="9">9</option>
                 </select>
 
-                <button id="filter-button" type="submit" class="btn btn-primary">Filtra</button>
+                <button id="filter-button" type="submit" class="btn filter-btn">Filtra</button>
             </form>
         </div>
 

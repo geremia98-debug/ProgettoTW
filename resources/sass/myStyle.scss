@@ -292,6 +292,34 @@ form.login-form {
     background-color: #0056b3;
   }
 
+//pagina di registrazione
+form.register-form {
+    max-width: 400px; /* Larghezza massima del form */
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #000;
+  }
+  form.register-form input[type="text"],
+  form.register-form input[type="password"],
+  form.register-form input[type="date"],
+  form.register-form select {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+  }
+  form.register-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  form.register-form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
 
 .home-title {
     font-size: 24px; /* Imposta la dimensione del carattere */
@@ -301,4 +329,76 @@ form.login-form {
 .custom-select {
     width: 15px;
 }
+// nome dei filtri
+.filter-label {
+    font-size: 24px; /* Regola la dimensione del testo a tuo piacimento */
+    text-align: center; /* Centra il testo orizzontalmente */
+    display: block; /* Per far sì che il label occupi l'intera larghezza del suo contenitore */
+    margin: 0 auto; /* Centra il label orizzontalmente rispetto al suo contenitore */
+  }
+// larghezza tendina filtri del catalogo
+.fixed-width-select {
+    width: 150px; /* Imposta la larghezza desiderata */
+}
+// bottone filtra
+.filter-btn {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 50%; /* Imposta la larghezza al 50% */
+    display: block; /* Per far sì che il bottone occupi l'intera larghezza del suo contenitore */
+    margin: 0 auto; /* Centra il bottone orizzontalmente */
+}
+// titolo chi siamo
+.welcome-header {
+    font-size: 36px; /* Regola la dimensione del testo a tuo piacimento */
+    color: red; /* Imposta il colore del testo a rosso */
+    text-align: center; /* Centra il testo orizzontalmente */
+}
+//titolo filtri
+.filter-title {
+    color: red;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+}
+//filtri allineati
+.input-container {
+    text-align: center; /* Centra gli elementi all'interno del container orizzontalmente */
+}
+//info della home
+.home-info {
+    font-weight: bold; /* Testo in grassetto */
+    font-size: 1.2em; /* Dimensione del carattere leggermente più grande (puoi regolare il valore a tuo piacimento) */
+}
+
+body.register-full {
+    display: flex;
+    justify-content: center; /* Centro orizzontalmente */
+    align-items: center; /* Centro verticalmente */
+    height: 100vh; /* Assicura che il body occupi l'intera altezza della viewport */
+    margin: 0; /* Rimuovi i margini predefiniti del body */
+  }
+  body.login-full {
+    display: flex;
+    justify-content: center; /* Centro orizzontalmente */
+    align-items: center; /* Centro verticalmente */
+    height: 100vh; /* Assicura che il body occupi l'intera altezza della viewport */
+    margin: 0; /* Rimuovi i margini predefiniti del body */
+  }
+.login-title{
+  font-size: 2rem; /* Equivalente a text-2xl */
+  font-weight: bold; /* Equivalente a font-bold */
+  text-align: center; /* Equivalente a text-center */
+  margin-bottom: 1rem; /* Equivalente a mb-4 */
+}
+
+
+
+
+
+
+
 

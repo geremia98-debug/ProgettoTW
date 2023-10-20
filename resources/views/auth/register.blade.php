@@ -14,9 +14,9 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    <title>Registrazione</title>
+    {{-- <title>Registrazione</title> --}}
 </head>
-<body>
+<body class="register-full">
     <h1 class="register-title">Registrazione</h1>
 
     <form class="register-form" method="POST" action="{{ route('users.store') }}">

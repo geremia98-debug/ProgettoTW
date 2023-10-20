@@ -16,9 +16,8 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 </head>
-<body>
-    <!-- Inserisci il titolo "Noleggio Vagnoli" -->
-    <h2 class="text-2xl font-bold text-center mb-4">Noleggio Vagnoli</h2>
+<body class="login-full">
+    <label class="login-title">Noleggio Vagnoli</label>
 
     <form method="POST" action="{{ route('login') }}" class="login-form">
         @csrf
