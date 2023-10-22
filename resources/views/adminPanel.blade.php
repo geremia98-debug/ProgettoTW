@@ -14,12 +14,12 @@
 
 <body>
 
-<h1>PANNELLO DI CONTROLLO</h1>
+    <h1 style="text-align: center; color: red; font-weight: bold;">PANNELLO DI CONTROLLO</h1>
+
 
 <br>
 
-<h1>Inserimento Nuova Auto</h1>
-
+<h1 style="margin-bottom: 20px;"> Inserimento Nuova Auto</h1>
 <form method="POST" action="{{ route('car.store') }}" enctype="multipart/form-data">
     @csrf
 
@@ -77,7 +77,9 @@
 </table>
 </form>
 
-<h1>Tabella Macchine</h1>
+<br>
+
+<h1 style="margin-bottom: 20px;">Tabella Macchine</h1>
 
     <table>
         <thead>
@@ -127,12 +129,9 @@
         </tbody>
     </table>
 
+    <br>
 
-
-
-
-
-    <h1>Noleggi Auto per il Mese</h1>
+    <h1 style="margin-bottom: 20px;">Noleggi Auto per il Mese</h1>
 
     <form action="{{ route('rental_month')}}" method="POST">
         @csrf
@@ -156,6 +155,8 @@
 
         <button type="submit">Cerca</button>
     </form>
+
+    <br>
 
         <table class="table">
             <thead>
@@ -194,10 +195,10 @@
 <!-- ADMIN CODE -->
 
 @can('admin')
+<br>
 
 
-
-<h1>Inserimento Nuovo Membro Staff</h1>
+<h1 style="margin-bottom: 20px;">Inserimento Nuovo Membro Staff</h1>
 
 <form method="POST" action="{{ route('staff.store') }}">
     @csrf
@@ -237,7 +238,9 @@
 </table>
 </form>
 
-<h1>Tabella Staffer</h1>
+<br>
+
+<h1 style="margin-bottom: 20px;">Tabella Staffer</h1>
 
     <table>
         <thead>
@@ -273,7 +276,9 @@
         </tbody>
     </table>
 
-    <h1>Tabella Cancellazione Clienti</h1>
+    <br>
+
+    <h1 style="margin-bottom: 20px;">Tabella Cancellazione Clienti</h1>
 
     <table>
         <thead>
@@ -307,7 +312,9 @@
         </tbody>
     </table>
 
-    <h1>Prospetto Noleggi Mensili</h1>
+    <br>
+
+    <h1 style="margin-bottom: 20px;">Prospetto Noleggi Mensili</h1>
 
     <table>
         <thead>
@@ -337,8 +344,9 @@
         </tbody>
     </table>
 
+    <br>
 
-    <h1>Inserimento Nuova FAQ</h1>
+    <h1 style="margin-bottom: 20px;">Inserimento Nuova FAQ</h1>
 
     <form method="post" action="{{ route('faq.store') }}">
         @csrf
@@ -352,8 +360,9 @@
         <input type="submit" value="Aggiungi FAQ">
     </form>
 
+    <br>
 
-    <h1>Tabella FAQ</h1>
+    <h1 style="margin-bottom: 20px;">Tabella FAQ</h1>
 
     <table>
         <thead>

@@ -1,6 +1,8 @@
 @php
     use Illuminate\Contracts\Auth\Guard;
 @endphp
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
@@ -27,25 +29,47 @@
             @if (auth()->check())
                 <label class="logged-user-label">{{ Auth::user()->username }}</label>
                 @if (Auth::user()->role === 'client')
-                    <a href="{{ route('area-personale') }}" class="btn btn-primary">Area Personale</a>
+                    <button class="btn btn-primary" onclick="window.location.href='{{ route('area-personale') }}'">Area Personale</button>
+
                 @elseif (Auth::user()->role === 'staff' || Auth::user()->role === 'admin')
-                    <a href="{{ route('adminPanel') }}" class="btn btn-primary">Pannello di Controllo</a>
+                    <button class="btn btn-primary" onclick="window.location.href='{{ route('adminPanel') }}'">Pannello di Controllo</button>
+
                 @endif
-                    <form method="POST" action="/logout">
+                    {{-- <form method="POST" action="/logout">
                         @csrf
                         <button type="submit" class="btn btn-logout">Logout</button>
-                    </form>
+                    </form> --}}
+                    <button id="logout-button" class="btn btn-logout">Logout</button>
                 @else
 
                 <button onclick="window.location.href='{{ url('/register') }}'" class="btn btn-primary">Registrati</button>
                 <button onclick="window.location.href='{{ url('/login') }}'" class="btn btn-primary">Login</button>
-                {{-- <button @csrf onclick="window.location.href='{{ url('/logout') }}'" class="btn btn-danger">Logout</button> --}}
 
             @endif
-
-
             {{-- <button href="/logout" class="btn btn-logout">Logout</button> --}}
 
         </div>
       </div>
+      <script>
+        // codice jquery per il logout
+        $(document).ready(function() {
+            $("#logout-button").on("click", function() {
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                var form = $('<form/>', {
+                    method: 'POST',
+                    action: '/logout',
+                    style: 'display: none;'
+                });
+
+                var csrfInput = $('<input/>', {
+                    type: 'hidden',
+                    name: '_token',
+                    value: csrfToken
+                });
+
+                form.append(csrfInput).appendTo('body');
+                form.submit();
+            });
+        });
+    </script>
 </nav>

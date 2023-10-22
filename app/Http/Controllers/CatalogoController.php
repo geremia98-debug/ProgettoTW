@@ -50,6 +50,11 @@ public function filtro(Request $request)
             return view('catalogo', compact('errorMessage'));
         }
 
+        if($startRentDate>$endRentDate){
+            $errorMessage = 'La data di fine noleggio deve essere successiva a quella di inizio.';
+            return view('catalogo', compact('errorMessage'));
+        }
+
 
 
         // FILTRI TABELLA CAR_USER (DATE DISPONIBILI)

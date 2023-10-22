@@ -73,10 +73,13 @@
                     <!-- Mostra pulsante Prenota solo se l'utente è loggato, altrimenti mostra un messaggio. -->
                     @if (auth()->check())
                     <a href="{{ route('prenotaAuto', ['car_id' => $car->id]) }}" class="btn btn_rental">Prenota</a>
-                    @else
-                    <a class="btn btn-primary">Accedi per prenotare</a>
+                    @elseif (!auth()->check())
+                    {{-- <a class="btn btn-primary">Accedi per prenotare</a> --}}
+                    <label> Accedi per prenotare </label>
                     @endif
                     @endcannot
+                @else
+                <label> Scegli le date per prenotare </label>
                 @endif
             </div>
             @endforeach

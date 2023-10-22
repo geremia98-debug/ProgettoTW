@@ -50,6 +50,9 @@
             <p><h4 class="home-info">Telefono: 123-456-789</h4></p>
             <p><h4 class="home-info">Email: info@vagnoli.com</h4></p>
         </div>
+        <br>
+        <h2 style="color: red"> Dove siamo </h2>
+        <br>
         <img src="{{ asset('build\assets\geo.jpg') }}" alt="Location on Maps" class="maps-image">
     </section>
 
@@ -84,9 +87,9 @@
        let photoArray = [
                         'http://127.0.0.1:8000/build/assets/fano.jpg',
                         'http://127.0.0.1:8000/build/assets/fano1.jpg',
-                        'http://127.0.0.1:8000/build/assets/fano2.jpeg',
-                        'http://127.0.0.1:8000/build/assets/fano3.jpeg',
-                        'http://127.0.0.1:8000/build/assets/fano4.jpeg'
+                        'http://127.0.0.1:8000/build/assets/fano2.jpg',
+                        'http://127.0.0.1:8000/build/assets/fano3.jpg',
+                        'http://127.0.0.1:8000/build/assets/fano4.jpg'
                         ]
 
         let banner = document.querySelector('#banner')

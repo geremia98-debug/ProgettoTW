@@ -1,4 +1,4 @@
-<!doctype html>
+{{-- <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -15,9 +15,14 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-</head>
+</head> --}}
+
+@extends('layouts.app')
+
+
+@section('content')
 <body class="login-full">
-    <label class="login-title">Noleggio Vagnoli</label>
+    <label class="login-title">Login</label>
 
     <form method="POST" action="{{ route('login') }}" class="login-form">
         @csrf
@@ -51,4 +56,5 @@
 
     </form>
 </body>
-</html>
+@endsection
+{{-- </html> --}}

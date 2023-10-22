@@ -3,18 +3,15 @@
     }
 
 #banner{
-
             display: block;
             width: auto;
             height: auto;
             max-width: 100%;
             max-height: 90%;
             margin: 20px auto;
-
     }
 
 .grid{
-
      margin:1rem;
 }
 
@@ -60,6 +57,13 @@ body {
 
     .icone-social {
         font-size: 5em;
+    }
+
+    .maps-image {
+        display: block;
+        margin: 0 auto; /* Centro l'immagine orizzontalmente */
+        max-width: 100%;
+        height: 500px;
     }
 
     .home-image {
@@ -143,13 +147,6 @@ body {
     background-color: darkblue;
 }
 
-/* Stili per la tabella */
-// table {
-//     width: 100%;
-//     border-collapse: collapse;
-//     border-spacing: 0;
-// }
-
 th, td {
     padding: 8px;
     text-align: left;
@@ -170,15 +167,6 @@ tbody tr:nth-child(even) {
 tbody tr:hover {
     background-color: #ddd;
 }
-
-/* Stili per il form */
-// form {
-//     margin: 20px;
-//     padding: 20px;
-//     border: 1px solid #ddd;
-//     background-color: #f9f9f9;
-//     display: inline-block;
-// }
 
 /* Stili per le etichette */
 label {
@@ -228,9 +216,6 @@ button:hover {
     font-size: 18px; /* Imposta la dimensione del font per i paragrafi */
     margin: 10px 0; /* Aggiunge un margine sopra e sotto ciascun paragrafo per migliorare la leggibilità */
   }
-
-
-// CSS VAGNO BRUTTO
 
 // 3 elementi navbar home/catalogo/chisiamo
 .nav-link {
@@ -376,23 +361,28 @@ form.register-form {
 
 body.register-full {
     display: flex;
-    justify-content: center; /* Centro orizzontalmente */
-    align-items: center; /* Centro verticalmente */
-    height: 100vh; /* Assicura che il body occupi l'intera altezza della viewport */
-    margin: 0; /* Rimuovi i margini predefiniti del body */
-  }
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Imposta l'altezza minima a 100vh */
+    margin: 0;
+    overflow-y: auto; /* Abilita la barra di scorrimento verticale solo se necessario */
+}
+
   body.login-full {
     display: flex;
+    flex-direction: column;
     justify-content: center; /* Centro orizzontalmente */
     align-items: center; /* Centro verticalmente */
     height: 100vh; /* Assicura che il body occupi l'intera altezza della viewport */
     margin: 0; /* Rimuovi i margini predefiniti del body */
   }
 .login-title{
-  font-size: 2rem; /* Equivalente a text-2xl */
-  font-weight: bold; /* Equivalente a font-bold */
-  text-align: center; /* Equivalente a text-center */
-  margin-bottom: 1rem; /* Equivalente a mb-4 */
+    color: red;
+    font-size: 2rem; /* Equivalente a text-2xl */
+    font-weight: bold; /* Equivalente a font-bold */
+    text-align: center; /* Equivalente a text-center */
+    margin-bottom: 1rem; /* Equivalente a mb-4 */
 }
 
 

@@ -1,7 +1,7 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+{{-- <!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> --}}
 <head>
-    <meta charset="utf-8">
+    {{-- <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
@@ -12,11 +12,15 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    @extends('layouts.app')
 
-    {{-- <title>Registrazione</title> --}}
+
+
 </head>
+@section('content')
 <body class="register-full">
+
     <h1 class="register-title">Registrazione</h1>
 
     <form class="register-form" method="POST" action="{{ route('users.store') }}">
@@ -89,5 +93,6 @@
         </div>
     </form>
 </body>
-</html>
+@endsection
+{{-- </html> --}}
 
