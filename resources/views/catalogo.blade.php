@@ -86,22 +86,6 @@
         </div>
     </div>
     @endif
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-
-        // Seleziona un elemento con l'ID "my-element"
-        var elemento = $("#filter-button");
-        $(document).ready(function() {
-        // Seleziona l'elemento con l'ID "my-button" e ascolta l'evento di clic
-        $("#my-button").on("click", function() {
-        // Codice da eseguire quando l'elemento viene cliccato
-        alert("Hai cliccato sul pulsante!");
-        });
-        });
-
-        console.log(elemento);
-
-    </script> --}}
 </body>
 @endsection
 
